@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CConeVision.cs">
+    <Files>
+      <File FileName="Assets\Code\CGame.cs" Line="45" Column="10" />
+      <File FileName="Assets\Code\CPlayer.cs" Line="94" Column="47" />
+      <File FileName="Assets\Code\CElement.cs" Line="32" Column="2" />
+      <File FileName="Assets\Code\CSpriteSheet.cs" Line="77" Column="3" />
+      <File FileName="Assets\Code\CConeVision.cs" Line="43" Column="4" />
+      <File FileName="Assets\Code\CLevel.cs" Line="11" Column="17" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
