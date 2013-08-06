@@ -51,7 +51,9 @@ public class CGame : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	void DisplayDebug()
 	{
-		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(1f/Time.deltaTime));
+		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(Time.deltaTime));
+		GUI.Label(new Rect(10, 30, 100, 20), System.Convert.ToString(1f/Time.deltaTime));
+		GUI.Label(new Rect(10, 50, 100, 20), System.Convert.ToString(m_Level.GetType()));
 	}
 	
 	//-------------------------------------------------------------------------------

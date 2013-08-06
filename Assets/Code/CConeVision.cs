@@ -6,7 +6,7 @@ public class CConeVision : MonoBehaviour
 	
 	float m_fAngleVise;
 
-	public m_Material m_Material; // Mat appliqué au mesh de vue
+	public Material m_Material; // Mat appliqué au mesh de vue
 	public bool debug = false; // Dessine les rayons dans la scene view
 	public float freq = 0.05F; // Fréquence de calcul. > 0.05F ça devient moche
 	public LayerMask mask; // Layers qui vont bloquer la vue
@@ -58,7 +58,7 @@ public class CConeVision : MonoBehaviour
 		sightMesh = new Mesh();
 		
 		(sightObject.AddComponent( typeof( MeshFilter )) as MeshFilter).mesh = sightMesh;
-		(sightObject.AddComponent( typeof( MeshRenderer )) as MeshRenderer).m_Material = m_Material;
+		(sightObject.AddComponent( typeof( MeshRenderer )) as MeshRenderer).material = m_Material;
 		sightObject.layer = LayerMask.NameToLayer("Cone");
 		m_Transform = transform; // histoire de limiter les getcomponent dans la boucle
       
