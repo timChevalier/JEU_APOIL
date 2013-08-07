@@ -116,19 +116,9 @@ public class CConeVision : MonoBehaviour
 		if( Physics.Raycast( m_Transform.position, dir, out hit, distance, mask ) ) // Si on touche, on rétrécit le rayon
 		{
             dist = hit.distance;
-				
-				//TODO
-				//TODO
-				//TODO//TODO
-				//TODO
-				//TODO
-				//TODO//TODO
-				//TODO
-				/*
-			CElement objet = hit.collider.gameObject.GetComponent<CElement>();
-			objet.setVisible();
-			*/
 
+			CGameObject objet = hit.collider.gameObject.GetComponent<CGameObject>();
+			objet.SetVisible();
 		}
          
          if( debug ) Debug.DrawRay( m_Transform.position, dir * dist );

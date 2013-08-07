@@ -37,10 +37,10 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>E:/Games/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>E:/Games/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -48,9 +48,11 @@
      <Compile Include="Assets\Code\CConeVision.cs" />
      <Compile Include="Assets\Code\CElement.cs" />
      <Compile Include="Assets\Code\CGame.cs" />
+     <Compile Include="Assets\Code\CGameObject.cs" />
      <Compile Include="Assets\Code\CLevel.cs" />
      <Compile Include="Assets\Code\CPlayer.cs" />
      <Compile Include="Assets\Code\CSpriteSheet.cs" />
+     <None Include="Assets\Code\ShaderRendu.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
