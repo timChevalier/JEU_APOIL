@@ -1,8 +1,9 @@
 Shader "Custom/ShaderRendu" {
 Properties {
     _Color ("Main Color", Color) = (1,1,1,0.5)
-    _MainTex ("Texture", 2D) = "white" { }
-    _ConeTex ("Texture", 2D) = "white" { }
+    _MainTex ("Texture de la scene", 2D) = "white" { }
+    _ConeTex ("Texture du Cone", 2D) = "white" { }
+    _ForceTex ("Texture du rendu forcé", 2D) = "white" { }
 }
 SubShader {
     Pass {
@@ -16,6 +17,7 @@ SubShader {
 	float4 _Color;
 	sampler2D _MainTex;
 	sampler2D _ConeTex;
+	sampler2D _ForceTex;
 	
 	struct v2f {
 	    float4  pos : SV_POSITION;
@@ -32,10 +34,24 @@ SubShader {
 	    return o;
 	}
 	
-	half4 frag (v2f i) : COLOR
+	fixed4 frag (v2f i) : COLOR
 	{
-	    half4 texcol = tex2D (_MainTex, i.uv);
-	    return texcol * _Color;
+	    fixed4 texBlack = fixed4(0.0f, 0.0f, 0.0f, 1.0f);
+	     fixed4 texWhite = fixed4(1.0f, 1.0f, 1.0f, 1.0f);
+	     fixed4 texFondVert = fixed4(0.0f, 1.0f, 0.0f, 1.0f);
+	    
+	   	fixed4 texSceneColor = tex2D (_MainTex, i.uv)* _Color;
+	    fixed4 texConeColor = tex2D (_ConeTex, i.uv)* _Color;
+	    fixed4 texForceColor = tex2D (_ForceTex, i.uv)* _Color;
+	    
+	    fixed4 texReturn = texSceneColor - texConeColor;
+	    
+	    fixed4 texReturn2 = texForceColor;
+	    if (texForceColor.x == texWhite.x && texForceColor.y == texWhite.y && texForceColor.z == texWhite.z)
+	   		 texReturn2 = texReturn;
+	  	//texReturn *= texForceColor
+	   // return texAlpha;
+	   return texReturn2;
 	}
 	ENDCG
 
