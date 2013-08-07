@@ -10,6 +10,7 @@ public class CPlayer : CElement {
 	CAnimation m_AnimHorizontal;
 	CAnimation m_AnimVertical;
 	CConeVision m_ConeVision;
+	Camera m_CameraCone;
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -21,6 +22,7 @@ public class CPlayer : CElement {
 		m_GameObject = GameObject.Instantiate(prefab) as GameObject;
 		
 		m_ConeVision = m_GameObject.GetComponent<CConeVision>();
+		m_CameraCone = game.m_CameraCone;
 		
 		m_fSpeed = game.m_fSpeedPlayer;
 		m_spriteSheet = m_GameObject.GetComponent<CSpriteSheet>();	
@@ -36,6 +38,7 @@ public class CPlayer : CElement {
 	public new void Init()
 	{	
 		base.Init();
+		//m_spriteSheet.SetAnimation(m_AnimRepos);
 	}
 
 	//-------------------------------------------------------------------------------
@@ -143,7 +146,7 @@ public class CPlayer : CElement {
 	{
 		Vector3 posMouseTmp = Vector3.zero;
 		RaycastHit vHit = new RaycastHit();
-	    Ray vRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+	    Ray vRay = m_CameraCone.ScreenPointToRay(Input.mousePosition);
 		if(Physics.Raycast(vRay, out vHit, 1000)) 
 		{
 			posMouseTmp = vHit.point;

@@ -51,6 +51,7 @@
      <Compile Include="Assets\Code\CLevel.cs" />
      <Compile Include="Assets\Code\CPlayer.cs" />
      <Compile Include="Assets\Code\CSpriteSheet.cs" />
+     <None Include="Assets\Code\ShaderRendu.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

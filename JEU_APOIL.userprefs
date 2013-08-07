@@ -1,13 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CPlayer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\ShaderRendu.shader">
     <Files>
-      <File FileName="Assets\Code\CLevel.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CGame.cs" Line="52" Column="21" />
-      <File FileName="Assets\Code\CPlayer.cs" Line="38" Column="15" />
-      <File FileName="Assets\Code\CElement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CSpriteSheet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CConeVision.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\ShaderRendu.shader" Line="18" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

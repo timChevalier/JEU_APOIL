@@ -5,6 +5,7 @@ public class CGame : MonoBehaviour
 {
 	// Objets
 	public GameObject prefabPlayer;
+	public Camera m_CameraCone;
 	
 	// materials
 	public Material m_materialPlayerRepos;
