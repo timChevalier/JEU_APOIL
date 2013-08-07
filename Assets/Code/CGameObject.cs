@@ -14,7 +14,9 @@ public class CGameObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(m_bIsVisible)
+		{
 			gameObject.layer = LayerMask.NameToLayer("ForceDisplay");
+		}
 		else {
 			gameObject.layer = LayerMask.NameToLayer("Scene");
 		}
