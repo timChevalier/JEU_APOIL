@@ -34,24 +34,27 @@ SubShader {
 	    return o;
 	}
 	
+	bool Equal(fixed4 tex1, fixed4 tex2)
+	{
+		return (tex1.x == tex2.x && tex1.y == tex2.y && tex1.z == tex2.z);			
+	}
+	
 	fixed4 frag (v2f i) : COLOR
 	{
-	    fixed4 texBlack = fixed4(0.0f, 0.0f, 0.0f, 1.0f);
-	     fixed4 texWhite = fixed4(1.0f, 1.0f, 1.0f, 1.0f);
-	     fixed4 texFondVert = fixed4(0.0f, 1.0f, 0.0f, 1.0f);
-	    
-	   	fixed4 texSceneColor = tex2D (_MainTex, i.uv)* _Color;
-	    fixed4 texConeColor = tex2D (_ConeTex, i.uv)* _Color;
-	    fixed4 texForceColor = tex2D (_ForceTex, i.uv)* _Color;
-	    
-	    fixed4 texReturn = texSceneColor - texConeColor;
-	    
-	    fixed4 texReturn2 = texForceColor;
-	    if (texForceColor.x == texWhite.x && texForceColor.y == texWhite.y && texForceColor.z == texWhite.z)
-	   		 texReturn2 = texReturn;
-	  	//texReturn *= texForceColor
-	   // return texAlpha;
-	   return texReturn2;
+		fixed4 texBlack = fixed4(0.0f, 0.0f, 0.0f, 1.0f);
+		fixed4 texWhite = fixed4(1.0f, 1.0f, 1.0f, 1.0f);
+		fixed4 texFondVert = fixed4(0.0f, 1.0f, 0.0f, 1.0f);
+		
+		fixed4 texSceneColor = tex2D (_MainTex, i.uv)* _Color;
+		fixed4 texConeColor = tex2D (_ConeTex, i.uv)* _Color;
+		fixed4 texForceColor = tex2D (_ForceTex, i.uv)* _Color;
+		
+		fixed4 texReturn = texSceneColor - texConeColor;
+	
+		if (!Equal(texForceColor, texBlack))
+			texReturn = texForceColor;
+		// return texAlpha;
+		return texReturn;
 	}
 	ENDCG
 

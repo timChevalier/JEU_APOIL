@@ -48,6 +48,7 @@
      <Compile Include="Assets\Code\CConeVision.cs" />
      <Compile Include="Assets\Code\CElement.cs" />
      <Compile Include="Assets\Code\CGame.cs" />
+     <Compile Include="Assets\Code\CGameObject.cs" />
      <Compile Include="Assets\Code\CLevel.cs" />
      <Compile Include="Assets\Code\CPlayer.cs" />
      <Compile Include="Assets\Code\CSpriteSheet.cs" />
