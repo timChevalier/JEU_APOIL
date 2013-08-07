@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CGame.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CLevel.cs">
     <Files>
-      <File FileName="Assets\Code\CGame.cs" Line="52" Column="21" />
+      <File FileName="Assets\Code\CGame.cs" Line="56" Column="82" />
       <File FileName="Assets\Code\CPlayer.cs" Line="94" Column="47" />
       <File FileName="Assets\Code\CElement.cs" Line="1" Column="1" />
       <File FileName="Assets\Code\CSpriteSheet.cs" Line="1" Column="1" />
       <File FileName="Assets\Code\CConeVision.cs" Line="72" Column="21" />
-      <File FileName="Assets\Code\CLevel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\CLevel.cs" Line="48" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
