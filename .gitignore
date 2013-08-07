@@ -229,8 +229,8 @@ pip-log.txt
 *.Trashes
  
 # All platforms:
-Library
-Temp
+Library/
+Temp/
 *.csproj
 *.pidb
 *.unityproj

@@ -25,7 +25,7 @@ public class CGame : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	void Init()
 	{	
-		m_Level = new CLevel(1);
+		m_Level = new CLevel();
 		m_Level.Init();
 	}
 	
@@ -53,7 +53,7 @@ public class CGame : MonoBehaviour
 	{
 		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(Time.deltaTime));
 		GUI.Label(new Rect(10, 30, 100, 20), System.Convert.ToString(1f/Time.deltaTime));
-		GUI.Label(new Rect(10, 50, 100, 20), System.Convert.ToString(m_Level.getIdLevel()));
+		GUI.Label(new Rect(10, 50, 100, 20), System.Convert.ToString(m_Level.GetType()));
 	}
 	
 	//-------------------------------------------------------------------------------
