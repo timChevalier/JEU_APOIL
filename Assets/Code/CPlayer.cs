@@ -36,7 +36,6 @@ public class CPlayer : CElement {
 	public new void Init()
 	{	
 		base.Init();
-		//m_spriteSheet.SetAnimation(m_AnimRepos);
 	}
 
 	//-------------------------------------------------------------------------------
