@@ -60,6 +60,7 @@ public class CConeVision : MonoBehaviour
 		(sightObject.AddComponent( typeof( MeshFilter )) as MeshFilter).mesh = sightMesh;
 		(sightObject.AddComponent( typeof( MeshRenderer )) as MeshRenderer).material = m_Material;
 		sightObject.layer = LayerMask.NameToLayer("Cone");
+		sightObject.tag = "cone";
 		m_Transform = transform; // histoire de limiter les getcomponent dans la boucle
       
       // Préparation des rayons
@@ -117,8 +118,8 @@ public class CConeVision : MonoBehaviour
 		{
             dist = hit.distance;
 
-			CGameObject objet = hit.collider.gameObject.GetComponent<CGameObject>();
-			objet.SetVisible();
+			//CGameObject objet = hit.collider.gameObject.GetComponent<CGameObject>();
+			//objet.SetVisible();
 		}
          
          if( debug ) Debug.DrawRay( m_Transform.position, dir * dist );

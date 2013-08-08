@@ -23,35 +23,11 @@ public class CGameObject : MonoBehaviour {
 		}
 		else {
 			gameObject.layer = LayerMask.NameToLayer("Scene");
-		}
+		}	
+		m_bIsVisible = false;
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// Unity
-	//-------------------------------------------------------------------------------
-	void OnCollisionStay(Collision collision) 
-	{  
-		if (collision.collider.CompareTag("Player"))
-		{
-			Vector3 posObjet = transform.position;
-			CGame game = GameObject.Find("_Game").GetComponent<CGame>();
-			CPlayer player = game.getLevel().getPlayer();
-			player.InAObject(posObjet);
-		}
-	}
 	
-	//-------------------------------------------------------------------------------
-	/// Unity
-	//-------------------------------------------------------------------------------
-	void OnCollisionExit(Collision collision) 
-	{  
-		if (collision.collider.CompareTag("Player"))
-		{
-			CGame game = GameObject.Find("_Game").GetComponent<CGame>();
-			CPlayer player = game.getLevel().getPlayer();
-			player.getOutOfObject();
-		}
-	}
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -59,7 +35,7 @@ public class CGameObject : MonoBehaviour {
 	public void SetVisible() 
 	{
 		m_bIsVisible = true;
-	}
 
+	}
 
 }

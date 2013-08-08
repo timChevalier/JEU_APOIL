@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Code\CAnimation.cs" />
+     <Compile Include="Assets\Code\CCollision2D.cs" />
      <Compile Include="Assets\Code\CConeVision.cs" />
      <Compile Include="Assets\Code\CElement.cs" />
      <Compile Include="Assets\Code\CGame.cs" />
