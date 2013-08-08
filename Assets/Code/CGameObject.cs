@@ -5,13 +5,17 @@ public class CGameObject : MonoBehaviour {
 	
 	bool m_bIsVisible;
 	
-	// Use this for initialization
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------
 	void Start () {
 		gameObject.layer = LayerMask.NameToLayer("Scene");
 		m_bIsVisible = false;
 	}
 	
-	// Update is called once per frame
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------
 	void Update () {
 		if(m_bIsVisible)
 		{
@@ -22,6 +26,36 @@ public class CGameObject : MonoBehaviour {
 		}
 	}
 	
+	//-------------------------------------------------------------------------------
+	/// Unity
+	//-------------------------------------------------------------------------------
+	void OnCollisionStay(Collision collision) 
+	{  
+		if (collision.collider.CompareTag("Player"))
+		{
+			Vector3 posObjet = transform.position;
+			CGame game = GameObject.Find("_Game").GetComponent<CGame>();
+			CPlayer player = game.getLevel().getPlayer();
+			player.InAObject(posObjet);
+		}
+	}
+	
+	//-------------------------------------------------------------------------------
+	/// Unity
+	//-------------------------------------------------------------------------------
+	void OnCollisionExit(Collision collision) 
+	{  
+		if (collision.collider.CompareTag("Player"))
+		{
+			CGame game = GameObject.Find("_Game").GetComponent<CGame>();
+			CPlayer player = game.getLevel().getPlayer();
+			player.getOutOfObject();
+		}
+	}
+	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------
 	public void SetVisible() 
 	{
 		m_bIsVisible = true;

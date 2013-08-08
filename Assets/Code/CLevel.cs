@@ -37,4 +37,9 @@ public class CLevel
 		m_Player.Process(fDeltatime);
 		
 	}
+	
+	public CPlayer getPlayer()
+	{
+		return m_Player;
+	}
 }

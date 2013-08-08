@@ -11,6 +11,8 @@ public class CPlayer : CElement {
 	CAnimation m_AnimVertical;
 	CConeVision m_ConeVision;
 	Camera m_CameraCone;
+	bool m_bGetOut;
+	Vector3 m_PosObjToGetOut;
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -25,6 +27,8 @@ public class CPlayer : CElement {
 		m_CameraCone = game.m_CameraCone;
 		
 		m_fSpeed = game.m_fSpeedPlayer;
+		m_bGetOut = false;
+		m_PosObjToGetOut = new Vector3(0.0f,0.0f,0.0f);
 		m_spriteSheet = m_GameObject.GetComponent<CSpriteSheet>();	
 		
 		m_AnimRepos = new CAnimation(game.m_materialPlayerRepos, 1, 1, 1.0f);
@@ -38,6 +42,7 @@ public class CPlayer : CElement {
 	public new void Init()
 	{	
 		base.Init();
+		
 		//m_spriteSheet.SetAnimation(m_AnimRepos);
 	}
 
@@ -100,26 +105,26 @@ public class CPlayer : CElement {
 			Vector3 velocity = Vector3.zero;
 			if (upPressed) 
 			{ 
-				velocity += m_fSpeed * new Vector3(0,1,0); 
+				velocity += new Vector3(0,1,0); 
 				m_spriteSheet.SetAnimation(m_AnimVertical);
 				m_spriteSheet.AnimationStart();
 			}
 			if (downPressed) 
 			{ 
-				velocity += m_fSpeed * new Vector3(0,-1,0); 
+				velocity += new Vector3(0,-1,0); 
 				m_spriteSheet.SetAnimation(m_AnimVertical);
 				m_spriteSheet.AnimationStart();
 			}
 			if (leftPressed) 
 			{
-				velocity += m_fSpeed * new Vector3(-1,0,0); 
+				velocity += new Vector3(-1,0,0); 
 				m_spriteSheet.SetAnimation(m_AnimHorizontal);
 				m_spriteSheet.AnimationStart();
 				flipLeft();
 				
 			}
 			if (rightPressed) { 
-				velocity += m_fSpeed * new Vector3(1,0,0); 
+				velocity += new Vector3(1,0,0); 
 				m_spriteSheet.SetAnimation(m_AnimHorizontal);
 				m_spriteSheet.AnimationStart();
 				flipRight();
@@ -131,7 +136,18 @@ public class CPlayer : CElement {
 				m_GameObject.rigidbody.velocity = Vector3.zero;
 			}
 			
-			m_GameObject.transform.position += velocity * fDeltatime;	
+			velocity.Normalize();
+			
+			if(m_bGetOut)
+			{
+				
+				//velocity *= -1;
+				Vector3 posPlayer = m_GameObject.transform.position;
+				velocity += (posPlayer - m_PosObjToGetOut).normalized;
+				Debug.Log((posPlayer - m_PosObjToGetOut).normalized);
+			}
+			
+			m_GameObject.transform.position += m_fSpeed * velocity * fDeltatime;	
 		}
 		else
 		{
@@ -163,5 +179,17 @@ public class CPlayer : CElement {
 		}
 		float fAngleVise = -fAngle*180/3.14159f - 90 - 75/2;
 		m_ConeVision.setAngleVise(fAngleVise);	
+	}
+		
+	public void InAObject(Vector3 posObjet)
+	{
+		m_bGetOut = true;
+		m_PosObjToGetOut = posObjet;
+	}
+	
+	public void getOutOfObject()
+	{
+		m_bGetOut = false;
+		m_PosObjToGetOut = new Vector3(0.0f, 0.0f, 0.0f);
 	}
 }
