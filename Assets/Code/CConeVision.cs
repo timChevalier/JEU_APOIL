@@ -118,8 +118,8 @@ public class CConeVision : MonoBehaviour
 		{
             dist = hit.distance;
 
-			//CGameObject objet = hit.collider.gameObject.GetComponent<CGameObject>();
-			//objet.SetVisible();
+			CGameObject objet = hit.collider.gameObject.GetComponent<CGameObject>();
+			objet.SetVisible();
 		}
          
          if( debug ) Debug.DrawRay( m_Transform.position, dir * dist );
