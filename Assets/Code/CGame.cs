@@ -19,15 +19,19 @@ public class CGame : MonoBehaviour
 	public float m_fDistanceConeDeVision = 1f;
 	public int m_fPrecisionConeDeVision = 1; 
 	
-	CLevel m_Level;
+	bool m_bInGame;
+	bool m_bGameStarted;
 	
+	CLevel m_Level;
+	CMenu m_Menu;
 	
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
-	void Init()
+	public void Init()
 	{	
 		m_Level = new CLevel();
+		m_Menu = gameObject.GetComponent<CMenu>();
 		m_Level.Init();
 	}
 	
@@ -44,7 +48,10 @@ public class CGame : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	void Process(float fDeltatime)
 	{
-		m_Level.Process(fDeltatime);
+		if(m_bInGame)
+		{
+			m_Level.Process(fDeltatime);
+		}
 		
 	}
 	
@@ -67,11 +74,44 @@ public class CGame : MonoBehaviour
 	}
 	
 	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
+	public void StartGame()
+	{
+		if(!m_bGameStarted)
+		{
+			Init();
+			m_bGameStarted = true;
+		}
+		
+		m_bInGame = true;	
+	}
+	
+	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
+	public bool IsDebug()
+	{
+		return m_bDebug;	
+	}
+	
+	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
+	public void PauseGame()
+	{
+		m_bInGame = false;	
+	}
+	
+	//-------------------------------------------------------------------------------
 	/// Unity
 	//-------------------------------------------------------------------------------
 	void OnGUI() {
         if (m_bDebug)
+		{
 			DisplayDebug();
+		}
+
     }
 
 	
@@ -80,7 +120,12 @@ public class CGame : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	void Start()
 	{
-		Init();
+		m_bInGame = false;
+		m_bGameStarted = false;
+		if (m_bDebug)
+		{
+			StartGame();
+		}
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -88,7 +133,10 @@ public class CGame : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	void Update()
 	{
-		Process(Time.deltaTime);
+		if(m_bInGame)
+		{
+			Process(Time.deltaTime);
+		}
 	}
 	
 	
