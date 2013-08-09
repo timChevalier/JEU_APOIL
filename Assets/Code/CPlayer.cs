@@ -14,15 +14,15 @@ public class CPlayer : CElement {
 	bool m_bGetOut;
 	Vector3 m_PosObjToGetOut;
 	
-	public enum e_moveModState // mode de deplacement
+	public enum EMoveModState // mode de deplacement
 	{
-		e_moveModState_attente,
-		e_moveModState_discret,
-		e_moveModState_marche,
-		e_moveModState_cours
+		e_MoveModState_attente,
+		e_MoveModState_discret,
+		e_MoveModState_marche,
+		e_MoveModState_cours
 	}
 	
-	public enum e_state //etat de l'avatar
+	public enum EState //etat de l'avatar
 	{
 		e_state_normal,
 		e_state_enflamme,
@@ -36,8 +36,8 @@ public class CPlayer : CElement {
 	
 	}
 	
-	e_moveModState m_eMoveModState;
-	e_state m_eState;
+	EMoveModState m_eMoveModState;
+	EState m_eState;
 	
 	
 	//-------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ public class CPlayer : CElement {
 		m_AnimHorizontal = new CAnimation(game.m_materialPlayerHorizontal, 7, 4, 1.0f);
 		m_AnimVertical = new CAnimation(game.m_materialPlayerVertical, 6, 1, 2.0f);
 		
-		m_eMoveModState = e_moveModState.e_moveModState_marche;
+		m_eMoveModState = EMoveModState.e_MoveModState_marche;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -97,8 +97,8 @@ public class CPlayer : CElement {
 			if(Input.GetKeyDown(KeyCode.A))
 			{
 				m_eState = (m_eState + 1);
-				if (m_eState >= e_state.e_state_nbState)
-					m_eState = e_state.e_state_normal;
+				if (m_eState >= EState.e_state_nbState)
+					m_eState = EState.e_state_normal;
 			}
 		}
 	}
@@ -232,7 +232,7 @@ public class CPlayer : CElement {
 		m_PosObjToGetOut = new Vector3(0.0f, 0.0f, 0.0f);
 	}
 	
-	public e_state getState()
+	public EState getState()
 	{
 		return m_eState;	
 	}

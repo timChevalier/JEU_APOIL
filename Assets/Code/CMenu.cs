@@ -3,16 +3,16 @@ using System.Collections;
 
 public class CMenu : MonoBehaviour{
 	
-	enum e_menu_state
+	enum EmenuState
 	{
-		e_menu_state_splash,
-		e_menu_state_main,
-		e_menu_state_credits,
-		e_menu_state_movie,
-		e_menu_state_inGame
+		e_menuState_splash,
+		e_menuState_main,
+		e_menuState_credits,
+		e_menuState_movie,
+		e_menuState_inGame
 	}
 	
-	e_menu_state e_state;
+	EmenuState m_EState;
 	
 	public Texture m_Texture_Fond;
 	public Texture m_Texture_ButtonPlay;
@@ -38,11 +38,11 @@ public class CMenu : MonoBehaviour{
 		m_fTempsVideoIntro = 0.0f;
 		if(!game.IsDebug())	
 		{
-			e_state = e_menu_state.e_menu_state_splash;
+			m_EState = EmenuState.e_menuState_splash;
 			m_fTempsSplash = m_fTempsSplashInit;
 		}
 		else {
-			e_state = e_menu_state.e_menu_state_inGame;
+			m_EState = EmenuState.e_menuState_inGame;
 		}
 	}
 	
@@ -51,7 +51,7 @@ public class CMenu : MonoBehaviour{
 	//-------------------------------------------------------------------------------
 	void Update()
 	{
-		if(e_state == e_menu_state.e_menu_state_splash && m_fTempsSplash>0.0f)
+		if(m_EState == EmenuState.e_menuState_splash && m_fTempsSplash>0.0f)
 			m_fTempsSplash -= Time.deltaTime;
 	}
 	
@@ -61,9 +61,9 @@ public class CMenu : MonoBehaviour{
 	void OnGUI() 
 	{
 		CGame game = gameObject.GetComponent<CGame>();
-		switch(e_state)
+		switch(m_EState)
 		{
-			case e_menu_state.e_menu_state_splash:
+			case EmenuState.e_menuState_splash:
 			{
 				if(m_fTempsSplash > 0.0f)
 				{
@@ -73,11 +73,11 @@ public class CMenu : MonoBehaviour{
 					GUI.DrawTexture(new Rect((1280 - fWidth)/2.0f, (800 - fHeight)/2.0f, fWidth, fHeight), m_Texture_Splash);
 				}
 				else
-					e_state = e_menu_state.e_menu_state_movie;
+					m_EState = EmenuState.e_menuState_movie;
 				break;
 			}	
 			
-			case e_menu_state.e_menu_state_movie:
+			case EmenuState.e_menuState_movie:
 			{
 				
 				GUI.DrawTexture(new Rect(0, 0, 1280, 800), m_Texture_movie_intro);
@@ -90,29 +90,29 @@ public class CMenu : MonoBehaviour{
 				else 
 				{
 					//m_Texture_movie_intro.Stop();
-					e_state = e_menu_state.e_menu_state_main;
+					m_EState = EmenuState.e_menuState_main;
 				}
 				break;	
 			}
 			
-			case e_menu_state.e_menu_state_main:
+			case EmenuState.e_menuState_main:
 			{
 				GUI.DrawTexture(new Rect(0, 0, 1280, 800), m_Texture_Fond);
 			
 				if (GUI.Button(new Rect(390, 100, 500, 150), m_Texture_ButtonPlay))
 				{
 		            game.StartGame();
-					e_state = e_menu_state.e_menu_state_inGame;
+					m_EState = EmenuState.e_menuState_inGame;
 				}
 				
 				if (GUI.Button(new Rect(390, 400, 500, 150), m_Texture_ButtonCredit))
 				{
-					e_state = e_menu_state.e_menu_state_credits;
+					m_EState = EmenuState.e_menuState_credits;
 				}
 			
 				if (GUI.Button(new Rect(940, 10, 200, 60), m_Texture_ButtonMenu))
 				{
-					e_state = e_menu_state.e_menu_state_main;
+					m_EState = EmenuState.e_menuState_main;
 				}
 			
 				if (GUI.Button(new Rect(1160, 10, 60, 60), m_Texture_ButtonQuit))
@@ -122,13 +122,13 @@ public class CMenu : MonoBehaviour{
 				break;
 			}	
 			
-			case e_menu_state.e_menu_state_credits:
+			case EmenuState.e_menuState_credits:
 			{
 				GUI.DrawTexture(new Rect(0, 0, 1280, 800), m_Texture_Credit);
 			
 				if (GUI.Button(new Rect(940, 10, 200, 60), m_Texture_ButtonMenu))
 				{
-					e_state = e_menu_state.e_menu_state_main;
+					m_EState = EmenuState.e_menuState_main;
 				}
 			
 				if (GUI.Button(new Rect(1160, 10, 60, 60), m_Texture_ButtonQuit))
@@ -138,12 +138,12 @@ public class CMenu : MonoBehaviour{
 				break;
 			}	
 			
-			case e_menu_state.e_menu_state_inGame:
+			case EmenuState.e_menuState_inGame:
 			{
 				//if (GUI.Button(new Rect(940, 10, 200, 60), m_Texture_ButtonMenu))
 				if (GUI.Button(new Rect(10, 10, 200, 60), m_Texture_ButtonMenu))
 				{
-					e_state = e_menu_state.e_menu_state_main;
+					m_EState = EmenuState.e_menuState_main;
 				}
 			
 				if (GUI.Button(new Rect(1160, 10, 60, 60), m_Texture_ButtonQuit))
