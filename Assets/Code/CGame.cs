@@ -23,7 +23,6 @@ public class CGame : MonoBehaviour
 	bool m_bGameStarted;
 	
 	CLevel m_Level;
-	CMenu m_Menu;
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -31,7 +30,6 @@ public class CGame : MonoBehaviour
 	public void Init()
 	{	
 		m_Level = new CLevel();
-		m_Menu = gameObject.GetComponent<CMenu>();
 		m_Level.Init();
 	}
 	
@@ -62,7 +60,7 @@ public class CGame : MonoBehaviour
 	{
 		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(Time.deltaTime));
 		GUI.Label(new Rect(10, 30, 100, 20), System.Convert.ToString(1f/Time.deltaTime));
-		GUI.Label(new Rect(10, 50, 100, 20), System.Convert.ToString(m_Level.GetType()));
+		GUI.Label(new Rect(10, 50, 100, 20), System.Convert.ToString(getLevel().getPlayer().getState()));
 	}
 	
 	//-------------------------------------------------------------------------------

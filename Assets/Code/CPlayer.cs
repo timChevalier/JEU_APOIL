@@ -14,6 +14,32 @@ public class CPlayer : CElement {
 	bool m_bGetOut;
 	Vector3 m_PosObjToGetOut;
 	
+	public enum e_moveModState // mode de deplacement
+	{
+		e_moveModState_attente,
+		e_moveModState_discret,
+		e_moveModState_marche,
+		e_moveModState_cours
+	}
+	
+	public enum e_state //etat de l'avatar
+	{
+		e_state_normal,
+		e_state_enflamme,
+		e_state_oxygeneManque,
+		e_state_empoisonne,
+		e_state_parasite,
+		e_state_frigorifie,
+		e_state_aveugle,
+		
+		e_state_nbState
+	
+	}
+	
+	e_moveModState m_eMoveModState;
+	e_state m_eState;
+	
+	
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
@@ -34,6 +60,8 @@ public class CPlayer : CElement {
 		m_AnimRepos = new CAnimation(game.m_materialPlayerRepos, 1, 1, 1.0f);
 		m_AnimHorizontal = new CAnimation(game.m_materialPlayerHorizontal, 7, 4, 1.0f);
 		m_AnimVertical = new CAnimation(game.m_materialPlayerVertical, 6, 1, 2.0f);
+		
+		m_eMoveModState = e_moveModState.e_moveModState_marche;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -62,6 +90,17 @@ public class CPlayer : CElement {
 		base.Process(fDeltatime);
 		EventClavier(fDeltatime);
 		EventSouris(fDeltatime);
+		
+		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
+		if(game.IsDebug())
+		{
+			if(Input.GetKeyDown(KeyCode.A))
+			{
+				m_eState = (m_eState + 1);
+				if (m_eState >= e_state.e_state_nbState)
+					m_eState = e_state.e_state_normal;
+			}
+		}
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -191,5 +230,10 @@ public class CPlayer : CElement {
 	{
 		m_bGetOut = false;
 		m_PosObjToGetOut = new Vector3(0.0f, 0.0f, 0.0f);
+	}
+	
+	public e_state getState()
+	{
+		return m_eState;	
 	}
 }
