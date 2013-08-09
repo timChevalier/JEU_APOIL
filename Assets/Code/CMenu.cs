@@ -8,6 +8,7 @@ public class CMenu : MonoBehaviour{
 		e_menu_state_splash,
 		e_menu_state_main,
 		e_menu_state_credits,
+		e_menu_state_movie,
 		e_menu_state_inGame
 	}
 	
@@ -20,10 +21,12 @@ public class CMenu : MonoBehaviour{
 	public Texture m_Texture_ButtonQuit;
 	public Texture m_Texture_Splash;
 	public Texture m_Texture_Credit;
+	public MovieTexture m_Texture_movie_intro;
 	
 	
 	float m_fTempsSplash;
 	const float m_fTempsSplashInit = 2.0f;
+	float m_fTempsVideoIntro;
 	
 	//-------------------------------------------------------------------------------
 	/// Unity
@@ -31,7 +34,8 @@ public class CMenu : MonoBehaviour{
 	void Start()
 	{
 		CGame game = gameObject.GetComponent<CGame>();
-		
+		m_fTempsSplash = 0.0f;
+		m_fTempsVideoIntro = 0.0f;
 		if(!game.IsDebug())	
 		{
 			e_state = e_menu_state.e_menu_state_splash;
@@ -51,7 +55,7 @@ public class CMenu : MonoBehaviour{
 			m_fTempsSplash -= Time.deltaTime;
 	}
 	
-//-------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------
 	/// Unity
 	//-------------------------------------------------------------------------------
 	void OnGUI() 
@@ -69,9 +73,27 @@ public class CMenu : MonoBehaviour{
 					GUI.DrawTexture(new Rect((1280 - fWidth)/2.0f, (800 - fHeight)/2.0f, fWidth, fHeight), m_Texture_Splash);
 				}
 				else
-					e_state = e_menu_state.e_menu_state_main;
+					e_state = e_menu_state.e_menu_state_movie;
 				break;
 			}	
+			
+			case e_menu_state.e_menu_state_movie:
+			{
+				
+				GUI.DrawTexture(new Rect(0, 0, 1280, 800), m_Texture_movie_intro);
+				if(m_fTempsVideoIntro == 0.0f)
+					m_Texture_movie_intro.Play();
+				if(m_Texture_movie_intro.isPlaying)
+				{
+					m_fTempsVideoIntro += Time.deltaTime;
+				}
+				else 
+				{
+					//m_Texture_movie_intro.Stop();
+					e_state = e_menu_state.e_menu_state_main;
+				}
+				break;	
+			}
 			
 			case e_menu_state.e_menu_state_main:
 			{
