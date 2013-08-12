@@ -184,7 +184,7 @@ public class CMenu : MonoBehaviour{
 					Application.Quit();
 				}
 			
-				if (GUI.Button(new Rect(200, 10, 60, 60), m_Texture_ButtonPause))
+				if (GUI.Button(new Rect(250, 10, 60, 60), m_Texture_ButtonPause))
 				{
 					if(!m_bGamePaused)
 					{

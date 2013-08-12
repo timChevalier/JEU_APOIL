@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CPlayer : CElement {
+public class CPlayer : CCharacter {
 	
 	//CGame m_game = GameObject.Find("_Game").GetComponent<CGame>();
 	float m_fSpeed;

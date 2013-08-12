@@ -45,15 +45,22 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Code\CAnimation.cs" />
+     <Compile Include="Assets\Code\CBigElement.cs" />
+     <Compile Include="Assets\Code\CCharacter.cs" />
      <Compile Include="Assets\Code\CCollision2D.cs" />
      <Compile Include="Assets\Code\CConeVision.cs" />
      <Compile Include="Assets\Code\CElement.cs" />
      <Compile Include="Assets\Code\CGame.cs" />
      <Compile Include="Assets\Code\CGameObject.cs" />
      <Compile Include="Assets\Code\CLevel.cs" />
+     <Compile Include="Assets\Code\CLittleElement.cs" />
      <Compile Include="Assets\Code\CMenu.cs" />
+     <Compile Include="Assets\Code\CMonster.cs" />
      <Compile Include="Assets\Code\CPlayer.cs" />
+     <Compile Include="Assets\Code\CPnj.cs" />
+     <Compile Include="Assets\Code\CSceneElement.cs" />
      <Compile Include="Assets\Code\CSpriteSheet.cs" />
+     <Compile Include="Assets\Code\CTakeElement.cs" />
      <None Include="Assets\Code\ShaderRendu.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

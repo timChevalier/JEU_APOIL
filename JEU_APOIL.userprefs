@@ -1,17 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CMonster.cs">
     <Files>
-      <File FileName="Assets\Code\CMenu.cs" Line="40" Column="48" />
+      <File FileName="Assets\Code\CElement.cs" Line="30" Column="3" />
+      <File FileName="Assets\Code\CCharacter.cs" Line="6" Column="1" />
+      <File FileName="Assets\Code\CLittleElement.cs" Line="4" Column="43" />
+      <File FileName="Assets\Code\CBigElement.cs" Line="4" Column="40" />
+      <File FileName="Assets\Code\CPnj.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\CMonster.cs" Line="9" Column="84" />
       <File FileName="Assets\Code\CCollision2D.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CGameObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CPlayer.cs" Line="64" Column="55" />
-      <File FileName="Assets\Code\CLevel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\CSceneElement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\CTakeElement.cs" Line="1" Column="1" />
       <File FileName="Assets\Code\CSpriteSheet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\ShaderRendu.shader" Line="1" Column="1" />
-      <File FileName="Assets\Code\CGame.cs" Line="77" Column="25" />
-      <File FileName="Assets\Code\CConeVision.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CAnimation.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
