@@ -19,6 +19,7 @@ public class CMenu : MonoBehaviour{
 	public Texture m_Texture_ButtonCredit;
 	public Texture m_Texture_ButtonMenu;
 	public Texture m_Texture_ButtonQuit;
+	public Texture m_Texture_ButtonPause;
 	public Texture m_Texture_Splash;
 	public Texture m_Texture_Credit;
 	public MovieTexture m_Texture_movie_intro;
@@ -27,6 +28,35 @@ public class CMenu : MonoBehaviour{
 	float m_fTempsSplash;
 	const float m_fTempsSplashInit = 2.0f;
 	float m_fTempsVideoIntro;
+	bool m_bGamePaused;
+	
+	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
+	void PauseGame()
+	{
+		Time.timeScale = 0;
+		m_bGamePaused = true;
+		gameObject.GetComponent<CGame>().PauseGame();
+	}
+	
+	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
+	void ResumeGame()
+	{
+		Time.timeScale = 1;
+		m_bGamePaused = false;
+		gameObject.GetComponent<CGame>().StartGame();
+	}
+	
+	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
+	bool GameIsPaused()
+	{
+		return m_bGamePaused;
+	}
 	
 	//-------------------------------------------------------------------------------
 	/// Unity
@@ -36,6 +66,7 @@ public class CMenu : MonoBehaviour{
 		CGame game = gameObject.GetComponent<CGame>();
 		m_fTempsSplash = 0.0f;
 		m_fTempsVideoIntro = 0.0f;
+		m_bGamePaused = false;
 		if(!game.IsDebug())	
 		{
 			m_EState = EmenuState.e_menuState_splash;
@@ -102,6 +133,7 @@ public class CMenu : MonoBehaviour{
 				if (GUI.Button(new Rect(390, 100, 500, 150), m_Texture_ButtonPlay))
 				{
 		            game.StartGame();
+					ResumeGame();
 					m_EState = EmenuState.e_menuState_inGame;
 				}
 				
@@ -144,11 +176,24 @@ public class CMenu : MonoBehaviour{
 				if (GUI.Button(new Rect(10, 10, 200, 60), m_Texture_ButtonMenu))
 				{
 					m_EState = EmenuState.e_menuState_main;
+					PauseGame();
 				}
 			
 				if (GUI.Button(new Rect(1160, 10, 60, 60), m_Texture_ButtonQuit))
 				{
 					Application.Quit();
+				}
+			
+				if (GUI.Button(new Rect(200, 10, 60, 60), m_Texture_ButtonPause))
+				{
+					if(!m_bGamePaused)
+					{
+						PauseGame();
+					}
+					else 
+					{
+						ResumeGame();
+					}
 				}
 				break;
 			}	

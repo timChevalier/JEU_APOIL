@@ -1,17 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CPlayer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CMenu.cs">
     <Files>
+      <File FileName="Assets\Code\CMenu.cs" Line="40" Column="48" />
       <File FileName="Assets\Code\CCollision2D.cs" Line="1" Column="1" />
       <File FileName="Assets\Code\CGameObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CPlayer.cs" Line="64" Column="38" />
+      <File FileName="Assets\Code\CPlayer.cs" Line="64" Column="55" />
       <File FileName="Assets\Code\CLevel.cs" Line="1" Column="1" />
       <File FileName="Assets\Code\CSpriteSheet.cs" Line="1" Column="1" />
       <File FileName="Assets\Code\ShaderRendu.shader" Line="1" Column="1" />
-      <File FileName="Assets\Code\CGame.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\CGame.cs" Line="77" Column="25" />
       <File FileName="Assets\Code\CConeVision.cs" Line="1" Column="1" />
       <File FileName="Assets\Code\CAnimation.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CMenu.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
