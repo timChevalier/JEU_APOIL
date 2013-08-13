@@ -15,6 +15,7 @@ public class CGame : MonoBehaviour
 	// variables de LD
 	public bool m_bDebug = false;
 	public float m_fSpeedPlayer = 1.0f;
+	public float m_fCoeffReverseWalk = 1.0f;
 	public float m_fAngleConeDeVision = 1.0f;
 	public float m_fDistanceConeDeVision = 1f;
 	public int m_fPrecisionConeDeVision = 1; 

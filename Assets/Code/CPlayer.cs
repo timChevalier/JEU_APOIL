@@ -109,7 +109,7 @@ public class CPlayer : CCharacter {
 		float fVitesseEtat = 1.0f;
 		float fVitesseAttitude = 1.0f;
 		float fCoeffDirection = Vector2.Dot(m_DirectionRegard, m_DirectionDeplacement);
-		fCoeffDirection = (fCoeffDirection + 3)/4;
+		fCoeffDirection = game.m_fCoeffReverseWalk + (1.0f - game.m_fCoeffReverseWalk)*(fCoeffDirection + 1)/2;
 		
 		m_fSpeed = game.m_fSpeedPlayer * fVitesseEtat * fVitesseAttitude * fCoeffDirection;
 	}
