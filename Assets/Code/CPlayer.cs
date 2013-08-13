@@ -11,8 +11,8 @@ public class CPlayer : CCharacter {
 	CAnimation m_AnimVertical;
 	CConeVision m_ConeVision;
 	Camera m_CameraCone;
-	bool m_bGetOut;
-	Vector3 m_PosObjToGetOut;
+	Vector2 m_DirectionRegard;
+	Vector2 m_DirectionDeplacement;
 	
 	public enum EMoveModState // mode de deplacement
 	{
@@ -33,7 +33,6 @@ public class CPlayer : CCharacter {
 		e_state_aveugle,
 		
 		e_state_nbState
-	
 	}
 	
 	EMoveModState m_eMoveModState;
@@ -53,8 +52,6 @@ public class CPlayer : CCharacter {
 		m_CameraCone = game.m_CameraCone;
 		
 		m_fSpeed = game.m_fSpeedPlayer;
-		m_bGetOut = false;
-		m_PosObjToGetOut = new Vector3(0.0f,0.0f,0.0f);
 		m_spriteSheet = m_GameObject.GetComponent<CSpriteSheet>();	
 		
 		m_AnimRepos = new CAnimation(game.m_materialPlayerRepos, 1, 1, 1.0f);
@@ -101,6 +98,20 @@ public class CPlayer : CCharacter {
 					m_eState = EState.e_state_normal;
 			}
 		}
+	}
+	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------	
+	void CalculateSpeed()
+	{
+		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
+		float fVitesseEtat = 1.0f;
+		float fVitesseAttitude = 1.0f;
+		float fCoeffDirection = Vector2.Dot(m_DirectionRegard, m_DirectionDeplacement);
+		fCoeffDirection = (fCoeffDirection + 3)/4;
+		
+		m_fSpeed = game.m_fSpeedPlayer * fVitesseEtat * fVitesseAttitude * fCoeffDirection;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -177,15 +188,9 @@ public class CPlayer : CCharacter {
 			
 			velocity.Normalize();
 			
-			if(m_bGetOut)
-			{
-				
-				//velocity *= -1;
-				Vector3 posPlayer = m_GameObject.transform.position;
-				velocity += (posPlayer - m_PosObjToGetOut).normalized;
-				Debug.Log((posPlayer - m_PosObjToGetOut).normalized);
-			}
+			m_DirectionDeplacement = velocity;
 			
+			CalculateSpeed();
 			m_GameObject.transform.position += m_fSpeed * velocity * fDeltatime;	
 		}
 		else
@@ -211,7 +216,8 @@ public class CPlayer : CCharacter {
 		Vector3 posPlayerTmp = m_GameObject.transform.position;
 		Vector2 posMouse = new Vector2(posMouseTmp.x, posMouseTmp.y);
 		Vector2 posPlayer = new Vector2(posPlayerTmp.x, posPlayerTmp.y);
-		float fAngle = Mathf.Acos(Vector2.Dot((posMouse - posPlayer).normalized, new Vector2(1,0)));
+		m_DirectionRegard = (posMouse - posPlayer).normalized;
+		float fAngle = Mathf.Acos(Vector2.Dot(m_DirectionRegard, new Vector2(1,0)));
 		if(posMouse.y < posPlayer.y)
 		{
 			fAngle *=-1;
@@ -220,18 +226,6 @@ public class CPlayer : CCharacter {
 		m_ConeVision.setAngleVise(fAngleVise);	
 	}
 		
-	public void InAObject(Vector3 posObjet)
-	{
-		m_bGetOut = true;
-		m_PosObjToGetOut = posObjet;
-	}
-	
-	public void getOutOfObject()
-	{
-		m_bGetOut = false;
-		m_PosObjToGetOut = new Vector3(0.0f, 0.0f, 0.0f);
-	}
-	
 	public EState getState()
 	{
 		return m_eState;	
