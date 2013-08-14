@@ -4,13 +4,17 @@ using System.Collections;
 public class CLevel
 {
 	CPlayer m_Player;
+	CPlayer m_Player2;
+	CPlayer m_Player3;
 	
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
 	public CLevel()
 	{
-		m_Player = new CPlayer();
+		m_Player = new CPlayer(true);
+		m_Player2 =  new CPlayer();
+		m_Player3 =  new CPlayer();
 	}
 	
 	//-------------------------------------------------------------------------------

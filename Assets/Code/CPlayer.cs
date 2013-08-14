@@ -14,9 +14,11 @@ public class CPlayer : CCharacter {
 	CAnimation m_AnimHorizontal;
 	CAnimation m_AnimVertical;
 	CConeVision m_ConeVision;
+	
 	Camera m_CameraCone;
 	Vector2 m_DirectionRegard;
 	Vector2 m_DirectionDeplacement;
+	bool m_bMainCharacter;
 	
 	public enum EMoveModState // mode de deplacement
 	{
@@ -46,7 +48,7 @@ public class CPlayer : CCharacter {
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
-	public CPlayer()
+	public CPlayer(bool bIsMainCharacter = false)
 	{
 		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 		GameObject prefab = game.prefabPlayer;
@@ -63,6 +65,7 @@ public class CPlayer : CCharacter {
 		m_AnimVertical = new CAnimation(game.m_materialPlayerVertical, 6, 1, 2.0f);
 		
 		m_eMoveModState = EMoveModState.e_MoveModState_marche;
+		m_bMainCharacter = bIsMainCharacter;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -72,6 +75,9 @@ public class CPlayer : CCharacter {
 	{	
 		base.Init();
 		
+		//Appel a la main des scripts du gameObject
+		m_spriteSheet.Init();
+		m_ConeVision.Init();
 		//m_spriteSheet.SetAnimation(m_AnimRepos);
 	}
 
@@ -102,6 +108,11 @@ public class CPlayer : CCharacter {
 					m_eState = EState.e_state_normal;
 			}
 		}
+		
+		//Appel a la main des scripts du gameObject
+		m_spriteSheet.Process();
+		if(m_bMainCharacter)
+			m_ConeVision.Process();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -220,6 +231,7 @@ public class CPlayer : CCharacter {
 				m_spriteSheet.SetAnimation(m_AnimRepos);
 				m_spriteSheet.AnimationStop();
 				m_eMoveModState = EMoveModState.e_MoveModState_attente;
+				m_GameObject.rigidbody.velocity = Vector3.zero;
 			}
 			
 			velocity.Normalize();

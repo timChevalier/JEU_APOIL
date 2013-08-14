@@ -14,18 +14,18 @@ public class CSpriteSheet : MonoBehaviour
 	private int m_nIndex = 0;
 	
 	//-------------------------------------------------------------------------------
-	///	Unity
+	///	
 	//-------------------------------------------------------------------------------
-	void Start () {
+	public void Init () {
 		m_bIsPlaying = false;
 		m_myRenderer = renderer;
 		m_fTemps = 0.0f;
 	}
 	
 	//-------------------------------------------------------------------------------
-	/// Unity
+	/// 
 	//-------------------------------------------------------------------------------
-	void Update () {
+	public void Process () {
 		m_fTemps += 1.0f/m_fFPS;
 		if (m_fTemps > 1.0f)
 		{
@@ -45,30 +45,7 @@ public class CSpriteSheet : MonoBehaviour
           offset.y = 0.0f;
   
 		m_myRenderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
-	}
-	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
-	void UpdateConstant()
-	{
-		if(m_bIsPlaying)
-		{
-			// Calculate index
-			m_nIndex++;
-            if (m_nIndex >= m_nRows * m_nColumns)
-                m_nIndex = 0;
-			
-			//split into x and y indexes
-            Vector2 offset = new Vector2((float)m_nIndex / m_nColumns - (m_nIndex / m_nColumns), //x index
-                                          (m_nIndex / m_nColumns) / (float)m_nRows);          //y index
-			
-			m_myRenderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
-			
-			//yield return new WaitForSeconds(1f / framesPerSecond);
-			
-		}
-	}
+	}	
 	
 	//-------------------------------------------------------------------------------
 	///
