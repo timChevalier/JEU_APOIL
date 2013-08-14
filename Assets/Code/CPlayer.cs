@@ -3,6 +3,10 @@ using System.Collections;
 
 public class CPlayer : CCharacter {
 	
+	// a foutre dans le constructeur si on veut pouvoir le faire indifferement des jouerus
+	int m_nResistance = 5;
+	int m_nRadiusDiscrectionCircle = 10;
+	
 	//CGame m_game = GameObject.Find("_Game").GetComponent<CGame>();
 	float m_fSpeed;
 	CSpriteSheet m_spriteSheet;
@@ -107,12 +111,38 @@ public class CPlayer : CCharacter {
 	{
 		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 		float fVitesseEtat = 1.0f;
-		float fVitesseAttitude = 1.0f;
+		float fVitesseAttitude;
+		switch(m_eMoveModState)
+		{
+			case EMoveModState.e_MoveModState_attente:
+			{
+				fVitesseAttitude = 0.0f;
+				break;
+			}
+			case EMoveModState.e_MoveModState_discret:
+			{
+				fVitesseAttitude = game.m_fCoeffSlowWalk;
+				break;
+			}
+			case EMoveModState.e_MoveModState_marche:
+			{
+				fVitesseAttitude = game.m_fCoeffNormalWalk;
+				break;
+			}
+			case EMoveModState.e_MoveModState_cours	:
+			{
+				fVitesseAttitude = game.m_fCoeffRunWalk;
+				break;
+			}
+			default: fVitesseAttitude = 1.0f; break;
+		}
+		
 		float fCoeffDirection = Vector2.Dot(m_DirectionRegard, m_DirectionDeplacement);
 		fCoeffDirection = game.m_fCoeffReverseWalk + (1.0f - game.m_fCoeffReverseWalk)*(fCoeffDirection + 1)/2;
 		
 		m_fSpeed = game.m_fSpeedPlayer * fVitesseEtat * fVitesseAttitude * fCoeffDirection;
 	}
+
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -147,50 +177,65 @@ public class CPlayer : CCharacter {
 	{
 		if (m_GameObject.rigidbody != null)
 		{
-			bool upPressed = Input.GetKey(KeyCode.Z);
-			bool downPressed = Input.GetKey(KeyCode.S);
-			bool leftPressed = Input.GetKey(KeyCode.Q);
-			bool rightPressed = Input.GetKey(KeyCode.D);
+			bool bUpPressed = Input.GetKey(KeyCode.Z);
+			bool bDownPressed = Input.GetKey(KeyCode.S);
+			bool bLeftPressed = Input.GetKey(KeyCode.Q);
+			bool bRightPressed = Input.GetKey(KeyCode.D);
+			bool bRunPressed = Input.GetKey(KeyCode.LeftShift);
+			bool bSlowPressed = Input.GetKey(KeyCode.LeftControl);
 			
 			Vector3 velocity = Vector3.zero;
-			if (upPressed) 
+			if (bUpPressed) 
 			{ 
 				velocity += new Vector3(0,1,0); 
 				m_spriteSheet.SetAnimation(m_AnimVertical);
 				m_spriteSheet.AnimationStart();
+				m_eMoveModState = EMoveModState.e_MoveModState_marche;
 			}
-			if (downPressed) 
+			if (bDownPressed) 
 			{ 
 				velocity += new Vector3(0,-1,0); 
 				m_spriteSheet.SetAnimation(m_AnimVertical);
 				m_spriteSheet.AnimationStart();
+				m_eMoveModState = EMoveModState.e_MoveModState_marche;
 			}
-			if (leftPressed) 
+			if (bLeftPressed) 
 			{
 				velocity += new Vector3(-1,0,0); 
 				m_spriteSheet.SetAnimation(m_AnimHorizontal);
 				m_spriteSheet.AnimationStart();
 				flipLeft();
+				m_eMoveModState = EMoveModState.e_MoveModState_marche;
 				
 			}
-			if (rightPressed) { 
+			if (bRightPressed) { 
 				velocity += new Vector3(1,0,0); 
 				m_spriteSheet.SetAnimation(m_AnimHorizontal);
 				m_spriteSheet.AnimationStart();
 				flipRight();
+				m_eMoveModState = EMoveModState.e_MoveModState_marche;
 			}
-			if(!upPressed && !downPressed && !leftPressed && !rightPressed) 
+			if(!bUpPressed && !bDownPressed && !bLeftPressed && !bRightPressed) 
 			{
 				m_spriteSheet.SetAnimation(m_AnimRepos);
 				m_spriteSheet.AnimationStop();
-				m_GameObject.rigidbody.velocity = Vector3.zero;
+				m_eMoveModState = EMoveModState.e_MoveModState_attente;
 			}
 			
 			velocity.Normalize();
-			
 			m_DirectionDeplacement = velocity;
 			
+			if(bRunPressed)
+			{
+				m_eMoveModState = EMoveModState.e_MoveModState_cours;
+			}	
+			if(bSlowPressed)
+			{
+				m_eMoveModState = EMoveModState.e_MoveModState_discret;	
+			}
+			
 			CalculateSpeed();
+			
 			m_GameObject.transform.position += m_fSpeed * velocity * fDeltatime;	
 		}
 		else
