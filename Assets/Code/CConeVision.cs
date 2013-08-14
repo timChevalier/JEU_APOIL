@@ -8,7 +8,6 @@ public class CConeVision : MonoBehaviour
 
 	public Material m_Material; // Mat appliqué au mesh de vue
 	public bool debug = false; // Dessine les rayons dans la scene view
-	public float freq = 0.05F; // Fréquence de calcul. > 0.05F ça devient moche
 	public LayerMask mask; // Layers qui vont bloquer la vue
    
 	Vector3[] directions; // va contenir les rayons, déterminés par precision, distance et angle
@@ -125,11 +124,13 @@ public class CConeVision : MonoBehaviour
 		if(Physics.Raycast( m_Transform.position, dir, out hit, distance, mask ) ) // Si on touche, on rétrécit le rayon
 		{
 			CGameObject objet = hit.collider.gameObject.GetComponent<CGameObject>();
-			if(gameObject.layer == LayerMask.NameToLayer("Scene"))
+				
+			if(!hit.collider.gameObject.tag.Equals("player"))
 			{
 				dist = hit.distance;
 				objet.SetVisible();
 			}
+			
 		}
 		 
 		 if( debug ) Debug.DrawRay( m_Transform.position, dir * dist );

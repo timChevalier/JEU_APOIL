@@ -35,6 +35,12 @@ public class CGameObject : MonoBehaviour {
 			}	
 			m_bIsVisible = false;
 		}
+		
+		if(gameObject.tag.Equals("player"))
+		{
+			gameObject.layer = LayerMask.NameToLayer("ForceDisplay");
+		}
+
 	}
 	
 	
