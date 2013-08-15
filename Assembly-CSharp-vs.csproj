@@ -37,10 +37,10 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>E:/Games/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>E:/Games/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +58,7 @@
      <Compile Include="Assets\Code\CMonster.cs" />
      <Compile Include="Assets\Code\CPlayer.cs" />
      <Compile Include="Assets\Code\CPnj.cs" />
+     <Compile Include="Assets\Code\CPorte.cs" />
      <Compile Include="Assets\Code\CSceneElement.cs" />
      <Compile Include="Assets\Code\CSpriteSheet.cs" />
      <Compile Include="Assets\Code\CTakeElement.cs" />

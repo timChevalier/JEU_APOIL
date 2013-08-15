@@ -8,6 +8,9 @@ public class CAnimation {
 	public int m_nRows;
 	public float m_fFPS;
 	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------
 	public CAnimation(Material material, int columns, int rows, float fFPS)
 	{
 		m_Material = material;

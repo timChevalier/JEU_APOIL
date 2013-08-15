@@ -25,9 +25,11 @@ public class CGame : MonoBehaviour
 	public float m_fDistanceConeDeVision = 1f;
 	public int m_fPrecisionConeDeVision = 1; 
 	
+	// variables
 	bool m_bInGame;
 	bool m_bGameStarted;
-	
+	int m_nScreenWidth;
+	int m_nScreenHeight;
 	CLevel m_Level;
 	
 	//-------------------------------------------------------------------------------
@@ -37,6 +39,8 @@ public class CGame : MonoBehaviour
 	{	
 		m_Level = new CLevel();
 		m_Level.Init();
+		m_nScreenWidth = 1280;
+		m_nScreenHeight = 800;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -75,6 +79,14 @@ public class CGame : MonoBehaviour
 	public CLevel getLevel()
 	{
 		return m_Level;
+	}
+	
+	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
+	public Vector2 GetSizeScreen()
+	{
+		return new Vector2(m_nScreenWidth, m_nScreenHeight);
 	}
 	
 	//-------------------------------------------------------------------------------

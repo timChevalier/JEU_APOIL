@@ -282,9 +282,17 @@ public class CPlayer : CCharacter {
 		float fAngleVise = -fAngle*180/3.14159f - 90 - 75/2;
 		m_ConeVision.setAngleVise(fAngleVise);	
 	}
-		
+	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------
 	public EState getState()
 	{
 		return m_eState;	
+	}
+	
+	public Vector2 getDirectionDeplacement()
+	{
+		return m_DirectionDeplacement;	
 	}
 }
