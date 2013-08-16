@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\Code\CAnimation.cs" />
      <Compile Include="Assets\Code\CBigElement.cs" />
+     <Compile Include="Assets\Code\CCamera.cs" />
      <Compile Include="Assets\Code\CCharacter.cs" />
      <Compile Include="Assets\Code\CCollision2D.cs" />
      <Compile Include="Assets\Code\CConeVision.cs" />

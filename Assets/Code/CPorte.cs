@@ -51,10 +51,12 @@ public class CPorte : MonoBehaviour
 			Vector3 pos = m_objCamera.transform.position;
 			float fDeltaPos = (m_PieceExit.transform.position - m_PieceEnter.transform.position).x;
 			if(m_bGoodWay)
-				pos.x += fDeltaPos;
+				game.getCamera().SetCurrentRoom(m_PieceExit);
 			else
-				pos.x -= fDeltaPos;
-			m_objCamera.transform.position = pos;
+				game.getCamera().SetCurrentRoom(m_PieceEnter);
+			
+			
 		}
 	}
+
 }

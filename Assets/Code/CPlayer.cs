@@ -88,6 +88,7 @@ public class CPlayer : CCharacter {
 	public new void Reset()
 	{
 		base.Reset();
+		m_ConeVision.Init();
 	}
 
 	//-------------------------------------------------------------------------------
