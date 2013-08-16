@@ -17,7 +17,9 @@ public class CMonster : CCharacter
 	int m_nSpeed;
 	bool m_bDetectionAudio;
 	bool m_bDetectionVisuelle;
+	bool m_bPlayerIsDetected;
 	float m_fTimerErrance;
+	CPlayer m_Player; 
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -37,9 +39,11 @@ public class CMonster : CCharacter
 	//-------------------------------------------------------------------------------	
 	public new void Init()
 	{	
+		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 		base.Init();
 		SetState(m_eMonsterState);
 		m_fTimerErrance = 0.0f;
+		m_Player = game.getLevel().getPlayer();
 	}
 
 	//-------------------------------------------------------------------------------
@@ -195,6 +199,13 @@ public class CMonster : CCharacter
 		}
 	}
 	
-	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------	
+	void SearchPlayer(float fDeltatime)
+	{
+		//TRUC BASIQUE DE DISTANCE POUR DEBUGER VITE FAIT
+		
+	}
 
 }
