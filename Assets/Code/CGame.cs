@@ -9,14 +9,18 @@ public class CGame : MonoBehaviour
 	public GameObject m_Room1;
 	public GameObject m_Room2;
 	public GameObject m_debugDraw;
+	public GameObject m_renderScreen;
+	
 	
 	// materials
 	public Material m_materialPlayerRepos;
 	public Material m_materialPlayerHorizontal;
 	public Material m_materialPlayerVertical;
+	public Material m_materialDEBUGscreen;
 	
 	// variables de LD
 	public bool m_bDebug = false;
+	public bool m_bNotUseMasterGame = false;
 	public float m_fSpeedPlayer = 1.0f;
 	
 	public float m_fCoeffReverseWalk = 1.0f;
@@ -165,6 +169,14 @@ public class CGame : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	/// 
 	//-------------------------------------------------------------------------------
+	public bool IsNotUseMasterGame()
+	{
+		return m_bNotUseMasterGame;	
+	}
+	
+	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
 	public void PauseGame()
 	{
 		m_bInGame = false;	
@@ -190,10 +202,14 @@ public class CGame : MonoBehaviour
 	{
 		m_bInGame = false;
 		m_bGameStarted = false;
-		if (m_bDebug)
+		if (m_bNotUseMasterGame)
 		{
 			StartGame();
+		}
+		if (m_bDebug)
+		{
 			m_debugDraw.SetActiveRecursively(true);
+			m_renderScreen.renderer.material = m_materialDEBUGscreen;
 		}
 	}
 	

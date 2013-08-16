@@ -67,7 +67,7 @@ public class CMenu : MonoBehaviour{
 		m_fTempsSplash = 0.0f;
 		m_fTempsVideoIntro = 0.0f;
 		m_bGamePaused = false;
-		if(!game.IsDebug())	
+		if(!game.IsNotUseMasterGame())	
 		{
 			m_EState = EmenuState.e_menuState_splash;
 			m_fTempsSplash = m_fTempsSplashInit;
