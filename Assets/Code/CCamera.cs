@@ -63,8 +63,8 @@ public class CCamera
 	void SetPositionFromObj(GameObject obj)
 	{
 		Vector3 pos = m_GameObject.transform.position;
-		pos.x =  obj.transform.position.x - 65;
-		pos.y =  obj.transform.position.y + 17;
+		pos.x =  obj.transform.position.x;
+		pos.y =  obj.transform.position.y;
 		m_GameObject.transform.position = pos;
 	}
 }
