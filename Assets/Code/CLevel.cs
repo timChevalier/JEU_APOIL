@@ -12,9 +12,10 @@ public class CLevel
 	//-------------------------------------------------------------------------------
 	public CLevel()
 	{
-		m_Player = new CPlayer(true);
-		m_Player2 =  new CPlayer();
-		m_Player3 =  new CPlayer();
+		Vector2 posInit = new Vector2(0.0f, 0.0f);
+		m_Player = new CPlayer(posInit, true);
+		//m_Player2 =  new CPlayer();
+		//m_Player3 =  new CPlayer();
 	}
 	
 	//-------------------------------------------------------------------------------

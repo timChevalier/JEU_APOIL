@@ -84,12 +84,12 @@ public class CConeVision : MonoBehaviour
 		
 		for( int i = 0; i < nbFace; i++ )
 		{
-		 indices[i*6+0] = i+0;
-		 indices[i*6+1] = i+1;
-		 indices[i*6+2] = i+row;
-		 indices[i*6+3] = i+1;
-		 indices[i*6+4] = i+row+1;
-		 indices[i*6+5] = i+row;
+			indices[i*6+0] = i+0;
+			indices[i*6+1] = i+1;
+			indices[i*6+2] = i+row;
+			indices[i*6+3] = i+1;
+			indices[i*6+4] = i+row+1;
+			indices[i*6+5] = i+row;
 		}
 		
 		sightMesh.vertices = new Vector3[nbPoints];
@@ -105,6 +105,7 @@ public class CConeVision : MonoBehaviour
 	public void Process() 
 	{
 		UpdateSightMesh();
+		//gameObject.renderer.material = m_Material;
 	}
    
 	// Fonction qui modifie le mesh
@@ -118,26 +119,26 @@ public class CConeVision : MonoBehaviour
 		// Lance les rayons pour placer les vertices le plus loin possible
 		for( int i = 0; i < precision; i++ )
 		{
-		Vector3 dir = m_Transform.TransformDirection(directions[i]); // repere objet
-		RaycastHit hit;
-		float dist = distance;
-		if(Physics.Raycast( m_Transform.position, dir, out hit, distance, mask ) ) // Si on touche, on rétrécit le rayon
-		{
-			CGameObject objet = hit.collider.gameObject.GetComponent<CGameObject>();
-				
-			if(!hit.collider.gameObject.tag.Equals("player"))
+			Vector3 dir = m_Transform.TransformDirection(directions[i]); // repere objet
+			RaycastHit hit;
+			float dist = distance;
+			if(Physics.Raycast( m_Transform.position, dir, out hit, distance, mask ) ) // Si on touche, on rétrécit le rayon
 			{
-				dist = hit.distance;
-				objet.SetVisible();
+				CGameObject objet = hit.collider.gameObject.GetComponent<CGameObject>();
+					
+				if(!hit.collider.gameObject.tag.Equals("player"))
+				{
+					dist = hit.distance;
+					objet.SetVisible();
+				}
+				
 			}
+			 
+			if( debug ) Debug.DrawRay( m_Transform.position, dir * dist );
 			
-		}
-		 
-		 if( debug ) Debug.DrawRay( m_Transform.position, dir * dist );
-		 
-		 // Positionnement du vertex
-		 points[i] = m_Transform.position + dir * dist;
-		 points[i+precision] = m_Transform.position;
+			// Positionnement du vertex
+			points[i] = m_Transform.position + dir * dist;
+			points[i+precision] = m_Transform.position;
 		}
 		
 		// On réaffecte les vertices

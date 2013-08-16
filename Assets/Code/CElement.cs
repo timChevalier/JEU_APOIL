@@ -44,5 +44,17 @@ public class CElement
 	{
 		return m_GameObject;	
 	}
+	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------
+	protected void SetPosition2D(Vector2 pos2D)
+	{
+		Vector3 pos = m_GameObject.transform.position;
+		pos.x = pos2D.x;
+		pos.y = pos2D.y;
+		pos.z = -2;
+		m_GameObject.transform.position = pos;
+	}
 
 }

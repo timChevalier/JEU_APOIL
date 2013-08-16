@@ -48,11 +48,12 @@ public class CPlayer : CCharacter {
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
-	public CPlayer(bool bIsMainCharacter = false)
+	public CPlayer(Vector2 posInit, bool bIsMainCharacter = false)
 	{
 		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 		GameObject prefab = game.prefabPlayer;
 		m_GameObject = GameObject.Instantiate(prefab) as GameObject;
+		SetPosition2D(posInit);
 		
 		m_ConeVision = m_GameObject.GetComponent<CConeVision>();
 		m_CameraCone = game.m_CameraCone;
@@ -108,6 +109,9 @@ public class CPlayer : CCharacter {
 					m_eState = EState.e_state_normal;
 			}
 		}
+		
+		//DEBUG
+		
 		
 		//Appel a la main des scripts du gameObject
 		m_spriteSheet.Process();
