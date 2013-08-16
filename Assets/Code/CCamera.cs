@@ -13,7 +13,7 @@ public class CCamera
 	{
 		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 		m_GameObject = GameObject.Find("Cameras");
-		m_CurrentRoom = game.m_Room1;
+		m_CurrentRoom =  GameObject.Find("Salle1");
 	}
 	
 	//-------------------------------------------------------------------------------

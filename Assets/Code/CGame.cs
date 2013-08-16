@@ -6,8 +6,6 @@ public class CGame : MonoBehaviour
 	// Objets
 	public GameObject prefabPlayer;
 	public Camera m_CameraCone;
-	public GameObject m_Room1;
-	public GameObject m_Room2;
 	public GameObject m_debugDraw;
 	public GameObject m_renderScreen;
 	
@@ -40,14 +38,6 @@ public class CGame : MonoBehaviour
 	CLevel m_Level;
 	CCamera m_Camera;
 	
-	public enum ECurrentRoom //faudra mettre les vrais noms des salles
-	{
-		e_CurrentRoom_1,
-		e_CurrentRoom_2,
-		e_CurrentRoom_3
-		
-	};
-	ECurrentRoom m_eCurrentRoom;
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -60,8 +50,6 @@ public class CGame : MonoBehaviour
 		m_nScreenHeight = 800;
 		m_Camera = new CCamera();
 		m_Camera.Init();
-		
-		m_eCurrentRoom = ECurrentRoom.e_CurrentRoom_1;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -87,35 +75,7 @@ public class CGame : MonoBehaviour
 		}
 		
 	}
-	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
-	void ProcessRoomState()
-	{	
-		switch(m_eCurrentRoom)
-		{
-			case ECurrentRoom.e_CurrentRoom_1:
-			{
-				m_Camera.SetCurrentRoom(m_Room1);
-				break;	
-			}
-			
-			case ECurrentRoom.e_CurrentRoom_2:
-			{
-				m_Camera.SetCurrentRoom(m_Room2);
-				break;	
-			}
-		}
-	}
-	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
-	public void SetRoomState(ECurrentRoom eRoomState)
-	{
-		m_eCurrentRoom = eRoomState;
-	}
+
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -125,7 +85,6 @@ public class CGame : MonoBehaviour
 		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(Time.deltaTime));
 		GUI.Label(new Rect(10, 30, 100, 20), System.Convert.ToString(1f/Time.deltaTime));
 		GUI.Label(new Rect(10, 50, 100, 20), System.Convert.ToString(getLevel().getPlayer().getState()));
-		GUI.Label(new Rect(10, 70, 150, 20), System.Convert.ToString(m_eCurrentRoom));
 	}
 	
 	//-------------------------------------------------------------------------------

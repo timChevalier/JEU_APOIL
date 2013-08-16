@@ -5,14 +5,15 @@ public class CConeVision : MonoBehaviour
 {   
 	
 	float m_fAngleVise;
-
-	public Material m_Material; // Mat appliqué au mesh de vue
-	public bool debug = false; // Dessine les rayons dans la scene view
-	public LayerMask mask; // Layers qui vont bloquer la vue
+	
+	public Material m_Material; 	// Mat appliqué au mesh de vue
+	public bool debug = false; 		// Dessine les rayons dans la scene view
+	public LayerMask mask;		 	// Layers qui vont bloquer la vue
    
 	Vector3[] directions; // va contenir les rayons, déterminés par precision, distance et angle
 	Mesh sightMesh; // Le mesh dont les vertex seront modifiés selons les obstacles
 	Transform m_Transform;
+	GameObject m_gameObject;
    
 	float angle; // Angle d'ouverture, degré
 	float distance;
@@ -60,14 +61,14 @@ public class CConeVision : MonoBehaviour
 		distance = game.m_fDistanceConeDeVision;
 		precision = game.m_fPrecisionConeDeVision;
 		// Initialisation du cone
-		GameObject sightObject = new GameObject( "ConeSight" );
+		m_gameObject = new GameObject( "ConeSight" );
 		sightMesh = new Mesh();
 		
-		(sightObject.AddComponent( typeof( MeshFilter )) as MeshFilter).mesh = sightMesh;
-		(sightObject.AddComponent( typeof( MeshRenderer )) as MeshRenderer).material = m_Material;
-		sightObject.layer = LayerMask.NameToLayer("Cone");
-		sightObject.tag = "cone";
-		m_Transform = transform; // histoire de limiter les getcomponent dans la boucle
+		(m_gameObject.AddComponent( typeof( MeshFilter )) as MeshFilter).mesh = sightMesh;
+		(m_gameObject.AddComponent( typeof( MeshRenderer )) as MeshRenderer).material = m_Material;
+		m_gameObject.layer = LayerMask.NameToLayer("Cone");
+		m_gameObject.tag = "cone";
+		m_Transform = game.getLevel().getPlayer().getGameObject().transform; //transform; // histoire de limiter les getcomponent dans la boucle
 		
 		// Préparation des rayons
 		setDirection();
@@ -96,6 +97,7 @@ public class CConeVision : MonoBehaviour
 		sightMesh.uv = new Vector2[nbPoints];
 		sightMesh.triangles = indices;      
 		    
+		
 		//StartCoroutine( "Scan" );
 	}
    
@@ -105,7 +107,6 @@ public class CConeVision : MonoBehaviour
 	public void Process() 
 	{
 		UpdateSightMesh();
-		//gameObject.renderer.material = m_Material;
 	}
    
 	// Fonction qui modifie le mesh
@@ -124,9 +125,8 @@ public class CConeVision : MonoBehaviour
 			float dist = distance;
 			if(Physics.Raycast( m_Transform.position, dir, out hit, distance, mask ) ) // Si on touche, on rétrécit le rayon
 			{
-				CGameObject objet = hit.collider.gameObject.GetComponent<CGameObject>();
-					
-				if(!hit.collider.gameObject.tag.Equals("player"))
+				CGameObject objet = hit.collider.gameObject.GetComponent<CGameObject>();	
+				if(!hit.collider.gameObject.tag.Equals("player") && hit.collider.gameObject.GetComponent<CGameObject>() != null)
 				{
 					dist = hit.distance;
 					objet.SetVisible();
@@ -137,16 +137,17 @@ public class CConeVision : MonoBehaviour
 			if( debug ) Debug.DrawRay( m_Transform.position, dir * dist );
 			
 			// Positionnement du vertex
-			points[i] = m_Transform.position + dir * dist;
-			points[i+precision] = m_Transform.position;
+			points[i] = dir * dist;
+			points[i+precision] = Vector3.zero;
 		}
 		
 		// On réaffecte les vertices
-		sightMesh.vertices = points;      
+		sightMesh.vertices = points;  
 		sightMesh.RecalculateNormals(); // normales doivent être calculé pour tout changement 
-		                      // du tableau vertices, même si on travaille sur un plan*/
+		                      			// du tableau vertices, même si on travaille sur un plan*/
 		
-
+		//translate le centre a la position du player!!! J'AI PASSE 3 PUTAINS DE JOUR POUR TROUVER QU'IL FALLAIT FAIRE LE CONE EN (0,0) ET LE TRANSLATER ENSUITE!!!
+		m_gameObject.transform.position = m_Transform.position;
 	}
 	
 	
