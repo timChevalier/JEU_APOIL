@@ -5,10 +5,10 @@ public class CGame : MonoBehaviour
 {
 	// Objets
 	public GameObject prefabPlayer;
+	public GameObject prefabMonster;
 	public Camera m_CameraCone;
 	public GameObject m_debugDraw;
-	public GameObject m_renderScreen;
-	
+	public GameObject m_renderScreen;	
 	
 	// materials
 	public Material m_materialPlayerRepos;
