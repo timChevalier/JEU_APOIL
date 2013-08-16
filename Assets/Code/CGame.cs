@@ -20,6 +20,7 @@ public class CGame : MonoBehaviour
 	public bool m_bDebug = false;
 	public bool m_bNotUseMasterGame = false;
 	public float m_fSpeedPlayer = 1.0f;
+	public float m_fSpeedMonster = 1.0f;
 	
 	public float m_fCoeffReverseWalk = 1.0f;
 	public float m_fCoeffSlowWalk = 1.0f;
@@ -29,6 +30,7 @@ public class CGame : MonoBehaviour
 	public float m_fAngleConeDeVision = 1.0f;
 	public float m_fDistanceConeDeVision = 1f;
 	public int m_fPrecisionConeDeVision = 1; 
+	public float m_fTimeErrance = 2.0f;
 	
 	// variables
 	bool m_bInGame;

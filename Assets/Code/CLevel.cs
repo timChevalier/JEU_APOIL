@@ -27,6 +27,7 @@ public class CLevel
 	public void Init()
 	{	
 		m_Player.Init();
+		m_Monster.Init();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -35,6 +36,7 @@ public class CLevel
 	public void Reset()
 	{
 		m_Player.Reset();
+		m_Monster.Reset();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -43,7 +45,7 @@ public class CLevel
 	public void Process(float fDeltatime)
 	{
 		m_Player.Process(fDeltatime);
-		
+		m_Monster.Process(fDeltatime);
 	}
 	
 	//-------------------------------------------------------------------------------
