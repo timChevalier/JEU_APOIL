@@ -10,16 +10,21 @@ public class CMonster : CCharacter
 		e_MonsterState_affut,
 		e_MonsterState_alerte,
 		e_MonsterState_attaque,
-		e_MonsterState_mange
+		e_MonsterState_mange,
+		
+		e_MonsterState_nbState
 	};
 	
 	EMonsterState m_eMonsterState;
+	
 	int m_nSpeed;
 	bool m_bDetectionAudio;
 	bool m_bDetectionVisuelle;
 	bool m_bPlayerIsDetected;
 	float m_fTimerErrance;
+	Vector2 m_PosDetection; // derniere position connu du player
 	CPlayer m_Player; 
+	CGame m_Game;
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -28,22 +33,22 @@ public class CMonster : CCharacter
 	{
 		m_eMonsterState =  EMonsterState.e_MonsterState_errance;
 		
-		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
-		GameObject prefab = game.prefabMonster;
+		m_Game = GameObject.Find("_Game").GetComponent<CGame>();
+		GameObject prefab = m_Game.prefabMonster;
 		m_GameObject = GameObject.Instantiate(prefab) as GameObject;
 		SetPosition2D(posInit);
+		m_PosDetection = new Vector2(0.0f, 0.0f);
 	}
 	
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------	
 	public new void Init()
-	{	
-		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
+	{		
 		base.Init();
 		SetState(m_eMonsterState);
 		m_fTimerErrance = 0.0f;
-		m_Player = game.getLevel().getPlayer();
+		m_Player = m_Game.getLevel().getPlayer();
 	}
 
 	//-------------------------------------------------------------------------------
@@ -61,6 +66,17 @@ public class CMonster : CCharacter
 	{
 		base.Process(fDeltatime);
 		ProcessState(fDeltatime);
+
+		if(m_Game.IsDebug())
+		{
+			if(Input.GetKeyDown(KeyCode.E))
+			{
+				m_eMonsterState = (m_eMonsterState + 1);
+				if (m_eMonsterState >= EMonsterState.e_MonsterState_nbState)
+					m_eMonsterState = EMonsterState.e_MonsterState_errance;
+			}
+		}
+		
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -107,12 +123,11 @@ public class CMonster : CCharacter
 	{
 		if(m_fTimerErrance <= 0.0f)
 		{
-			CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 			Vector3 move = Vector3.zero;
 			Vector2 rand = Random.insideUnitCircle;
-			move += game.m_fSpeedMonster * m_nSpeed * new Vector3(rand.x, rand.y , 0.0f);
+			move += m_Game.m_fSpeedMonster * m_nSpeed * new Vector3(rand.x, rand.y , 0.0f);
 			m_GameObject.rigidbody.velocity += move;
-			m_fTimerErrance = game.m_fTimeErrance;
+			m_fTimerErrance = m_Game .m_fTimeErrance;
 		}
 		else 
 		{
@@ -125,7 +140,10 @@ public class CMonster : CCharacter
 	//-------------------------------------------------------------------------------	
 	void ProcessAffut(float fDeltatime)
 	{
-		
+		Vector3 move = Vector3.zero;
+		Vector3 direction = m_GameObject.transform.position - new Vector3(m_PosDetection.x, m_PosDetection.y, 0.0f);
+		move += m_Game.m_fSpeedMonster * m_nSpeed * -direction.normalized;
+		m_GameObject.rigidbody.velocity += move;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -206,6 +224,14 @@ public class CMonster : CCharacter
 	{
 		//TRUC BASIQUE DE DISTANCE POUR DEBUGER VITE FAIT
 		
+	}
+	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------	
+	public EMonsterState getState()
+	{
+		return m_eMonsterState;	
 	}
 
 }

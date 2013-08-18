@@ -18,6 +18,7 @@ public class CGame : MonoBehaviour
 	
 	// variables de LD
 	public bool m_bDebug = false;
+	public bool m_bDebugRendu = false;
 	public bool m_bNotUseMasterGame = false;
 	public float m_fSpeedPlayer = 1.0f;
 	public float m_fSpeedMonster = 1.0f;
@@ -87,6 +88,7 @@ public class CGame : MonoBehaviour
 		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(Time.deltaTime));
 		GUI.Label(new Rect(10, 30, 100, 20), System.Convert.ToString(1f/Time.deltaTime));
 		GUI.Label(new Rect(10, 50, 100, 20), System.Convert.ToString(getLevel().getPlayer().getState()));
+		GUI.Label(new Rect(10, 70, 150, 20), System.Convert.ToString(getLevel().getMonster().getState()));
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -130,6 +132,14 @@ public class CGame : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	/// 
 	//-------------------------------------------------------------------------------
+	public bool IsDebugRendu()
+	{
+		return m_bDebugRendu;	
+	}
+	
+	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
 	public bool IsNotUseMasterGame()
 	{
 		return m_bNotUseMasterGame;	
@@ -167,7 +177,7 @@ public class CGame : MonoBehaviour
 		{
 			StartGame();
 		}
-		if (m_bDebug)
+		if (m_bDebugRendu)
 		{
 			m_debugDraw.SetActiveRecursively(true);
 			m_renderScreen.renderer.material = m_materialDEBUGscreen;
