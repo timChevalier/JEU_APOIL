@@ -17,7 +17,8 @@ public class CMonster : CCharacter
 	
 	EMonsterState m_eMonsterState;
 	
-	int m_nSpeed;
+	float m_fSpeed;
+	float m_fRadiusAlerte;
 	bool m_bDetectionAudio;
 	bool m_bDetectionVisuelle;
 	bool m_bPlayerIsDetected;
@@ -38,6 +39,7 @@ public class CMonster : CCharacter
 		m_GameObject = GameObject.Instantiate(prefab) as GameObject;
 		SetPosition2D(posInit);
 		m_PosDetection = new Vector2(0.0f, 0.0f);
+		m_fRadiusAlerte = m_Game.m_fMonsterRadiusAlerte;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -74,8 +76,12 @@ public class CMonster : CCharacter
 				m_eMonsterState = (m_eMonsterState + 1);
 				if (m_eMonsterState >= EMonsterState.e_MonsterState_nbState)
 					m_eMonsterState = EMonsterState.e_MonsterState_errance;
+				SetState(m_eMonsterState);
 			}
 		}
+		
+		if(m_Game.IsDebug())
+			ProcessDebug(fDeltatime);
 		
 	}
 	
@@ -125,9 +131,9 @@ public class CMonster : CCharacter
 		{
 			Vector3 move = Vector3.zero;
 			Vector2 rand = Random.insideUnitCircle;
-			move += m_Game.m_fSpeedMonster * m_nSpeed * new Vector3(rand.x, rand.y , 0.0f);
+			move += m_Game.m_fSpeedMonster * m_fSpeed * new Vector3(rand.x, rand.y , 0.0f);
 			m_GameObject.rigidbody.velocity += move;
-			m_fTimerErrance = m_Game .m_fTimeErrance;
+			m_fTimerErrance = m_Game.m_fMonsterTimeErrance;
 		}
 		else 
 		{
@@ -141,8 +147,8 @@ public class CMonster : CCharacter
 	void ProcessAffut(float fDeltatime)
 	{
 		Vector3 move = Vector3.zero;
-		Vector3 direction = m_GameObject.transform.position - new Vector3(m_PosDetection.x, m_PosDetection.y, 0.0f);
-		move += m_Game.m_fSpeedMonster * m_nSpeed * -direction.normalized;
+		Vector3 direction = new Vector3(m_PosDetection.x, m_PosDetection.y, 0.0f) - m_GameObject.transform.position;
+		move += m_Game.m_fSpeedMonster * m_fSpeed * direction.normalized;
 		m_GameObject.rigidbody.velocity += move;
 	}
 	
@@ -151,7 +157,16 @@ public class CMonster : CCharacter
 	//-------------------------------------------------------------------------------	
 	void ProcessAlerte(float fDeltatime)
 	{
+		Vector3 move = Vector3.zero;
+		Vector2 rand = m_PosDetection + m_fRadiusAlerte * Random.insideUnitCircle;
+		Vector3 direction = new Vector3(rand.x, rand.y, 0.0f) - m_GameObject.transform.position;
+		move += m_Game.m_fSpeedMonster * m_fSpeed * direction.normalized;
+		m_GameObject.rigidbody.velocity += move;
 		
+		if(m_Game.IsDebug())
+		{
+			Debug.DrawLine(new Vector3(m_PosDetection.x, m_PosDetection.y, 0.0f), new Vector3(rand.x, rand.y, 0.0f));
+		}
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -173,6 +188,14 @@ public class CMonster : CCharacter
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------	
+	void ProcessDebug(float fDeltatime)
+	{
+
+	}
+	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------	
 	void SetState(EMonsterState eState)
 	{
 		m_eMonsterState = eState;
@@ -180,7 +203,7 @@ public class CMonster : CCharacter
 		{
 			case EMonsterState.e_MonsterState_errance:	
 			{
-				m_nSpeed = 2;
+				m_fSpeed = 2;
 				m_bDetectionAudio = true;
 				m_bDetectionVisuelle = true;
 				break;	
@@ -190,28 +213,28 @@ public class CMonster : CCharacter
 			{
 				m_bDetectionAudio = true;
 				m_bDetectionVisuelle = true;
-				m_nSpeed = 3;
+				m_fSpeed = 3;
 				break;	
 			}
 			case EMonsterState.e_MonsterState_alerte:	
 			{
 				m_bDetectionAudio = true;
 				m_bDetectionVisuelle = true;
-				m_nSpeed = 1;	
+				m_fSpeed = 1;	
 				break;	
 			}
 			case EMonsterState.e_MonsterState_attaque:	
 			{
 				m_bDetectionAudio = true;
 				m_bDetectionVisuelle = false;
-				m_nSpeed = 4;
+				m_fSpeed = 4;
 				break;	
 			}
 			case EMonsterState.e_MonsterState_mange:	
 			{
 				m_bDetectionAudio = false;
 				m_bDetectionVisuelle = false;
-				m_nSpeed = 4;
+				m_fSpeed = 4;
 				break;	
 			}
 		}
