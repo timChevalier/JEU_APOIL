@@ -174,7 +174,10 @@ public class CMonster : CCharacter
 	//-------------------------------------------------------------------------------	
 	void ProcessAttaque(float fDeltatime)
 	{
-		
+		Vector3 move = Vector3.zero;
+		Vector3 direction = new Vector3(m_PosDetection.x, m_PosDetection.y, 0.0f) - m_GameObject.transform.position;
+		move += m_Game.m_fSpeedMonster * m_fSpeed * direction.normalized;
+		m_GameObject.rigidbody.velocity += move;
 	}
 	
 	//-------------------------------------------------------------------------------
