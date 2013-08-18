@@ -1,15 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CLevel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\CMonster.cs">
     <Files>
-      <File FileName="Assets\Code\CElement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CMonster.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CConeVision.cs" Line="1" Column="1" />
       <File FileName="Assets\Code\CAnimation.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CGame.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CLevel.cs" Line="35" Column="21" />
+      <File FileName="Assets\Code\CElement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\CMonster.cs" Line="180" Column="43" />
+      <File FileName="Assets\Code\CConeVision.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\CGame.cs" Line="34" Column="25" />
+      <File FileName="Assets\Code\CLevel.cs" Line="64" Column="19" />
       <File FileName="Assets\Code\CPorte.cs" Line="1" Column="1" />
-      <File FileName="Assets\Code\CPlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\CPlayer.cs" Line="110" Column="5" />
       <File FileName="Assets\Code\ShaderRendu.shader" Line="1" Column="1" />
       <File FileName="Assets\Code\CBigElement.cs" Line="1" Column="1" />
       <File FileName="Assets\Code\CMenu.cs" Line="1" Column="1" />
