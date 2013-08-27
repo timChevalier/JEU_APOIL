@@ -5,6 +5,8 @@ public class CConeVision : MonoBehaviour
 {   
 	
 	float m_fAngleVise;
+	float m_fAngleViseCible;
+	float m_fAngleViseSpeed;
 	
 	public Material m_Material; 	// Mat appliqué au mesh de vue
 	public bool debug = false; 		// Dessine les rayons dans la scene view
@@ -31,7 +33,7 @@ public class CConeVision : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	public void setAngleVise(float fAngle)
 	{
-		m_fAngleVise = fAngle;
+		m_fAngleViseCible = fAngle%360;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -60,6 +62,7 @@ public class CConeVision : MonoBehaviour
 		angle = game.m_fAngleConeDeVision;
 		distance = game.m_fDistanceConeDeVision;
 		precision = game.m_fPrecisionConeDeVision;
+		m_fAngleViseSpeed = game.m_fVitesseConeDeVision;
 		// Initialisation du cone
 		m_gameObject = new GameObject( "ConeSight" );
 		sightMesh = new Mesh();
@@ -106,7 +109,17 @@ public class CConeVision : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	public void Process() 
 	{
+		UpdateAngleVise();
 		UpdateSightMesh();
+	}
+	
+	private void UpdateAngleVise()
+	{
+		if(m_fAngleVise != m_fAngleViseCible)
+		{
+			m_fAngleVise= Mathf.MoveTowardsAngle(m_fAngleVise, m_fAngleViseCible, m_fAngleViseSpeed);
+		}
+
 	}
    
 	// Fonction qui modifie le mesh

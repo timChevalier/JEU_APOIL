@@ -30,7 +30,8 @@ public class CGame : MonoBehaviour
 	
 	public float m_fAngleConeDeVision = 1.0f;
 	public float m_fDistanceConeDeVision = 1f;
-	public int m_fPrecisionConeDeVision = 1; 
+	public int m_fPrecisionConeDeVision = 1;
+	public float m_fVitesseConeDeVision = 5;
 	public float m_fMonsterTimeErrance = 2.0f;
 	public float m_fMonsterRadiusAlerte = 1.0f;
 	
