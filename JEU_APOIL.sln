@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{4E235DDD-8165-7A62-CCD3-BECEB35013CC}") = "JEU_APOIL", "Assembly-CSharp.csproj", "{103E493B-702F-2C09-D8E7-43C87FA1A947}"
+Project("{C9ACE0E8-0E08-90CD-0350-2154A7C0F5EB}") = "jeu_apoil", "Assembly-CSharp.csproj", "{4E5F7A7A-B2F2-9B0E-C065-76498925D6A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{103E493B-702F-2C09-D8E7-43C87FA1A947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{103E493B-702F-2C09-D8E7-43C87FA1A947}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{103E493B-702F-2C09-D8E7-43C87FA1A947}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{103E493B-702F-2C09-D8E7-43C87FA1A947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E5F7A7A-B2F2-9B0E-C065-76498925D6A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E5F7A7A-B2F2-9B0E-C065-76498925D6A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E5F7A7A-B2F2-9B0E-C065-76498925D6A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E5F7A7A-B2F2-9B0E-C065-76498925D6A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																													GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																															GlobalSection(MonoDevelopProperties) = preSolution
 																		GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
