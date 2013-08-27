@@ -76,6 +76,10 @@ public class CGame : MonoBehaviour
 			m_Level.Process(fDeltatime);
 			m_Camera.Process(fDeltatime);
 			//ProcessRoomState();
+			
+			//Quit on Escape
+			if(Input.GetKey(KeyCode.Escape))
+				Application.Quit();
 		}
 		
 	}
