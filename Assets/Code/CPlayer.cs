@@ -265,27 +265,26 @@ public class CPlayer : CCharacter {
 	//-------------------------------------------------------------------------------
 	void EventSouris(float fDeltatime)
 	{
-		//Not sure why this raycast is usefull. Anyway, doesn't work with it...
-		/*Vector3 posMouseTmp = Vector3.zero;
+		Vector3 posMouseTmp = Vector3.zero;
 		RaycastHit vHit = new RaycastHit();
 	    Ray vRay = m_CameraCone.ScreenPointToRay(Input.mousePosition);
 		if(Physics.Raycast(vRay, out vHit, 1000)) 
 		{
 			posMouseTmp = vHit.point;
-		}*/
+		}
 		
-
-		Vector2 posMouse = Input.mousePosition;
-		Vector2 posScreenCenter = new Vector2(Screen.width/2, Screen.height/2);
-		m_DirectionRegard = (posMouse - posScreenCenter).normalized;
+		//Vector3 posMouse = vRay.origin;
+		Vector3 posPlayerTmp = m_GameObject.transform.position;
+		Vector2 posMouse = new Vector2(posMouseTmp.x, posMouseTmp.y);
+		Vector2 posPlayer = new Vector2(posPlayerTmp.x, posPlayerTmp.y);
+		m_DirectionRegard = (posMouse - posPlayer).normalized;
 		float fAngle = Mathf.Acos(Vector2.Dot(m_DirectionRegard, new Vector2(1,0)));
-		if(posMouse.y < posScreenCenter.y)
+		if(posMouse.y < posPlayer.y)
 		{
 			fAngle *=-1;
 		}
-		
-		float fAngleVise = -fAngle*180/3.14159f - 90 - 75/2; 
-		m_ConeVision.setAngleVise(fAngleVise);
+		float fAngleVise = -fAngle*180/3.14159f - 90 - 75/2;
+		m_ConeVision.setAngleVise(fAngleVise);	
 	}
 	
 	//-------------------------------------------------------------------------------
