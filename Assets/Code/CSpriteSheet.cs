@@ -39,10 +39,15 @@ public class CSpriteSheet : MonoBehaviour
 		
 		 Vector2 offset = new Vector2((float)m_nIndex / m_nColumns - (m_nIndex / m_nColumns), //x index
                                       1 - ((m_nIndex / m_nColumns) / (float)m_nRows));    //y index
-
+		
+		Vector2 textureSize = new Vector2(1f / m_nColumns, 1f / m_nRows);
         // Reset the y offset, if needed
         if (offset.y == 1)
           offset.y = 0.0f;
+		
+		// If we have scaled the texture, we need to reposition the texture to the center of the object
+        offset.x += ((1f / m_nColumns) - textureSize.x) / 2.0f;
+        offset.y += ((1f / m_nRows) - textureSize.y) / 2.0f;
   
 		m_myRenderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
 	}	
