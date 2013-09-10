@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	467174588	Play_Waterfall			\Default Work Unit\Play_Waterfall	
+	2687305538	Stop_Waterfall			\Default Work Unit\Stop_Waterfall	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3074696722	SS_Air_Size			\Factory SoundSeed Air Game Syncs\SS_Air_Size	
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	767342224	SoundSeed Wind	SoundSeed Air/SoundSeed Wind		\Actor-Mixer Hierarchy\Factory SoundSeed Air Objects\Game Driven Presets\Waterfall\SoundSeed Wind	
+

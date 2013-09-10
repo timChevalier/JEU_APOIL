@@ -19,6 +19,8 @@ public class CLevel
 		//m_Player2 =  new CPlayer();
 		//m_Player3 =  new CPlayer();
 		m_Monster = new CMonster(posInitM);
+
+		
 	}
 	
 	//-------------------------------------------------------------------------------

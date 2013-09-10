@@ -34,6 +34,8 @@ public class CGame : MonoBehaviour
 	public float m_fMonsterTimeErrance = 2.0f;
 	public float m_fMonsterRadiusAlerte = 1.0f;
 	
+	public string soundbankName = "Jeu_apoil.bnk";
+	
 	// variables
 	bool m_bInGame;
 	bool m_bGameStarted;
@@ -48,12 +50,21 @@ public class CGame : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	public void Init()
 	{	
+		uint bankID;
+		AKRESULT result;
+		if((result = AkSoundEngine.LoadBank(soundbankName, AkSoundEngine.AK_DEFAULT_POOL_ID, out bankID)) != AKRESULT.AK_Success){
+			Debug.LogError("Unable to load"+soundbankName+" with result: " + result.ToString());
+		}
+		
 		m_Level = new CLevel();
 		m_Level.Init();
 		m_nScreenWidth = 1280;
 		m_nScreenHeight = 800;
 		m_Camera = new CCamera();
 		m_Camera.Init();
+		
+		
+		
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -207,4 +218,6 @@ public class CGame : MonoBehaviour
 	{
 		return m_Camera;	
 	}
+	
+	
 }
