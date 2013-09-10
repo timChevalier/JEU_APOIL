@@ -62,7 +62,7 @@ public class CPlayer : CCharacter {
 		m_spriteSheet = m_GameObject.GetComponent<CSpriteSheet>();	
 		
 		m_AnimRepos = new CAnimation(game.m_materialPlayerRepos, 1, 1, 1.0f);
-		m_AnimHorizontal = new CAnimation(game.m_materialPlayerHorizontal, 7, 4, 1.0f);
+		m_AnimHorizontal = new CAnimation(game.m_materialPlayerHorizontal, 6, 1, 6.0f);
 		m_AnimVertical = new CAnimation(game.m_materialPlayerVertical, 6, 1, 2.0f);
 		
 		m_eMoveModState = EMoveModState.e_MoveModState_marche;
