@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" SchemaVersion="9">
 	<RootPaths>
-		<ProjectRoot>C:\Users\APOIL\Documents\WwiseProjects\test\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\APOIL\Documents\WwiseProjects\test\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\APOIL\Documents\WwiseProjects\test\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\APOIL\Documents\WwiseProjects\test\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents />
 	<StreamedFiles />
@@ -20,16 +20,154 @@
 			<IncludedPrefetchFiles />
 			<ExternalSources />
 		</SoundBank>
-		<SoundBank Id="1880097419" Language="SFX">
-			<ShortName>Jeu_apoil</ShortName>
-			<Path>Jeu_apoil.bnk</Path>
+		<SoundBank Id="3648483684" Language="SFX">
+			<ShortName>ApoilProto</ShortName>
+			<Path>ApoilProto.bnk</Path>
 			<IncludedEvents>
-				<Event Id="467174588" Name="Play_Waterfall" />
-				<Event Id="2687305538" Name="Stop_Waterfall" />
+				<Event Id="3624342304" Name="Play_Amb_Couloir_01" />
+				<Event Id="1079516752" Name="Play_Amb_Pilotage_01" />
+				<Event Id="4234949920" Name="Play_Lamp" />
+				<Event Id="2822502042" Name="Play_PAS" />
+				<Event Id="2256929818" Name="Stop_Amb_Couloir_01" />
+				<Event Id="2262227310" Name="Stop_Amb_Pilotage_01" />
+				<Event Id="1676106750" Name="Stop_Lamp" />
 			</IncludedEvents>
 			<IncludedDialogueEvents />
 			<ReferencedStreamedFiles />
-			<IncludedFullFiles />
+			<IncludedFullFiles>
+				<File Id="265561491" Language="SFX">
+					<ShortName>1_T9_Z014009-RX2DENOISE-10.A2-OADY_01-01.wav</ShortName>
+					<Path>sfx\1_t9_z014009-rx2denoise-10.a2-oady_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="752681689" Language="SFX">
+					<ShortName>1_T9_Z014009-RX2DENOISE-12.A2-OADY_01-01.wav</ShortName>
+					<Path>sfx\1_t9_z014009-rx2denoise-12.a2-oady_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="150377100" Language="SFX">
+					<ShortName>1_T9_Z014009-RX2DENOISE-14.A2-OADY_01-01.wav</ShortName>
+					<Path>sfx\1_t9_z014009-rx2denoise-14.a2-oady_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="277317118" Language="SFX">
+					<ShortName>1_T9_Z014009-RX2DENOISE-15.A2-OADY_01-01.wav</ShortName>
+					<Path>sfx\1_t9_z014009-rx2denoise-15.a2-oady_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="156993232" Language="SFX">
+					<ShortName>Amb_Venti-02.wav</ShortName>
+					<Path>sfx\amb_venti-02_ddc98ef4.wem</Path>
+				</File>
+				<File Id="47850031" Language="SFX">
+					<ShortName>Audio 4_01-03.wav</ShortName>
+					<Path>sfx\audio 4_01-03_ddc98ef4.wem</Path>
+				</File>
+				<File Id="748443541" Language="SFX">
+					<ShortName>Audio 4_01-07.wav</ShortName>
+					<Path>sfx\audio 4_01-07_ddc98ef4.wem</Path>
+				</File>
+				<File Id="760876565" Language="SFX">
+					<ShortName>Audio 4_01-11.wav</ShortName>
+					<Path>sfx\audio 4_01-11_ddc98ef4.wem</Path>
+				</File>
+				<File Id="838027565" Language="SFX">
+					<ShortName>Audio 4_01-15.wav</ShortName>
+					<Path>sfx\audio 4_01-15_ddc98ef4.wem</Path>
+				</File>
+				<File Id="40119943" Language="SFX">
+					<ShortName>Audio 4_01-21.wav</ShortName>
+					<Path>sfx\audio 4_01-21_ddc98ef4.wem</Path>
+				</File>
+				<File Id="738963150" Language="SFX">
+					<ShortName>Audio 4_01-23.wav</ShortName>
+					<Path>sfx\audio 4_01-23_ddc98ef4.wem</Path>
+				</File>
+				<File Id="949782913" Language="SFX">
+					<ShortName>Audio 4_01-27.wav</ShortName>
+					<Path>sfx\audio 4_01-27_ddc98ef4.wem</Path>
+				</File>
+				<File Id="379951906" Language="SFX">
+					<ShortName>Audio 4_01-31.wav</ShortName>
+					<Path>sfx\audio 4_01-31_ddc98ef4.wem</Path>
+				</File>
+				<File Id="756294048" Language="SFX">
+					<ShortName>Audio 4_01-35.wav</ShortName>
+					<Path>sfx\audio 4_01-35_ddc98ef4.wem</Path>
+				</File>
+				<File Id="535286893" Language="SFX">
+					<ShortName>Audio 4_01-39.wav</ShortName>
+					<Path>sfx\audio 4_01-39_ddc98ef4.wem</Path>
+				</File>
+				<File Id="172566381" Language="SFX">
+					<ShortName>Audio 4_01-43.wav</ShortName>
+					<Path>sfx\audio 4_01-43_ddc98ef4.wem</Path>
+				</File>
+				<File Id="737616448" Language="SFX">
+					<ShortName>Audio 4_01-47.wav</ShortName>
+					<Path>sfx\audio 4_01-47_ddc98ef4.wem</Path>
+				</File>
+				<File Id="33990944" Language="SFX">
+					<ShortName>Computer Beeps 03-03.wav</ShortName>
+					<Path>sfx\computer beeps 03-03_ddc98ef4.wem</Path>
+				</File>
+				<File Id="995615743" Language="SFX">
+					<ShortName>Computer Beeps 03-13.wav</ShortName>
+					<Path>sfx\computer beeps 03-13_ddc98ef4.wem</Path>
+				</File>
+				<File Id="234622863" Language="SFX">
+					<ShortName>Computer Beeps 03-15.wav</ShortName>
+					<Path>sfx\computer beeps 03-15_ddc98ef4.wem</Path>
+				</File>
+				<File Id="695380064" Language="SFX">
+					<ShortName>Computer Beeps 03-UTSN_01-08.wav</ShortName>
+					<Path>sfx\computer beeps 03-utsn_01-08_ddc98ef4.wem</Path>
+				</File>
+				<File Id="158427453" Language="SFX">
+					<ShortName>Computer Beeps 03-UTSN_03-12.wav</ShortName>
+					<Path>sfx\computer beeps 03-utsn_03-12_ddc98ef4.wem</Path>
+				</File>
+				<File Id="381749178" Language="SFX">
+					<ShortName>PlancheMetal-oki-01.wav</ShortName>
+					<Path>sfx\planchemetal-oki-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="973401787" Language="SFX">
+					<ShortName>PlancheMetal-oki-02.wav</ShortName>
+					<Path>sfx\planchemetal-oki-02_ddc98ef4.wem</Path>
+				</File>
+				<File Id="672627484" Language="SFX">
+					<ShortName>PlancheMetal-oki-03.wav</ShortName>
+					<Path>sfx\planchemetal-oki-03_ddc98ef4.wem</Path>
+				</File>
+				<File Id="985664315" Language="SFX">
+					<ShortName>PlancheMetal-oki-04.wav</ShortName>
+					<Path>sfx\planchemetal-oki-04_ddc98ef4.wem</Path>
+				</File>
+				<File Id="47847109" Language="SFX">
+					<ShortName>PlancheMetal-oki-05.wav</ShortName>
+					<Path>sfx\planchemetal-oki-05_ddc98ef4.wem</Path>
+				</File>
+				<File Id="826346242" Language="SFX">
+					<ShortName>PlancheMetalMulti-oki-01.wav</ShortName>
+					<Path>sfx\planchemetalmulti-oki-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="233174840" Language="SFX">
+					<ShortName>PlancheMetalMulti-oki-02.wav</ShortName>
+					<Path>sfx\planchemetalmulti-oki-02_ddc98ef4.wem</Path>
+				</File>
+				<File Id="476790090" Language="SFX">
+					<ShortName>PlancheMetalMulti-oki-03.wav</ShortName>
+					<Path>sfx\planchemetalmulti-oki-03_ddc98ef4.wem</Path>
+				</File>
+				<File Id="580240828" Language="SFX">
+					<ShortName>PlancheMetalMulti-oki-04.wav</ShortName>
+					<Path>sfx\planchemetalmulti-oki-04_ddc98ef4.wem</Path>
+				</File>
+				<File Id="188610813" Language="SFX">
+					<ShortName>PlancheMetalMulti-oki-05.wav</ShortName>
+					<Path>sfx\planchemetalmulti-oki-05_ddc98ef4.wem</Path>
+				</File>
+				<File Id="67566134" Language="SFX">
+					<ShortName>PlancheMetalMulti-oki-06.wav</ShortName>
+					<Path>sfx\planchemetalmulti-oki-06_ddc98ef4.wem</Path>
+				</File>
+			</IncludedFullFiles>
 			<IncludedPrefetchFiles />
 			<ExternalSources />
 		</SoundBank>

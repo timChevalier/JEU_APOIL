@@ -1,0 +1,59 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1079516752	Play_Amb_Pilotage_01			\Default Work Unit\Play_Amb_Pilotage_01	
+	1676106750	Stop_Lamp			\Default Work Unit\Stop_Lamp	
+	2256929818	Stop_Amb_Couloir_01			\Default Work Unit\Stop_Amb_Couloir_01	
+	2262227310	Stop_Amb_Pilotage_01			\Default Work Unit\Stop_Amb_Pilotage_01	
+	2822502042	Play_PAS			\Default Work Unit\Play_PAS	
+	3624342304	Play_Amb_Couloir_01			\Default Work Unit\Play_Amb_Couloir_01	
+	4234949920	Play_Lamp			\Default Work Unit\Play_Lamp	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	420485477	Amb_Pilotage_In			\Default Work Unit\Amb_Pilotage_In	
+	1831205335	Amb_Couloir_In			\Default Work Unit\Amb_Couloir_In	
+	2731327466	Amb_Couloir_Out			\Default Work Unit\Amb_Couloir_Out	
+	3999634156	Amb_Pilotage_Out			\Default Work Unit\Amb_Pilotage_Out	
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	45794998	Silence	Silence		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoul\Silence_01\Silence	
+	115095907	Silence	Silence		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoulMulti\Silence_01\Silence	
+	298058338	Silence	Silence		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Pilotage-01\Obj_BeepOrdi\Silence_00\Silence	
+	339718767	Silence	Silence		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoul\Silence_02\Silence	
+	412250890	Silence	Silence		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoulMulti\Silence_00\Silence	
+	414718746	Silence	Silence		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Pilotage-01\Obj_BeepOrdi\Silence_01\Silence	
+	774109428	Silence	Silence		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoulMulti\Silence_02\Silence	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	33990944	Computer Beeps 03-03	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\computer beeps 03-03_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Pilotage-01\Obj_BeepOrdi\Computer Beeps 03-03		119200
+	40119943	Audio 4_01-21	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-21_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-21		78058
+	47847109	PlancheMetal-oki-05	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetal-oki-05_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoul\PlancheMetal-oki-05		802864
+	47850031	Audio 4_01-03	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-03_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-03		54828
+	67566134	PlancheMetalMulti-oki-06	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetalmulti-oki-06_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoulMulti\PlancheMetalMulti-oki-06		1011744
+	150377100	1_T9_Z014009-RX2DENOISE-14_A2-OADY_01-01	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\1_t9_z014009-rx2denoise-14.a2-oady_01-01_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Items\Lamp\1_T9_Z014009-RX2DENOISE-14_A2-OADY_01-01		3290524
+	156993232	Amb_Venti-02	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\amb_venti-02_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Pilotage-01\Amb_Venti-02		9188848
+	158427453	Computer Beeps 03-UTSN_03-12	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\computer beeps 03-utsn_03-12_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Pilotage-01\Obj_BeepOrdi\Computer Beeps 03-UTSN_03-12		61888
+	172566381	Audio 4_01-43	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-43_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-43		74736
+	188610813	PlancheMetalMulti-oki-05	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetalmulti-oki-05_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoulMulti\PlancheMetalMulti-oki-05		1118268
+	233174840	PlancheMetalMulti-oki-02	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetalmulti-oki-02_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoulMulti\PlancheMetalMulti-oki-02		802276
+	234622863	Computer Beeps 03-15	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\computer beeps 03-15_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Pilotage-01\Obj_BeepOrdi\Computer Beeps 03-15		88128
+	265561491	1_T9_Z014009-RX2DENOISE-10_A2-OADY_01-01	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\1_t9_z014009-rx2denoise-10.a2-oady_01-01_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Items\Lamp\1_T9_Z014009-RX2DENOISE-10_A2-OADY_01-01		3295652
+	277317118	1_T9_Z014009-RX2DENOISE-15_A2-OADY_01-01	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\1_t9_z014009-rx2denoise-15.a2-oady_01-01_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Items\Lamp\1_T9_Z014009-RX2DENOISE-15_A2-OADY_01-01		2696528
+	379951906	Audio 4_01-31	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-31_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-31		90962
+	381749178	PlancheMetal-oki-01	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetal-oki-01_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoul\PlancheMetal-oki-01		655480
+	476790090	PlancheMetalMulti-oki-03	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetalmulti-oki-03_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoulMulti\PlancheMetalMulti-oki-03		1028144
+	535286893	Audio 4_01-39	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-39_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-39		75456
+	580240828	PlancheMetalMulti-oki-04	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetalmulti-oki-04_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoulMulti\PlancheMetalMulti-oki-04		856144
+	672627484	PlancheMetal-oki-03	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetal-oki-03_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoul\PlancheMetal-oki-03		802788
+	695380064	Computer Beeps 03-UTSN_01-08	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\computer beeps 03-utsn_01-08_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Pilotage-01\Obj_BeepOrdi\Computer Beeps 03-UTSN_01-08		45120
+	737616448	Audio 4_01-47	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-47_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-47		63430
+	738963150	Audio 4_01-23	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-23_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-23		77814
+	748443541	Audio 4_01-07	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-07_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-07		53060
+	752681689	1_T9_Z014009-RX2DENOISE-12_A2-OADY_01-01	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\1_t9_z014009-rx2denoise-12.a2-oady_01-01_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Items\Lamp\1_T9_Z014009-RX2DENOISE-12_A2-OADY_01-01		5209402
+	756294048	Audio 4_01-35	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-35_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-35		67924
+	760876565	Audio 4_01-11	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-11_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-11		53506
+	826346242	PlancheMetalMulti-oki-01	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetalmulti-oki-01_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoulMulti\PlancheMetalMulti-oki-01		918188
+	838027565	Audio 4_01-15	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-15_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-15		51558
+	949782913	Audio 4_01-27	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\audio 4_01-27_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Avatar\Avatar\Foost\PAS\Audio 4_01-27		62274
+	973401787	PlancheMetal-oki-02	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetal-oki-02_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoul\PlancheMetal-oki-02		671924
+	985664315	PlancheMetal-oki-04	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\planchemetal-oki-04_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Couloir-01\Obj_BruitCoul\PlancheMetal-oki-04		688200
+	995615743	Computer Beeps 03-13	C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\sfx\computer beeps 03-13_ddc98ef4.wem		\Actor-Mixer Hierarchy\JeuxApoil\Ambiance\Ambiance\Amb_Pilotage-01\Obj_BeepOrdi\Computer Beeps 03-13		52800
+

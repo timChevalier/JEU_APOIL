@@ -50,13 +50,30 @@ public class CPorte : MonoBehaviour
 		{
 			Vector3 pos = m_objCamera.transform.position;
 			float fDeltaPos = (m_PieceExit.transform.position - m_PieceEnter.transform.position).x;
-			if(m_bGoodWay)
+			if(m_bGoodWay){
 				game.getCamera().SetCurrentRoom(m_PieceExit);
-			else
+				changeAmbiance(m_PieceExit, m_PieceEnter);
+			}
+			else {
+				changeAmbiance(m_PieceEnter, m_PieceExit);
 				game.getCamera().SetCurrentRoom(m_PieceEnter);
-			
+				
+			}
 			
 		}
 	}
-
+	
+	void changeAmbiance(GameObject enter, GameObject exit){
+		CAmbiancePiece[] ambs;
+	
+		ambs = exit.GetComponents<CAmbiancePiece>();
+		foreach(CAmbiancePiece amb in ambs){
+			amb.StopAmbiance();
+		}
+		
+		ambs = enter.GetComponents<CAmbiancePiece>();
+		foreach(CAmbiancePiece amb in ambs){
+			amb.PlayAmbiance();
+		}
+	}
 }

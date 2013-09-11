@@ -43,6 +43,7 @@ public class CGame : MonoBehaviour
 	int m_nScreenHeight;
 	CLevel m_Level;
 	CCamera m_Camera;
+	CSoundEngine m_SoundEngine;
 	
 	
 	//-------------------------------------------------------------------------------
@@ -50,11 +51,9 @@ public class CGame : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	public void Init()
 	{	
-		uint bankID;
-		AKRESULT result;
-		if((result = AkSoundEngine.LoadBank(soundbankName, AkSoundEngine.AK_DEFAULT_POOL_ID, out bankID)) != AKRESULT.AK_Success){
-			Debug.LogError("Unable to load"+soundbankName+" with result: " + result.ToString());
-		}
+		
+		m_SoundEngine = new CSoundEngine();
+		m_SoundEngine.LoadBank(soundbankName);
 		
 		m_Level = new CLevel();
 		m_Level.Init();
