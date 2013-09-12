@@ -18,6 +18,10 @@ public class CSoundEngine {
 		
 	}
 	
+	public void postEvent(string name, GameObject obj){
+		AkSoundEngine.PostEvent(name, obj);
+	}
+	
 	// Update is called once per frame
 	void Update () {
 	

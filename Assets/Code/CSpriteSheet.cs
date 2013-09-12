@@ -9,6 +9,7 @@ public class CSpriteSheet : MonoBehaviour
 	float m_fFPS = 1.0f;
 	float m_fTemps;
 	Vector2 m_Size;
+	string[] m_sounds;
 	
 	private Renderer m_myRenderer;
 	private int m_nIndex = 0;
@@ -33,6 +34,10 @@ public class CSpriteSheet : MonoBehaviour
 			m_nIndex++;
             if (m_nIndex >= m_nRows * m_nColumns)
                 m_nIndex = 0;	
+			
+			//Play sound if necessary
+			if(m_sounds[m_nIndex] != "")
+				GameObject.Find("_Game").GetComponent<CGame>().getSoundEngine().postEvent(m_sounds[m_nIndex], gameObject);
 			
 			m_fTemps = 0.0f;
 		}
@@ -63,6 +68,7 @@ public class CSpriteSheet : MonoBehaviour
 		m_myRenderer.material = anim.m_Material;
 		m_myRenderer.material.SetTextureScale("_MainTex", m_Size);
 		m_fFPS = anim.m_fFPS;
+		m_sounds = anim.m_sounds;
 	}
 	
 	//-------------------------------------------------------------------------------

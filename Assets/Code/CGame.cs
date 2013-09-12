@@ -218,5 +218,7 @@ public class CGame : MonoBehaviour
 		return m_Camera;	
 	}
 	
-	
+	public CSoundEngine getSoundEngine(){
+		return m_SoundEngine;
+	}
 }
