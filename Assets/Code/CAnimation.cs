@@ -18,7 +18,7 @@ public class CAnimation {
 		m_nColumns = columns;
 		m_nRows = rows;
 		m_fFPS = fFPS;
-		m_sounds = sounds ?? new string[m_nRows];
+		m_sounds = sounds ?? new string[m_nRows*m_nColumns];
 	}
 	
 

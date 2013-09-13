@@ -59,7 +59,7 @@ public class CPlayer : CCharacter {
 		m_CameraCone = game.m_CameraCone;
 		
 		m_fSpeed = game.m_fSpeedPlayer;
-		m_spriteSheet = m_GameObject.GetComponent<CSpriteSheet>();	
+		m_spriteSheet = new CSpriteSheet(m_GameObject); //m_GameObject.GetComponent<CSpriteSheet>();	
 		
 		m_AnimRepos = new CAnimation(game.m_materialPlayerRepos, 1, 1, 1.0f);
 		

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CSpriteSheet : MonoBehaviour 
+public class CSpriteSheet // : MonoBehaviour 
 {
 	bool m_bIsPlaying;
 	int m_nColumns = 1;
@@ -11,15 +11,20 @@ public class CSpriteSheet : MonoBehaviour
 	Vector2 m_Size;
 	string[] m_sounds;
 	
+	private GameObject m_parent;
 	private Renderer m_myRenderer;
 	private int m_nIndex = 0;
+	
+	public CSpriteSheet(GameObject parent){
+		m_parent=parent;
+	}
 	
 	//-------------------------------------------------------------------------------
 	///	
 	//-------------------------------------------------------------------------------
 	public void Init () {
 		m_bIsPlaying = false;
-		m_myRenderer = renderer;
+		m_myRenderer = m_parent.renderer;
 		m_fTemps = 0.0f;
 	}
 	
@@ -37,7 +42,7 @@ public class CSpriteSheet : MonoBehaviour
 			
 			//Play sound if necessary
 			if(m_sounds[m_nIndex] != "")
-				GameObject.Find("_Game").GetComponent<CGame>().getSoundEngine().postEvent(m_sounds[m_nIndex], gameObject);
+				GameObject.Find("_Game").GetComponent<CGame>().getSoundEngine().postEvent(m_sounds[m_nIndex], m_parent);
 			
 			m_fTemps = 0.0f;
 		}
