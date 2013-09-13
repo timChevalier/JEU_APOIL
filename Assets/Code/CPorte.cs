@@ -53,10 +53,14 @@ public class CPorte : MonoBehaviour
 	/// Unity
 	//-------------------------------------------------------------------------------
 	void OnTriggerExit(Collider other)
-	{
+	{		
 		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 		if (other.gameObject == game.getLevel().getPlayer().getGameObject())
 		{
+			Vector3 player_pos = getRelativePosition(gameObject.transform, other.gameObject.transform.position);
+			
+			m_bGoodWay = player_pos.x > 0;
+			
 			Vector3 pos = m_objCamera.transform.position;
 			float fDeltaPos = (m_PieceExit.transform.position - m_PieceEnter.transform.position).x;
 			if(m_bGoodWay){
@@ -85,4 +89,15 @@ public class CPorte : MonoBehaviour
 			amb.PlayAmbiance();
 		}
 	}
+	
+	static Vector3 getRelativePosition(Transform origin, Vector3 position) {
+	    Vector3 distance = position - origin.position;
+	    Vector3 relativePosition = Vector3.zero;
+	    relativePosition.x = Vector3.Dot(distance, origin.right.normalized);
+	    relativePosition.y = Vector3.Dot(distance, origin.up.normalized);
+	    relativePosition.z = Vector3.Dot(distance, origin.forward.normalized);
+	     
+	    return relativePosition;
+    }
+	
 }
