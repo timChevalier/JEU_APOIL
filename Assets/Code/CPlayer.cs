@@ -69,6 +69,8 @@ public class CPlayer : CCharacter {
 		
 		m_eMoveModState = EMoveModState.e_MoveModState_marche;
 		m_bMainCharacter = bIsMainCharacter;
+		
+		
 	}
 	
 	//-------------------------------------------------------------------------------
