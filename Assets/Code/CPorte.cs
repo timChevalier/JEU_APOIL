@@ -19,9 +19,10 @@ public class CPorte : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	void Start () 
 	{
-		/*m_spriteSheet = gameObject.AddComponent<CSpriteSheet>();
+		m_spriteSheet = new CSpriteSheet(gameObject);
+		m_spriteSheet.Init();
 		m_openAnimation = new CAnimation(m_openMat, 4, 1, 2.0f);
-		m_spriteSheet.SetAnimation(m_openAnimation); */ 
+		m_spriteSheet.SetAnimation(m_openAnimation);  
 		m_objCamera = GameObject.Find("Cameras");
 		m_bGoodWay = true;
 		//m_spriteSheet.AnimationStart();
@@ -31,7 +32,7 @@ public class CPorte : MonoBehaviour
 	/// Unity
 	//-------------------------------------------------------------------------------
 	void Update () {
-		//m_spriteSheet.Process();
+		m_spriteSheet.Process();
 	}
 	
 	//-------------------------------------------------------------------------------
