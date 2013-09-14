@@ -51,7 +51,7 @@ SubShader {
 		
 		fixed4 texReturn = texSceneColor - texConeColor;
 	
-		if (!Equal(texForceColor, texBlack))
+		//if (!Equal(texForceColor, texBlack))
 			texReturn = texForceColor;
 		// return texAlpha;
 		return texReturn;

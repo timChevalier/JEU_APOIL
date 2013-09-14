@@ -9,11 +9,13 @@ public class CPlayer : CCharacter {
 	
 	//CGame m_game = GameObject.Find("_Game").GetComponent<CGame>();
 	float m_fSpeed;
+	float m_fAngleCone;
 	CSpriteSheet m_spriteSheet;
 	CAnimation m_AnimRepos;
 	CAnimation m_AnimHorizontal;
 	CAnimation m_AnimVertical;
 	CConeVision m_ConeVision;
+	GameObject m_ConeDeVisionNew;
 	
 	Camera m_CameraCone;
 	Vector2 m_DirectionRegard;
@@ -70,7 +72,7 @@ public class CPlayer : CCharacter {
 		m_eMoveModState = EMoveModState.e_MoveModState_marche;
 		m_bMainCharacter = bIsMainCharacter;
 		
-		
+		m_ConeDeVisionNew = m_GameObject.transform.FindChild("ConePute").gameObject;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -269,27 +271,29 @@ public class CPlayer : CCharacter {
 	//-------------------------------------------------------------------------------
 	void EventSouris(float fDeltatime)
 	{
-		//Not sure why this raycast is usefull. Anyway, doesn't work with it...
-		/*Vector3 posMouseTmp = Vector3.zero;
+		Vector3 posMouseTmp = Vector3.zero;
 		RaycastHit vHit = new RaycastHit();
-	    Ray vRay = m_CameraCone.ScreenPointToRay(Input.mousePosition);
+		Ray vRay = m_CameraCone.ScreenPointToRay(Input.mousePosition);
 		if(Physics.Raycast(vRay, out vHit, 1000)) 
 		{
 			posMouseTmp = vHit.point;
-		}*/
-		
-
-		Vector2 posMouse = Input.mousePosition;
-		Vector2 posScreenCenter = new Vector2(Screen.width/2, Screen.height/2);
-		m_DirectionRegard = (posMouse - posScreenCenter).normalized;
-		float fAngle = Mathf.Acos(Vector2.Dot(m_DirectionRegard, new Vector2(1,0)));
-		if(posMouse.y < posScreenCenter.y)
-		{
-			fAngle *=-1;
 		}
+		float fAngleOld = m_fAngleCone;
+		Vector3 posPlayerTmp = m_GameObject.transform.position;
+		Vector2 posMouse = new Vector2(posMouseTmp.x, posMouseTmp.y);
+		Vector2 posPlayer = new Vector2(posPlayerTmp.x, posPlayerTmp.y);
+		m_DirectionRegard = (posMouse - posPlayer).normalized;
+		m_fAngleCone = Mathf.Acos(Vector2.Dot(m_DirectionRegard, new Vector2(1,0)));
 		
-		float fAngleVise = -fAngle*180/3.14159f - 90 - 75/2; 
-		m_ConeVision.setAngleVise(fAngleVise);
+		if(posMouse.y < posPlayer.y)
+		{
+			m_fAngleCone *=-1;
+		}
+		float fAngleVise = -m_fAngleCone*180/3.14159f - 90 - 75/2;
+		m_ConeVision.setAngleVise(fAngleVise);  
+		
+		m_fAngleCone += 90 + 75/2;
+		m_ConeDeVisionNew.transform.RotateAround(new Vector3(0,0,1),  m_fAngleCone - fAngleOld);
 	}
 	
 	//-------------------------------------------------------------------------------
