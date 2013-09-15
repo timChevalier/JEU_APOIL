@@ -3,11 +3,14 @@ using System.Collections;
 
 public class CSoundEngine {
 	
+	CGame game;
 	uint bankID;
+	bool mute;
 	
 	// Use this for initialization
-	void Start () {		
-		
+	public void Init() {		
+		game = GameObject.Find("_Game").GetComponent<CGame>();
+		mute=game.m_BMute;
 	}
 	
 	public void LoadBank(string soundbankName) {
@@ -24,12 +27,11 @@ public class CSoundEngine {
 	
 	public void setRTPC(string name, float val, GameObject obj){
 		AkSoundEngine.SetRTPCValue(name, val, obj);
-		Debug.Log("Posted "+name+" by "+obj.name);
 	}
 	
 	public void postEvent(string name, GameObject obj){
-		AkSoundEngine.PostEvent(name, obj);
-		
+			if(!mute)
+				AkSoundEngine.PostEvent(name, obj);
 	}
 	
 	// Update is called once per frame

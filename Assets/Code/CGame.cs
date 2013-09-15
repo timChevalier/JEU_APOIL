@@ -40,6 +40,7 @@ public class CGame : MonoBehaviour
 	public float m_fMonsterTimeErrance = 2.0f;
 	public float m_fMonsterRadiusAlerte = 1.0f;
 	
+	public bool m_BMute = false;
 	public string soundbankName = "Jeu_apoil.bnk";
 	
 	
@@ -60,6 +61,7 @@ public class CGame : MonoBehaviour
 	{	
 		
 		m_SoundEngine = new CSoundEngine();
+		m_SoundEngine.Init();
 		m_SoundEngine.LoadBank(soundbankName);
 		
 		m_Level = new CLevel();
