@@ -91,6 +91,7 @@ public class CPlayer : CCharacter {
 		m_spriteSheet.Init();
 		m_ConeVision.Init();
 		//m_spriteSheet.SetAnimation(m_AnimRepos);
+		m_CercleDiscretion.Init(this);
 		
 		game.getSoundEngine().setSwitch("Sol", "Metal02", m_GameObject);
 	}
@@ -131,7 +132,7 @@ public class CPlayer : CCharacter {
 		if(m_bMainCharacter)
 			m_ConeVision.Process();
 		
-		m_CercleDiscretion.Process(m_fSpeed);
+		m_CercleDiscretion.Process();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -316,6 +317,14 @@ public class CPlayer : CCharacter {
 	public Vector2 getDirectionDeplacement()
 	{
 		return m_DirectionDeplacement;	
+	}
+	
+	public EMoveModState getMoveModState(){
+		return m_eMoveModState;
+	}
+	
+	public float getSpeed(){
+		return m_fSpeed;
 	}
 	
 }

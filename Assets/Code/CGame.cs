@@ -28,6 +28,12 @@ public class CGame : MonoBehaviour
 	public float m_fCoeffNormalWalk = 1.0f;
 	public float m_fCoeffRunWalk = 1.0f;
 	
+	public float m_fDiscretionBaseRadius = 30;
+	public float m_fCoeffDiscretionAttente = 0;
+	public float m_fCoeffDiscretionDiscret = 1;
+	public float m_fCoeffDiscretionMarche = 4;
+	public float m_fCoeffDiscretionCours = 10;
+	
 	public float m_fAngleConeDeVision = 1.0f;
 	public float m_fDistanceConeDeVision = 1f;
 	public int m_fPrecisionConeDeVision = 1; 
@@ -35,6 +41,7 @@ public class CGame : MonoBehaviour
 	public float m_fMonsterRadiusAlerte = 1.0f;
 	
 	public string soundbankName = "Jeu_apoil.bnk";
+	
 	
 	// variables
 	bool m_bInGame;
