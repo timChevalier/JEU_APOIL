@@ -11,6 +11,7 @@ public class CPorte : MonoBehaviour
 	public Material m_openMat;
 	CAnimation m_openAnimation;
 	bool m_bGoodWay;
+	CGame game;
 	
 	GameObject m_enter_att;
 	GameObject m_exit_att;
@@ -22,6 +23,7 @@ public class CPorte : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	void Start () 
 	{
+		game = GameObject.Find("_Game").GetComponent<CGame>();
 		m_spriteSheet = new CSpriteSheet(gameObject);
 		m_spriteSheet.Init();
 		m_openAnimation = new CAnimation(m_openMat, 4, 1, 2.0f);
@@ -69,7 +71,6 @@ public class CPorte : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	void OnTriggerEnter(Collider other)
 	{
-		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 		if (other.gameObject == game.getLevel().getPlayer().getGameObject())
 		{
 			if(Vector2.Dot(game.getLevel().getPlayer().getDirectionDeplacement(), m_Direction) > 0)
@@ -84,7 +85,6 @@ public class CPorte : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	void OnTriggerExit(Collider other)
 	{		
-		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 		if (other.gameObject == game.getLevel().getPlayer().getGameObject())
 		{
 			Vector3 player_pos = getRelativePosition(gameObject.transform, other.gameObject.transform.position);

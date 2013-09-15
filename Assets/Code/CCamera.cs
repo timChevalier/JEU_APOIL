@@ -5,13 +5,14 @@ public class CCamera
 {
 	GameObject m_GameObject;
 	GameObject m_CurrentRoom;
+	CGame game;
 	
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------	
 	public CCamera()
 	{
-		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
+		game = GameObject.Find("_Game").GetComponent<CGame>();
 		m_GameObject = GameObject.Find("Cameras");
 		m_CurrentRoom =  GameObject.Find("Salle1");
 	}

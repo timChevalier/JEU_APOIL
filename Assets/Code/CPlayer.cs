@@ -113,7 +113,6 @@ public class CPlayer : CCharacter {
 		EventClavier(fDeltatime);
 		EventSouris(fDeltatime);
 		
-		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 		if(game.IsDebug())
 		{
 			if(Input.GetKeyDown(KeyCode.A))
@@ -140,7 +139,6 @@ public class CPlayer : CCharacter {
 	//-------------------------------------------------------------------------------	
 	void CalculateSpeed()
 	{
-		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
 		float fVitesseEtat = 1.0f;
 		float fVitesseAttitude;
 		switch(m_eMoveModState)

@@ -10,6 +10,7 @@ public class CSpriteSheet // : MonoBehaviour
 	float m_fTemps;
 	Vector2 m_Size;
 	string[] m_sounds;
+	CGame game;
 	
 	private GameObject m_parent;
 	private Renderer m_myRenderer;
@@ -26,6 +27,7 @@ public class CSpriteSheet // : MonoBehaviour
 		m_bIsPlaying = false;
 		m_myRenderer = m_parent.renderer;
 		m_fTemps = 0.0f;
+		game = GameObject.Find("_Game").GetComponent<CGame>();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -42,7 +44,7 @@ public class CSpriteSheet // : MonoBehaviour
 			
 			//Play sound if necessary
 			if(m_sounds[m_nIndex] != "" && m_sounds[m_nIndex] != null)
-				GameObject.Find("_Game").GetComponent<CGame>().getSoundEngine().postEvent(m_sounds[m_nIndex], m_parent);
+				game.getSoundEngine().postEvent(m_sounds[m_nIndex], m_parent);
 			
 			m_fTemps = 0.0f;
 		}

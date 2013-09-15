@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CConeVision : MonoBehaviour 
 {   
-	
+	CGame game;
 	float m_fAngleVise;
 	
 	public Material m_Material; 	// Mat appliqué au mesh de vue
@@ -14,7 +14,7 @@ public class CConeVision : MonoBehaviour
 	Mesh sightMesh; // Le mesh dont les vertex seront modifiés selons les obstacles
 	Transform m_Transform;
 	GameObject m_gameObject;
-   
+    
 	float angle; // Angle d'ouverture, degré
 	float distance;
 	int precision; // Nombre de rayons lancé dans l'angle ci dessus
@@ -56,7 +56,7 @@ public class CConeVision : MonoBehaviour
 	//-------------------------------------------------------------------------------
  	public  void Init () 
 	{
-		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
+		game = GameObject.Find("_Game").GetComponent<CGame>();
 		angle = game.m_fAngleConeDeVision;
 		distance = game.m_fDistanceConeDeVision;
 		precision = game.m_fPrecisionConeDeVision;
