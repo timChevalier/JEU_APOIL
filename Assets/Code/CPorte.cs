@@ -31,12 +31,16 @@ public class CPorte : MonoBehaviour
 		
 		m_enter_att = new GameObject();
 		m_exit_att = new GameObject();
-				
-		m_enter_att.AddComponent<CPorteAttenuation>();
-		m_exit_att.AddComponent<CPorteAttenuation>();
 		
-		m_enter_att.GetComponent<CPorteAttenuation>().Init(m_PieceEnter, attenuation_enter_size);
-		m_exit_att.GetComponent<CPorteAttenuation>().Init(m_PieceExit, attenuation_exit_size);
+		m_enter_att.transform.parent = m_exit_att.transform.parent = gameObject.transform;
+		m_enter_att.transform.position = m_exit_att.transform.position = transform.position;
+		
+		m_enter_att.transform.rotation = m_exit_att.transform.rotation = transform.rotation;
+		m_exit_att.transform.Rotate(0, 0, 180);
+		
+		m_enter_att.AddComponent<CPorteAttenuation>().Init(m_PieceExit, m_PieceEnter, attenuation_enter_size);
+		m_exit_att.AddComponent<CPorteAttenuation>().Init(m_PieceEnter, m_PieceExit, attenuation_exit_size);
+
 	}
 	
 	
@@ -91,10 +95,8 @@ public class CPorte : MonoBehaviour
 			float fDeltaPos = (m_PieceExit.transform.position - m_PieceEnter.transform.position).x;
 			if(m_bGoodWay){
 				game.getCamera().SetCurrentRoom(m_PieceExit);
-				changeAmbiance(m_PieceExit, m_PieceEnter);
 			}
-			else {
-				changeAmbiance(m_PieceEnter, m_PieceExit);
+			else {				
 				game.getCamera().SetCurrentRoom(m_PieceEnter);
 				
 			}
@@ -102,19 +104,7 @@ public class CPorte : MonoBehaviour
 		}
 	}
 	
-	void changeAmbiance(GameObject enter, GameObject exit){
-		CAmbiancePiece[] ambs;
 	
-		ambs = exit.GetComponents<CAmbiancePiece>();
-		foreach(CAmbiancePiece amb in ambs){
-			amb.StopAmbiance();
-		}
-		
-		ambs = enter.GetComponents<CAmbiancePiece>();
-		foreach(CAmbiancePiece amb in ambs){
-			amb.PlayAmbiance();
-		}
-	}
 	
 	static Vector3 getRelativePosition(Transform origin, Vector3 position) {
 	    Vector3 distance = position - origin.position;

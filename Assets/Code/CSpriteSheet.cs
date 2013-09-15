@@ -41,7 +41,7 @@ public class CSpriteSheet // : MonoBehaviour
                 m_nIndex = 0;	
 			
 			//Play sound if necessary
-			if(m_sounds[m_nIndex] != "")
+			if(m_sounds[m_nIndex] != "" && m_sounds[m_nIndex] != null)
 				GameObject.Find("_Game").GetComponent<CGame>().getSoundEngine().postEvent(m_sounds[m_nIndex], m_parent);
 			
 			m_fTemps = 0.0f;

@@ -18,8 +18,18 @@ public class CSoundEngine {
 		
 	}
 	
+	public void setSwitch(string name, string val, GameObject obj){
+		AkSoundEngine.SetSwitch(name, val, obj);
+	}
+	
+	public void setRTPC(string name, float val, GameObject obj){
+		AkSoundEngine.SetRTPCValue(name, val, obj);
+		Debug.Log("Posted "+name+" by "+obj.name);
+	}
+	
 	public void postEvent(string name, GameObject obj){
 		AkSoundEngine.PostEvent(name, obj);
+		
 	}
 	
 	// Update is called once per frame

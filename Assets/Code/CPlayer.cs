@@ -65,7 +65,9 @@ public class CPlayer : CCharacter {
 		
 		m_AnimRepos = new CAnimation(game.m_materialPlayerRepos, 1, 1, 1.0f);
 		
-		m_AnimHorizontal = new CAnimation(game.m_materialPlayerHorizontal, 6, 1, 6.0f, new string[]{"", "", "Play_PAS", "", "", "Play_PAS"});
+		m_AnimHorizontal = new CAnimation(game.m_materialPlayerHorizontal, 6, 1, 6.0f, new string[]{"", "", "Play_Foost", "", "", "Play_Foost"});
+	
+		
 		
 		m_AnimVertical = new CAnimation(game.m_materialPlayerVertical, 6, 1, 2.0f);
 		
@@ -86,6 +88,8 @@ public class CPlayer : CCharacter {
 		m_spriteSheet.Init();
 		m_ConeVision.Init();
 		//m_spriteSheet.SetAnimation(m_AnimRepos);
+		
+		GameObject.Find("_Game").GetComponent<CGame>().getSoundEngine().setSwitch("Sol", "Metal02", m_GameObject);
 	}
 
 	//-------------------------------------------------------------------------------

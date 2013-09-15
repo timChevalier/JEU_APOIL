@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" SchemaVersion="9">
 	<RootPaths>
-		<ProjectRoot>C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\APOIL\Documents\JeuApoil-Prot\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\APOIL\Documents\JeuApoil-Prot\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\APOIL\Documents\JeuApoil-Prot\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\alex\Documents\WwiseProjects\JeuApoil-Prot\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\APOIL\Documents\JeuApoil-Prot\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents />
 	<StreamedFiles />
@@ -24,17 +24,86 @@
 			<ShortName>ApoilProto</ShortName>
 			<Path>ApoilProto.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3624342304" Name="Play_Amb_Couloir_01" />
-				<Event Id="1079516752" Name="Play_Amb_Pilotage_01" />
+				<Event Id="877647874" Name="Play_Amb_Couloir" />
+				<Event Id="1011042162" Name="Play_Amb_Pilotage" />
+				<Event Id="2878981019" Name="Play_Foost" />
 				<Event Id="4234949920" Name="Play_Lamp" />
-				<Event Id="2822502042" Name="Play_PAS" />
-				<Event Id="2256929818" Name="Stop_Amb_Couloir_01" />
-				<Event Id="2262227310" Name="Stop_Amb_Pilotage_01" />
+				<Event Id="1300901764" Name="Play_Porte" />
+				<Event Id="777550132" Name="Stop_Amb_Couloir" />
+				<Event Id="1886440472" Name="Stop_Amb_Pilotage" />
 				<Event Id="1676106750" Name="Stop_Lamp" />
 			</IncludedEvents>
 			<IncludedDialogueEvents />
 			<ReferencedStreamedFiles />
 			<IncludedFullFiles>
+				<File Id="172959887" Language="SFX">
+					<ShortName>1_T20_Z014020-03.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-03.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="721859342" Language="SFX">
+					<ShortName>1_T20_Z014020-05.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-05.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="1032968851" Language="SFX">
+					<ShortName>1_T20_Z014020-09.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-09.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="786714285" Language="SFX">
+					<ShortName>1_T20_Z014020-13.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-13.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="248108788" Language="SFX">
+					<ShortName>1_T20_Z014020-17.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-17.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="441961808" Language="SFX">
+					<ShortName>1_T20_Z014020-19.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-19.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="264439676" Language="SFX">
+					<ShortName>1_T20_Z014020-21.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-21.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="850516572" Language="SFX">
+					<ShortName>1_T20_Z014020-25.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-25.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="438980235" Language="SFX">
+					<ShortName>1_T20_Z014020-29.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-29.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="254606616" Language="SFX">
+					<ShortName>1_T20_Z014020-31.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-31.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="64519200" Language="SFX">
+					<ShortName>1_T20_Z014020-33.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-33.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="1065735164" Language="SFX">
+					<ShortName>1_T20_Z014020-37.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-37.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="382630719" Language="SFX">
+					<ShortName>1_T20_Z014020-39.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-39.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="362210378" Language="SFX">
+					<ShortName>1_T20_Z014020-41.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-41.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="535589181" Language="SFX">
+					<ShortName>1_T20_Z014020-43.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-43.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="718612767" Language="SFX">
+					<ShortName>1_T20_Z014020-45.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-45.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="39010564" Language="SFX">
+					<ShortName>1_T20_Z014020-47.A1-GAIN_01-01.wav</ShortName>
+					<Path>sfx\1_t20_z014020-47.a1-gain_01-01_ddc98ef4.wem</Path>
+				</File>
 				<File Id="265561491" Language="SFX">
 					<ShortName>1_T9_Z014009-RX2DENOISE-10.A2-OADY_01-01.wav</ShortName>
 					<Path>sfx\1_t9_z014009-rx2denoise-10.a2-oady_01-01_ddc98ef4.wem</Path>
@@ -53,7 +122,7 @@
 				</File>
 				<File Id="156993232" Language="SFX">
 					<ShortName>Amb_Venti-02.wav</ShortName>
-					<Path>sfx\amb_venti-02_ddc98ef4.wem</Path>
+					<Path>sfx\amb_venti-02_7631c8f4.wem</Path>
 				</File>
 				<File Id="47850031" Language="SFX">
 					<ShortName>Audio 4_01-03.wav</ShortName>
@@ -102,6 +171,58 @@
 				<File Id="737616448" Language="SFX">
 					<ShortName>Audio 4_01-47.wav</ShortName>
 					<Path>sfx\audio 4_01-47_ddc98ef4.wem</Path>
+				</File>
+				<File Id="190741300" Language="SFX">
+					<ShortName>Audio 5_01.wav</ShortName>
+					<Path>sfx\audio 5_01_ddc98ef4.wem</Path>
+				</File>
+				<File Id="742247542" Language="SFX">
+					<ShortName>Audio 5_02.wav</ShortName>
+					<Path>sfx\audio 5_02_ddc98ef4.wem</Path>
+				</File>
+				<File Id="248326897" Language="SFX">
+					<ShortName>Audio 5_03.wav</ShortName>
+					<Path>sfx\audio 5_03_ddc98ef4.wem</Path>
+				</File>
+				<File Id="1037586174" Language="SFX">
+					<ShortName>Audio 5_04.wav</ShortName>
+					<Path>sfx\audio 5_04_ddc98ef4.wem</Path>
+				</File>
+				<File Id="485340403" Language="SFX">
+					<ShortName>Audio 5_05.wav</ShortName>
+					<Path>sfx\audio 5_05_ddc98ef4.wem</Path>
+				</File>
+				<File Id="16030514" Language="SFX">
+					<ShortName>Audio 5_06.wav</ShortName>
+					<Path>sfx\audio 5_06_ddc98ef4.wem</Path>
+				</File>
+				<File Id="161340630" Language="SFX">
+					<ShortName>Audio 5_07.wav</ShortName>
+					<Path>sfx\audio 5_07_ddc98ef4.wem</Path>
+				</File>
+				<File Id="141410925" Language="SFX">
+					<ShortName>Audio 5_08.wav</ShortName>
+					<Path>sfx\audio 5_08_ddc98ef4.wem</Path>
+				</File>
+				<File Id="943878073" Language="SFX">
+					<ShortName>Audio 5_09.wav</ShortName>
+					<Path>sfx\audio 5_09_ddc98ef4.wem</Path>
+				</File>
+				<File Id="973730365" Language="SFX">
+					<ShortName>Audio 5_10.wav</ShortName>
+					<Path>sfx\audio 5_10_ddc98ef4.wem</Path>
+				</File>
+				<File Id="532288083" Language="SFX">
+					<ShortName>Audio 5_11.wav</ShortName>
+					<Path>sfx\audio 5_11_ddc98ef4.wem</Path>
+				</File>
+				<File Id="417182446" Language="SFX">
+					<ShortName>Audio 5_12.wav</ShortName>
+					<Path>sfx\audio 5_12_ddc98ef4.wem</Path>
+				</File>
+				<File Id="499108159" Language="SFX">
+					<ShortName>Audio 6_01.wav</ShortName>
+					<Path>sfx\audio 6_01_ddc98ef4.wem</Path>
 				</File>
 				<File Id="33990944" Language="SFX">
 					<ShortName>Computer Beeps 03-03.wav</ShortName>
