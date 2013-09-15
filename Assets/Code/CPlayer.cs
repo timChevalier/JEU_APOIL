@@ -6,6 +6,7 @@ public class CPlayer : CCharacter {
 	// a foutre dans le constructeur si on veut pouvoir le faire indifferement des jouerus
 	int m_nResistance = 5;
 	int m_nRadiusDiscrectionCircle = 10;
+	CGame game;
 	
 	//CGame m_game = GameObject.Find("_Game").GetComponent<CGame>();
 	float m_fSpeed;
@@ -21,6 +22,8 @@ public class CPlayer : CCharacter {
 	Vector2 m_DirectionRegard;
 	Vector2 m_DirectionDeplacement;
 	bool m_bMainCharacter;
+	
+	CCercleDiscretion m_CercleDiscretion;
 	
 	public enum EMoveModState // mode de deplacement
 	{
@@ -52,7 +55,7 @@ public class CPlayer : CCharacter {
 	//-------------------------------------------------------------------------------
 	public CPlayer(Vector2 posInit, bool bIsMainCharacter = false)
 	{
-		CGame game = GameObject.Find("_Game").GetComponent<CGame>();
+		game = GameObject.Find("_Game").GetComponent<CGame>();
 		GameObject prefab = game.prefabPlayer;
 		m_GameObject = GameObject.Instantiate(prefab) as GameObject;
 		SetPosition2D(posInit);
@@ -67,14 +70,14 @@ public class CPlayer : CCharacter {
 		
 		m_AnimHorizontal = new CAnimation(game.m_materialPlayerHorizontal, 6, 1, 6.0f, new string[]{"", "", "Play_Foost", "", "", "Play_Foost"});
 	
-		
-		
 		m_AnimVertical = new CAnimation(game.m_materialPlayerVertical, 6, 1, 2.0f);
 		
 		m_eMoveModState = EMoveModState.e_MoveModState_marche;
 		m_bMainCharacter = bIsMainCharacter;
 		
 		m_ConeDeVisionNew = m_GameObject.transform.FindChild("ConePute").gameObject;
+		
+		m_CercleDiscretion = m_GameObject.transform.FindChild("CercleDiscretion").GetComponent<CCercleDiscretion>();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -89,7 +92,7 @@ public class CPlayer : CCharacter {
 		m_ConeVision.Init();
 		//m_spriteSheet.SetAnimation(m_AnimRepos);
 		
-		GameObject.Find("_Game").GetComponent<CGame>().getSoundEngine().setSwitch("Sol", "Metal02", m_GameObject);
+		game.getSoundEngine().setSwitch("Sol", "Metal02", m_GameObject);
 	}
 
 	//-------------------------------------------------------------------------------
@@ -127,6 +130,8 @@ public class CPlayer : CCharacter {
 		m_spriteSheet.Process();
 		if(m_bMainCharacter)
 			m_ConeVision.Process();
+		
+		m_CercleDiscretion.Process(m_fSpeed);
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -312,4 +317,5 @@ public class CPlayer : CCharacter {
 	{
 		return m_DirectionDeplacement;	
 	}
+	
 }
