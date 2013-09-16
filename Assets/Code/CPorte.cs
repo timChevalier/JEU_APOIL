@@ -51,7 +51,6 @@ public class CPorte : MonoBehaviour
 			Gizmos.color = Color.red;
 			Vector3 pos = new Vector3(attenuation_enter_size, 5-i/10, 0);
 			Gizmos.DrawLine(transform.position, transform.position - pos);
-			
 			Gizmos.color = Color.green;
 			pos = new Vector3(attenuation_exit_size, 5-i/10, 0);
 			Gizmos.DrawLine(transform.position, transform.position + pos);
