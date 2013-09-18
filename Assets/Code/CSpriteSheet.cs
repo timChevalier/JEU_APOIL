@@ -4,6 +4,7 @@ using System.Collections;
 public class CSpriteSheet // : MonoBehaviour 
 {
 	bool m_bIsPlaying;
+	bool m_bIsForward;
 	int m_nColumns = 1;
 	int m_nRows = 1;	
 	float m_fFPS = 1.0f;
@@ -25,6 +26,7 @@ public class CSpriteSheet // : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	public void Init () {
 		m_bIsPlaying = false;
+		m_bIsForward = true;
 		m_myRenderer = m_parent.renderer;
 		m_fTemps = 0.0f;
 		game = GameObject.Find("_Game").GetComponent<CGame>();
@@ -38,9 +40,16 @@ public class CSpriteSheet // : MonoBehaviour
 		if (m_fTemps > 1.0f)
 		{
 			// Calculate index
-			m_nIndex++;
-            if (m_nIndex >= m_nRows * m_nColumns)
-                m_nIndex = 0;	
+			if(m_bIsForward){
+				m_nIndex++;
+	            if (m_nIndex >= m_nRows * m_nColumns)
+	                m_nIndex = 0;
+			}
+			else {
+				m_nIndex--;
+	            if (m_nIndex <= 0)
+	                m_nIndex = m_nRows * m_nColumns;
+			}
 			
 			//Play sound if necessary
 			if(m_sounds[m_nIndex] != "" && m_sounds[m_nIndex] != null)
@@ -92,5 +101,13 @@ public class CSpriteSheet // : MonoBehaviour
 	public void AnimationStop()
 	{
 		m_bIsPlaying = false;
+	}
+	
+	public void SetDirection(bool forward){
+		m_bIsForward = forward;
+	}
+	
+	public void Reverse(){
+		m_bIsForward = !m_bIsForward;
 	}
 }
