@@ -132,7 +132,7 @@ public class CMonster : CCharacter
 			Vector3 move = Vector3.zero;
 			Vector2 rand = Random.insideUnitCircle;
 			move += m_Game.m_fSpeedMonster * m_fSpeed * new Vector3(rand.x, rand.y , 0.0f);
-			m_GameObject.rigidbody.velocity += move;
+			m_GameObject.rigidbody.velocity = Vector3.zero	; //+= move; //Imobility, as requested by game design documents...
 			m_fTimerErrance = m_Game.m_fMonsterTimeErrance;
 		}
 		else 
@@ -243,8 +243,20 @@ public class CMonster : CCharacter
 		}
 	}
 	
-	public void detectedPlayer(){
+	public void detectedPlayerAudio(){
 		//NOMNOMNOM
+		if(!m_bDetectionAudio)
+			return;
+		
+		switch(m_eMonsterState){
+			
+			case EMonsterState.e_MonsterState_errance:
+				SetState(EMonsterState.e_MonsterState_affut);
+				break;
+			
+		}
+			
+			
 	}
 	
 	//-------------------------------------------------------------------------------
