@@ -80,6 +80,7 @@ public class CLevel
 			else
 			{
 				currentLight.SetActiveRecursively(false);
+				currentLight.active = true;
 			}
 		}
 	}
