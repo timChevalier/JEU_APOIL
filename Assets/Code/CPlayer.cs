@@ -16,7 +16,7 @@ public class CPlayer : CCharacter {
 	CAnimation m_AnimHorizontal;
 	CAnimation m_AnimVertical;
 	CConeVision m_ConeVision;
-	GameObject m_ConeDeVisionNew;
+	GameObject m_Torche;
 	
 	Camera m_CameraCone;
 	Vector2 m_DirectionRegard;
@@ -75,7 +75,7 @@ public class CPlayer : CCharacter {
 		m_eMoveModState = EMoveModState.e_MoveModState_marche;
 		m_bMainCharacter = bIsMainCharacter;
 		
-		m_ConeDeVisionNew = m_GameObject.transform.FindChild("ConePute").gameObject;
+		m_Torche = m_GameObject.transform.FindChild("Torche").gameObject;
 		
 		m_CercleDiscretion = m_GameObject.transform.FindChild("CercleDiscretion").GetComponent<CCercleDiscretion>();
 	}
@@ -121,6 +121,16 @@ public class CPlayer : CCharacter {
 				if (m_eState >= EState.e_state_nbState)
 					m_eState = EState.e_state_normal;
 			}
+		}
+		
+		//gestion de la lampe torche
+		if(game.m_bLightIsOn == false)
+		{
+			m_Torche.SetActiveRecursively(true);
+		}
+		else
+		{
+			m_Torche.SetActiveRecursively(false);
 		}
 		
 		//DEBUG
@@ -301,7 +311,7 @@ public class CPlayer : CCharacter {
 		m_ConeVision.setAngleVise(fAngleVise);  
 		
 		m_fAngleCone += 90 + 75/2;
-		m_ConeDeVisionNew.transform.RotateAround(new Vector3(0,0,1),  m_fAngleCone - fAngleOld);
+		m_Torche.transform.RotateAround(new Vector3(0,0,1),  m_fAngleCone - fAngleOld);
 	}
 	
 	//-------------------------------------------------------------------------------

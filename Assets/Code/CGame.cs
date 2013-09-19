@@ -42,6 +42,7 @@ public class CGame : MonoBehaviour
 	
 	public bool m_BMute = false;
 	public string soundbankName = "Jeu_apoil.bnk";
+	public bool m_bLightIsOn = true;
 	
 	
 	// variables
@@ -58,8 +59,7 @@ public class CGame : MonoBehaviour
 	///
 	//-------------------------------------------------------------------------------
 	public void Init()
-	{	
-		
+	{		
 		m_SoundEngine = new CSoundEngine();
 		m_SoundEngine.Init();
 		m_SoundEngine.LoadBank(soundbankName);
@@ -70,9 +70,7 @@ public class CGame : MonoBehaviour
 		m_nScreenHeight = 800;
 		m_Camera = new CCamera();
 		m_Camera.Init();
-		
-		
-		
+
 	}
 	
 	//-------------------------------------------------------------------------------
