@@ -8,6 +8,7 @@ public class CLevel
 	CPlayer m_Player2;
 	CPlayer m_Player3;
 	CMonster m_Monster;
+	float m_bTimerLightSwitch;
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -21,7 +22,7 @@ public class CLevel
 		//m_Player2 =  new CPlayer();
 		//m_Player3 =  new CPlayer();
 		m_Monster = new CMonster(posInitM);
-
+		m_bTimerLightSwitch = 0;
 		
 	}
 	
@@ -51,6 +52,11 @@ public class CLevel
 		m_Player.Process(fDeltatime);
 		m_Monster.Process(fDeltatime);
 		
+		if(Input.GetKey(KeyCode.L) && m_bTimerLightSwitch <= 0){
+			game.m_bLightIsOn = !game.m_bLightIsOn;
+			m_bTimerLightSwitch = 10f;
+		}
+		m_bTimerLightSwitch -= 0.5f;
 		if(game.m_bLightIsOn == false)
 			TurnLight(false);
 		else
@@ -73,7 +79,7 @@ public class CLevel
 			}
 			else
 			{
-				currentLight.SetActiveRecursively(false);	
+				currentLight.SetActiveRecursively(false);
 			}
 		}
 	}
