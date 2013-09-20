@@ -47,13 +47,13 @@ public class CPorte : MonoBehaviour
 	
 	
 	public void OnDrawGizmosSelected(){
-		for(int i = 0; i<100; i++){
+		for(int i = 0; i<360; i++){
 			Gizmos.color = Color.red;
-			Vector3 pos = new Vector3(attenuation_enter_size, 5-i/10, 0);
-			Gizmos.DrawLine(transform.position, transform.position - pos);
+			Vector3 pos = new Vector3(attenuation_enter_size+Mathf.Cos(i), Mathf.Sin(i), 0);
+			Gizmos.DrawLine(transform.position, transform.TransformDirection(-pos)+transform.position);
 			Gizmos.color = Color.green;
-			pos = new Vector3(attenuation_exit_size, 5-i/10, 0);
-			Gizmos.DrawLine(transform.position, transform.position + pos);
+			pos = new Vector3(attenuation_exit_size, 0, 0);
+			Gizmos.DrawLine(transform.position, transform.TransformDirection(pos)+transform.position);
 		}
 		
 	}
@@ -97,9 +97,7 @@ public class CPorte : MonoBehaviour
 			}
 			else {				
 				game.getCamera().SetCurrentRoom(m_PieceEnter);
-				
 			}
-			
 		}
 	}
 	
