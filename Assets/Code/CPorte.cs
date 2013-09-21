@@ -47,12 +47,12 @@ public class CPorte : MonoBehaviour
 	
 	
 	public void OnDrawGizmosSelected(){
-		for(int i = 0; i<360; i++){
+		for(int i = -90; i<90; i++){
 			Gizmos.color = Color.red;
-			Vector3 pos = new Vector3(attenuation_enter_size+Mathf.Cos(i), Mathf.Sin(i), 0);
+			Vector3 pos = attenuation_enter_size*(new Vector3(Mathf.Cos(i*3.14f/180f), Mathf.Sin(i*3.14f/180f), 0).normalized);
 			Gizmos.DrawLine(transform.position, transform.TransformDirection(-pos)+transform.position);
 			Gizmos.color = Color.green;
-			pos = new Vector3(attenuation_exit_size, 0, 0);
+			pos = attenuation_exit_size*(new Vector3(Mathf.Cos(i*3.14f/180f), Mathf.Sin(i*3.14f/180f), 0).normalized);
 			Gizmos.DrawLine(transform.position, transform.TransformDirection(pos)+transform.position);
 		}
 		
