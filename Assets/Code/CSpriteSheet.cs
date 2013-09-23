@@ -13,6 +13,14 @@ public class CSpriteSheet // : MonoBehaviour
 	string[] m_sounds;
 	CGame game;
 	
+	public enum EEndCondition{
+		e_Loop,
+		e_PingPong,
+		e_Stop
+	};
+	
+	EEndCondition m_endCondition;
+	
 	private GameObject m_parent;
 	private Renderer m_myRenderer;
 	private int m_nIndex = 0;
@@ -30,6 +38,7 @@ public class CSpriteSheet // : MonoBehaviour
 		m_myRenderer = m_parent.renderer;
 		m_fTemps = 0.0f;
 		game = GameObject.Find("_Game").GetComponent<CGame>();
+		m_endCondition = EEndCondition.e_Loop;
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -43,12 +52,35 @@ public class CSpriteSheet // : MonoBehaviour
 			if(m_bIsForward){
 				m_nIndex++;
 	            if (m_nIndex >= m_nRows * m_nColumns)
-	                m_nIndex = 0;
+	                switch(m_endCondition){
+						case EEndCondition.e_Stop:
+							AnimationStop();
+					 		break;
+						case EEndCondition.e_Loop:
+							m_nIndex = 0;
+							break;
+						case EEndCondition.e_PingPong:
+							m_nIndex--;
+							Reverse();
+							break;
+				}
+				
 			}
 			else {
 				m_nIndex--;
-	            if (m_nIndex <= 0)
-	                m_nIndex = m_nRows * m_nColumns;
+	            if (m_nIndex < 0)
+					switch(m_endCondition){
+						case EEndCondition.e_Stop:
+							AnimationStop();
+					 		break;
+						case EEndCondition.e_Loop:
+							m_nIndex = m_nRows * m_nColumns;
+							break;
+						case EEndCondition.e_PingPong:
+							m_nIndex++;
+							Reverse();
+							break;
+				}
 			}
 			
 			//Play sound if necessary
@@ -109,5 +141,9 @@ public class CSpriteSheet // : MonoBehaviour
 	
 	public void Reverse(){
 		m_bIsForward = !m_bIsForward;
+	}
+	
+	public void setEndCondition(EEndCondition c){
+		m_endCondition = c;
 	}
 }
