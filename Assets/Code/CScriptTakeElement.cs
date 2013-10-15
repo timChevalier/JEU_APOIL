@@ -10,7 +10,7 @@ public class CScriptTakeElement : MonoBehaviour {
 	void Start () 
 	{
 		m_Game = GameObject.Find("_Game").GetComponent<CGame>();
-		m_Game.getLevel().CreateTakeElement(gameObject);
+		m_Game.getLevel().CreateElement<CTakeElement>(gameObject);
 	}
 	
 	// Update is called once per frame

@@ -11,7 +11,7 @@ public class CLevel
 	CMonster m_Monster;
 	float m_bTimerLightSwitch;
 	
-	List<CTakeElement> m_pElement;
+	List<CElement> m_pElement;
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -27,7 +27,7 @@ public class CLevel
 		m_Monster = new CMonster(posInitM);
 		m_bTimerLightSwitch = 0;
 		
-		m_pElement = new List<CTakeElement>();
+		m_pElement = new List<CElement>();
 		
 	}
 	
@@ -103,10 +103,10 @@ public class CLevel
 	//-------------------------------------------------------------------------------
 	/// 
 	//-------------------------------------------------------------------------------
-	public void CreateTakeElement(GameObject obj)
+	public void CreateElement<ElemType>(GameObject obj) where ElemType : CElement, new()
 	{
-		CTakeElement elem = new CTakeElement(obj);
-		elem.Init();
+		ElemType elem = new ElemType();
+		elem.Init(obj);
 		m_pElement.Add(elem);
 	}
 	
