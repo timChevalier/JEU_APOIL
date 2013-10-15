@@ -27,7 +27,8 @@ public class CPorte : MonoBehaviour
 		m_spriteSheet = new CSpriteSheet(gameObject);
 		m_spriteSheet.Init();
 		m_openAnimation = new CAnimation(m_openMat, 4, 1, 2.0f);
-		m_spriteSheet.SetAnimation(m_openAnimation);  
+		m_spriteSheet.SetAnimation(m_openAnimation);
+		m_spriteSheet.setEndCondition(CSpriteSheet.EEndCondition.e_PingPong);
 		m_objCamera = GameObject.Find("Cameras");
 		m_bGoodWay = true;
 		
