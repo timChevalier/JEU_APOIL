@@ -309,7 +309,7 @@ public class CPlayer : CCharacter {
 		Vector3 posMouseTmp = Vector3.zero;
 		RaycastHit vHit = new RaycastHit();
 		Ray vRay = m_CameraCone.ScreenPointToRay(Input.mousePosition);
-		if(Physics.Raycast(vRay, out vHit, 1000)) 
+		if(Physics.Raycast(vRay, out vHit, 100)) 
 		{
 			posMouseTmp = vHit.point;
 		}

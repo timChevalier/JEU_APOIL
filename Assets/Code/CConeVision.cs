@@ -129,7 +129,7 @@ public class CConeVision : MonoBehaviour
 				if(!hit.collider.gameObject.tag.Equals("player") && hit.collider.gameObject.GetComponent<CGameObject>() != null)
 				{
 					dist = hit.distance;
-					objet.SetVisible();
+					//objet.SetVisible();
 				}
 				
 			}
