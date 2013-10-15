@@ -6,18 +6,19 @@ public class CTakeElement : CElement {
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------	
-	public CTakeElement(GameObject obj)
+	public CTakeElement()
 	{
-		m_GameObject = obj;
-		m_GameObject.GetComponent<CScriptTakeElement>().SetTakeElement(this);
 	}
 	
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------	
-	public new void Init()
+	public new void Init(GameObject obj)
 	{	
 		base.Init();
+		m_GameObject = obj;
+		m_GameObject.GetComponent<CScriptTakeElement>().SetTakeElement(this);
+
 	}
 
 	//-------------------------------------------------------------------------------

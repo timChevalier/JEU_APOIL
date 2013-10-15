@@ -1,23 +1,24 @@
 using UnityEngine;
 using System.Collections;
 
-public class CBigElement : CTakeElement 
+public class CMachine : CElement 
 {
-
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------	
-	public CBigElement()
+	public CMachine()
 	{
-
 	}
 	
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------	
-	public new void Init()
+	public new void Init(GameObject obj)
 	{	
 		base.Init();
+		m_GameObject = obj;
+		m_GameObject.GetComponent<CScriptMachine>().SetMachine(this);
+
 	}
 
 	//-------------------------------------------------------------------------------
@@ -35,4 +36,6 @@ public class CBigElement : CTakeElement
 	{
 		base.Process(fDeltatime);
 	}
+	
 }
+

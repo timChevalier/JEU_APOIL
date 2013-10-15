@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CLevel
 {
@@ -10,9 +11,7 @@ public class CLevel
 	CMonster m_Monster;
 	float m_bTimerLightSwitch;
 	
-	CTakeElement[] m_pTakeElement;
-	const int m_nMaxTakeElement = 64;
-	int m_nNbTakeElement;
+	List<CElement> m_pElement;
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -28,8 +27,7 @@ public class CLevel
 		m_Monster = new CMonster(posInitM);
 		m_bTimerLightSwitch = 0;
 		
-		m_pTakeElement = new CTakeElement[m_nMaxTakeElement];
-		m_nNbTakeElement = 0;
+		m_pElement = new List<CElement>();
 		
 	}
 	
@@ -41,8 +39,9 @@ public class CLevel
 		m_Player.Init();
 		m_Monster.Init();
 		
-		for(int i = 0 ; i < m_nNbTakeElement ; ++i)
-			m_pTakeElement[i].Init();
+		foreach(CElement elem in m_pElement)
+			elem.Init();
+		
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -53,8 +52,8 @@ public class CLevel
 		m_Player.Reset();
 		m_Monster.Reset();
 		
-		for(int i = 0 ; i < m_nNbTakeElement ; ++i)
-			m_pTakeElement[i].Reset();
+		foreach(CElement elem in m_pElement)
+			elem.Reset();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -75,8 +74,8 @@ public class CLevel
 		else
 			TurnLight(true);
 		
-		for(int i = 0 ; i < m_nNbTakeElement ; ++i)
-			m_pTakeElement[i].Process(fDeltatime);
+		foreach(CElement elem in m_pElement)
+			elem.Process(fDeltatime);
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -104,11 +103,11 @@ public class CLevel
 	//-------------------------------------------------------------------------------
 	/// 
 	//-------------------------------------------------------------------------------
-	public void CreateTakeElement(GameObject obj)
+	public void CreateElement<ElemType>(GameObject obj) where ElemType : CElement, new()
 	{
-		m_pTakeElement[m_nNbTakeElement] = new CTakeElement(obj);
-		m_pTakeElement[m_nNbTakeElement].Init();
-		m_nNbTakeElement++;
+		ElemType elem = new ElemType();
+		elem.Init(obj);
+		m_pElement.Add(elem);
 	}
 	
 	//-------------------------------------------------------------------------------
