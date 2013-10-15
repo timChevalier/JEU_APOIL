@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CLevel
 {
@@ -10,9 +11,7 @@ public class CLevel
 	CMonster m_Monster;
 	float m_bTimerLightSwitch;
 	
-	CTakeElement[] m_pElement;
-	const int m_nMaxTakeElement = 64;
-	int m_nNbElement;
+	List<CTakeElement> m_pElement;
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -28,8 +27,7 @@ public class CLevel
 		m_Monster = new CMonster(posInitM);
 		m_bTimerLightSwitch = 0;
 		
-		m_pElement = new CTakeElement[m_nMaxTakeElement];
-		m_nNbElement = 0;
+		m_pElement = new List<CTakeElement>();
 		
 	}
 	
@@ -41,8 +39,9 @@ public class CLevel
 		m_Player.Init();
 		m_Monster.Init();
 		
-		for(int i = 0 ; i < m_nNbElement ; ++i)
-			m_pElement[i].Init();
+		foreach(CElement elem in m_pElement)
+			elem.Init();
+		
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -53,8 +52,8 @@ public class CLevel
 		m_Player.Reset();
 		m_Monster.Reset();
 		
-		for(int i = 0 ; i < m_nNbElement ; ++i)
-			m_pElement[i].Reset();
+		foreach(CElement elem in m_pElement)
+			elem.Reset();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -75,8 +74,8 @@ public class CLevel
 		else
 			TurnLight(true);
 		
-		for(int i = 0 ; i < m_nNbElement ; ++i)
-			m_pElement[i].Process(fDeltatime);
+		foreach(CElement elem in m_pElement)
+			elem.Process(fDeltatime);
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -106,9 +105,9 @@ public class CLevel
 	//-------------------------------------------------------------------------------
 	public void CreateTakeElement(GameObject obj)
 	{
-		m_pElement[m_nNbElement] = new CTakeElement(obj);
-		m_pElement[m_nNbElement].Init();
-		m_nNbElement++;
+		CTakeElement elem = new CTakeElement(obj);
+		elem.Init();
+		m_pElement.Add(elem);
 	}
 	
 	//-------------------------------------------------------------------------------
