@@ -10,9 +10,9 @@ public class CLevel
 	CMonster m_Monster;
 	float m_bTimerLightSwitch;
 	
-	CTakeElement[] m_pTakeElement;
+	CTakeElement[] m_pElement;
 	const int m_nMaxTakeElement = 64;
-	int m_nNbTakeElement;
+	int m_nNbElement;
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -28,8 +28,8 @@ public class CLevel
 		m_Monster = new CMonster(posInitM);
 		m_bTimerLightSwitch = 0;
 		
-		m_pTakeElement = new CTakeElement[m_nMaxTakeElement];
-		m_nNbTakeElement = 0;
+		m_pElement = new CTakeElement[m_nMaxTakeElement];
+		m_nNbElement = 0;
 		
 	}
 	
@@ -41,8 +41,8 @@ public class CLevel
 		m_Player.Init();
 		m_Monster.Init();
 		
-		for(int i = 0 ; i < m_nNbTakeElement ; ++i)
-			m_pTakeElement[i].Init();
+		for(int i = 0 ; i < m_nNbElement ; ++i)
+			m_pElement[i].Init();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -53,8 +53,8 @@ public class CLevel
 		m_Player.Reset();
 		m_Monster.Reset();
 		
-		for(int i = 0 ; i < m_nNbTakeElement ; ++i)
-			m_pTakeElement[i].Reset();
+		for(int i = 0 ; i < m_nNbElement ; ++i)
+			m_pElement[i].Reset();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -75,8 +75,8 @@ public class CLevel
 		else
 			TurnLight(true);
 		
-		for(int i = 0 ; i < m_nNbTakeElement ; ++i)
-			m_pTakeElement[i].Process(fDeltatime);
+		for(int i = 0 ; i < m_nNbElement ; ++i)
+			m_pElement[i].Process(fDeltatime);
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -106,9 +106,9 @@ public class CLevel
 	//-------------------------------------------------------------------------------
 	public void CreateTakeElement(GameObject obj)
 	{
-		m_pTakeElement[m_nNbTakeElement] = new CTakeElement(obj);
-		m_pTakeElement[m_nNbTakeElement].Init();
-		m_nNbTakeElement++;
+		m_pElement[m_nNbElement] = new CTakeElement(obj);
+		m_pElement[m_nNbElement].Init();
+		m_nNbElement++;
 	}
 	
 	//-------------------------------------------------------------------------------
