@@ -54,7 +54,6 @@ public class CGame : MonoBehaviour
 	CCamera m_Camera;
 	CSoundEngine m_SoundEngine;
 	
-	
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
@@ -70,7 +69,6 @@ public class CGame : MonoBehaviour
 		m_nScreenHeight = 800;
 		m_Camera = new CCamera();
 		m_Camera.Init();
-
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -86,8 +84,7 @@ public class CGame : MonoBehaviour
 	///
 	//-------------------------------------------------------------------------------
 	void Process(float fDeltatime)
-	{
-		
+	{	
 		if(m_bInGame)
 		{
 			m_Level.Process(fDeltatime);
@@ -142,6 +139,7 @@ public class CGame : MonoBehaviour
 		
 		m_bInGame = true;	
 	}
+
 	
 	//-------------------------------------------------------------------------------
 	/// 

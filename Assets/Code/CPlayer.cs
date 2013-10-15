@@ -22,8 +22,10 @@ public class CPlayer : CCharacter {
 	Vector2 m_DirectionRegard;
 	Vector2 m_DirectionDeplacement;
 	bool m_bMainCharacter;
+	bool m_bHaveObject;
 	
 	CCercleDiscretion m_CercleDiscretion;
+	CTakeElement m_YounesSuceDesBites;
 	
 	public enum EMoveModState // mode de deplacement
 	{
@@ -74,6 +76,7 @@ public class CPlayer : CCharacter {
 		
 		m_eMoveModState = EMoveModState.e_MoveModState_marche;
 		m_bMainCharacter = bIsMainCharacter;
+		m_bHaveObject = false;
 		
 		m_Torche = m_GameObject.transform.FindChild("Torche").gameObject;
 		
@@ -133,6 +136,12 @@ public class CPlayer : CCharacter {
 			m_Torche.SetActiveRecursively(false);
 		}
 		
+		//gestion si on tiens 
+		if(m_bHaveObject)
+		{
+			m_YounesSuceDesBites.SetPosition2D(m_GameObject.transform.position);
+		}
+		
 		//DEBUG
 		
 		
@@ -181,7 +190,15 @@ public class CPlayer : CCharacter {
 		
 		m_fSpeed = game.m_fSpeedPlayer * fVitesseEtat * fVitesseAttitude * fCoeffDirection;
 	}
-
+	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------
+	public void PickUpObject(CTakeElement obj)
+	{
+		m_YounesSuceDesBites = obj;
+		m_bHaveObject = true;
+	}
 	
 	//-------------------------------------------------------------------------------
 	///

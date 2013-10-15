@@ -48,7 +48,7 @@ public class CElement
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
-	protected void SetPosition2D(Vector2 pos2D)
+	public void SetPosition2D(Vector2 pos2D)
 	{
 		Vector3 pos = m_GameObject.transform.position;
 		pos.x = pos2D.x;

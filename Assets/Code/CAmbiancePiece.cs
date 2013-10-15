@@ -7,31 +7,31 @@ public class CAmbiancePiece : MonoBehaviour {
 	public float transition = 0.5f;
 	public string solSwitch = "";
 	
-	CGame game;
+	CGame m_Game;
 	
 	void Start(){
-		game = GameObject.Find("_Game").GetComponent<CGame>();
+		m_Game = GameObject.Find("_Game").GetComponent<CGame>();
 	}
 	
 	public void PlayAmbiance(){
-		game.getSoundEngine().postEvent("Play_"+AmbianceName, gameObject);
+		m_Game.getSoundEngine().postEvent("Play_"+AmbianceName, gameObject);
 		
 	}
 	
 	public void SetInAttenuation(float val){
-		game.getSoundEngine().setRTPC(AmbianceName+"_In", val, gameObject);
+		m_Game.getSoundEngine().setRTPC(AmbianceName+"_In", val, gameObject);
 	}
 	
 	public void SetOutAttenuation(float val){
-		game.getSoundEngine().setRTPC(AmbianceName+"_Out", val, gameObject);
+		m_Game.getSoundEngine().setRTPC(AmbianceName+"_Out", val, gameObject);
 	}
 	
 	public void switchGround(){
 		if(solSwitch != "")
-			game.getSoundEngine().setSwitch("Sol", solSwitch, game.getLevel().getPlayer().getGameObject());
+			m_Game.getSoundEngine().setSwitch("Sol", solSwitch, m_Game.getLevel().getPlayer().getGameObject());
 	}
 	
 	public void StopAmbiance(){
-		game.getSoundEngine().postEvent("Stop_"+AmbianceName, gameObject);
+		m_Game.getSoundEngine().postEvent("Stop_"+AmbianceName, gameObject);
 	}
 }

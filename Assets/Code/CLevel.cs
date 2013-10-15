@@ -10,6 +10,10 @@ public class CLevel
 	CMonster m_Monster;
 	float m_bTimerLightSwitch;
 	
+	CTakeElement[] m_pTakeElement;
+	const int m_nMaxTakeElement = 64;
+	int m_nNbTakeElement;
+	
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
@@ -24,6 +28,9 @@ public class CLevel
 		m_Monster = new CMonster(posInitM);
 		m_bTimerLightSwitch = 0;
 		
+		m_pTakeElement = new CTakeElement[m_nMaxTakeElement];
+		m_nNbTakeElement = 0;
+		
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -33,6 +40,9 @@ public class CLevel
 	{	
 		m_Player.Init();
 		m_Monster.Init();
+		
+		for(int i = 0 ; i < m_nNbTakeElement ; ++i)
+			m_pTakeElement[i].Init();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -42,6 +52,9 @@ public class CLevel
 	{
 		m_Player.Reset();
 		m_Monster.Reset();
+		
+		for(int i = 0 ; i < m_nNbTakeElement ; ++i)
+			m_pTakeElement[i].Reset();
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -61,6 +74,9 @@ public class CLevel
 			TurnLight(false);
 		else
 			TurnLight(true);
+		
+		for(int i = 0 ; i < m_nNbTakeElement ; ++i)
+			m_pTakeElement[i].Process(fDeltatime);
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -83,6 +99,16 @@ public class CLevel
 				currentLight.active = true;
 			}
 		}
+	}
+	
+	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
+	public void CreateTakeElement(GameObject obj)
+	{
+		m_pTakeElement[m_nNbTakeElement] = new CTakeElement(obj);
+		m_pTakeElement[m_nNbTakeElement].Init();
+		m_nNbTakeElement++;
 	}
 	
 	//-------------------------------------------------------------------------------
