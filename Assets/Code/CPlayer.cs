@@ -363,8 +363,7 @@ public class CPlayer : CCharacter {
 			//float fAngleVise = -m_fAngleCone*180/3.14159f - 90 - 75/2;
 			//m_ConeVision.setAngleVise(fAngleVise);  
 			
-			m_fAngleCone +=90 + 75/2;
-			
+			m_fAngleCone +=90.0f + 75.0f/2.0f;	
 		}
 		
 		
