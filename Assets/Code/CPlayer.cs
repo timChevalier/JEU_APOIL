@@ -362,8 +362,14 @@ public class CPlayer : CCharacter {
 		return m_eMoveModState;
 	}
 	
-	public float getSpeed(){
+	public float getSpeed()
+	{
 		return m_fSpeed;
+	}
+	
+	public bool HaveObject()
+	{
+		return m_bHaveObject;	
 	}
 	
 }

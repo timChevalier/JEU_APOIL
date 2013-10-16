@@ -24,11 +24,11 @@ public class CMenu : MonoBehaviour{
 	public Texture m_Texture_Credit;
 	public MovieTexture m_Texture_movie_intro;
 	
-	
 	float m_fTempsSplash;
 	const float m_fTempsSplashInit = 2.0f;
 	float m_fTempsVideoIntro;
 	bool m_bGamePaused;
+	CGame m_Game;
 	
 	//-------------------------------------------------------------------------------
 	/// 
@@ -63,11 +63,11 @@ public class CMenu : MonoBehaviour{
 	//-------------------------------------------------------------------------------
 	void Start()
 	{
-		CGame game = gameObject.GetComponent<CGame>();
+		m_Game = gameObject.GetComponent<CGame>();
 		m_fTempsSplash = 0.0f;
 		m_fTempsVideoIntro = 0.0f;
 		m_bGamePaused = false;
-		if(!game.IsNotUseMasterGame())	
+		if(!m_Game.IsNotUseMasterGame())	
 		{
 			m_EState = EmenuState.e_menuState_splash;
 			m_fTempsSplash = m_fTempsSplashInit;
@@ -198,9 +198,5 @@ public class CMenu : MonoBehaviour{
 				break;
 			}	
 		}
-		
-		
     }
-	
-	
 }

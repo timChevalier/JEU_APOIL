@@ -22,6 +22,9 @@ public class CScriptTakeElement : MonoBehaviour
 		}
 	}
 	
+	//-------------------------------------------------------------------------------
+	/// Unity
+	//-------------------------------------------------------------------------------
 	void OnTriggerStay(Collider other)
 	{	
 		// ramasser un objet
@@ -32,8 +35,29 @@ public class CScriptTakeElement : MonoBehaviour
 		
 	}
 	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------
 	public void SetTakeElement(CTakeElement obj)
 	{
 		m_TakeElement = obj;
+	}
+	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------
+	public CTakeElement.ETypeObject GetTypeElement()
+	{
+		CTakeElement.ETypeObject type = CTakeElement.ETypeObject.e_TypeObject_NoTakeElement;
+		switch(gameObject.name)
+		{
+			case "MarteauThor" :
+			{
+				type = CTakeElement.ETypeObject.e_TypeObject_Torche;
+				break;	
+			}
+		}
+		
+		return type;
 	}
 }
