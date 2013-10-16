@@ -186,6 +186,7 @@ public class CPlayer : CCharacter {
 		}
 		
 		float fCoeffDirection = Vector2.Dot(m_DirectionRegard, m_DirectionDeplacement);
+		Debug.Log ("m_DirectionRegard : "+m_DirectionRegard+" m_DirectionDeplacement : " +m_DirectionDeplacement+ " fCoeffDirection : "+fCoeffDirection);
 		fCoeffDirection = game.m_fCoeffReverseWalk + (1.0f - game.m_fCoeffReverseWalk)*(fCoeffDirection + 1)/2;
 		
 		m_fSpeed = game.m_fSpeedPlayer * fVitesseEtat * fVitesseAttitude * fCoeffDirection;
@@ -260,7 +261,6 @@ public class CPlayer : CCharacter {
 				bSlowPressed = Input.GetKey(KeyCode.LeftControl);
 			}
 			
-				
 			Vector3 velocity = Vector3.zero;
 			if (bUpPressed) 
 			{ 
@@ -331,8 +331,11 @@ public class CPlayer : CCharacter {
 		
 		if(game.IsPadXBoxMod())
 		{
-			float fPadX = (Input.GetAxis("lightHorizontal"));
-			float fPadY = (Input.GetAxis("lightVertical"));
+			float fPadX = Input.GetAxis("lightHorizontal");
+			float fPadY = Input.GetAxis("lightVertical");
+			float fTolerance = 0.05f;
+			if(Mathf.Abs(fPadX) > fTolerance || Mathf.Abs(fPadY) > fTolerance)
+				m_DirectionRegard = (new Vector2(fPadY, fPadX)).normalized;
 			
 			m_fAngleCone = CMathAPOIL.ConvertCartesianToPolar(new Vector2(fPadX, fPadY)).y;
 		}
@@ -360,9 +363,9 @@ public class CPlayer : CCharacter {
 			//float fAngleVise = -m_fAngleCone*180/3.14159f - 90 - 75/2;
 			//m_ConeVision.setAngleVise(fAngleVise);  
 			
-			m_fAngleCone +=90 + 75/2;
-			
+			m_fAngleCone +=90.0f + 75.0f/2.0f;	
 		}
+		
 		
 		m_Torche.transform.RotateAround(new Vector3(0,0,1),  m_fAngleCone - fAngleOld);
 	}
