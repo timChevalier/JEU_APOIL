@@ -21,7 +21,7 @@ public class CMachineActiveZone : MonoBehaviour {
 	
  	void OnTriggerStay(Collider other)
 	{	
-		if(other.gameObject ==  m_Game.getLevel().getPlayer().getGameObject() && Input.GetMouseButton(0))
+		if(other.gameObject ==  m_Game.getLevel().getPlayer().getGameObject() && CApoilInput.ActivateMachine)
 		{
 			m_Machine.Activate(m_Game.getLevel().getPlayer());
 		}

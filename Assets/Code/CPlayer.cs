@@ -35,7 +35,7 @@ public class CPlayer : CCharacter {
 		e_MoveModState_cours
 	}
 	
-	public enum EState //etat de l'avatar
+	public enum EState // etat de l'avatar
 	{
 		e_state_normal,
 		e_state_enflamme,
@@ -186,7 +186,6 @@ public class CPlayer : CCharacter {
 		}
 		
 		float fCoeffDirection = Vector2.Dot(m_DirectionRegard, m_DirectionDeplacement);
-		Debug.Log ("m_DirectionRegard : "+m_DirectionRegard+" m_DirectionDeplacement : " +m_DirectionDeplacement+ " fCoeffDirection : "+fCoeffDirection);
 		fCoeffDirection = game.m_fCoeffReverseWalk + (1.0f - game.m_fCoeffReverseWalk)*(fCoeffDirection + 1)/2;
 		
 		m_fSpeed = game.m_fSpeedPlayer * fVitesseEtat * fVitesseAttitude * fCoeffDirection;
@@ -233,50 +232,23 @@ public class CPlayer : CCharacter {
 	void EventClavier(float fDeltatime)
 	{
 		if (m_GameObject.rigidbody != null)
-		{
-			bool bUpPressed;
-			bool bDownPressed;
-			bool bLeftPressed;
-			bool bRightPressed;
-			bool bRunPressed;
-			bool bSlowPressed;
-			
-			if(game.IsPadXBoxMod())
-			{	
-				float fTolerance = 0.05f;
-				bUpPressed = (Input.GetAxis("moveVertical")) < -fTolerance;
-				bDownPressed = (Input.GetAxis("moveVertical")) > fTolerance;
-				bLeftPressed = (Input.GetAxis("moveHorizontal")) < -fTolerance;
-				bRightPressed = (Input.GetAxis("moveHorizontal")) > fTolerance;
-				bRunPressed = Input.GetKey(KeyCode.JoystickButton5);
-				bSlowPressed = Input.GetKey(KeyCode.JoystickButton4);
-			}
-			else
-			{
-				bUpPressed = Input.GetKey(KeyCode.Z);
-				bDownPressed = Input.GetKey(KeyCode.S);
-				bLeftPressed = Input.GetKey(KeyCode.Q);
-				bRightPressed = Input.GetKey(KeyCode.D);
-				bRunPressed = Input.GetKey(KeyCode.LeftShift);
-				bSlowPressed = Input.GetKey(KeyCode.LeftControl);
-			}
-			
+		{			
 			Vector3 velocity = Vector3.zero;
-			if (bUpPressed) 
+			if (CApoilInput.MoveUp) 
 			{ 
 				velocity += new Vector3(0,1,0); 
 				m_spriteSheet.SetAnimation(m_AnimVertical);
 				m_spriteSheet.AnimationStart();
 				m_eMoveModState = EMoveModState.e_MoveModState_marche;
 			}
-			if (bDownPressed) 
+			if (CApoilInput.MoveDown) 
 			{ 
 				velocity += new Vector3(0,-1,0); 
 				m_spriteSheet.SetAnimation(m_AnimVertical);
 				m_spriteSheet.AnimationStart();
 				m_eMoveModState = EMoveModState.e_MoveModState_marche;
 			}
-			if (bLeftPressed) 
+			if (CApoilInput.MoveLeft) 
 			{
 				velocity += new Vector3(-1,0,0); 
 				m_spriteSheet.SetAnimation(m_AnimHorizontal);
@@ -285,14 +257,15 @@ public class CPlayer : CCharacter {
 				m_eMoveModState = EMoveModState.e_MoveModState_marche;
 				
 			}
-			if (bRightPressed) { 
+			if (CApoilInput.MoveRight) 
+			{ 
 				velocity += new Vector3(1,0,0); 
 				m_spriteSheet.SetAnimation(m_AnimHorizontal);
 				m_spriteSheet.AnimationStart();
 				flipRight();
 				m_eMoveModState = EMoveModState.e_MoveModState_marche;
 			}
-			if(!bUpPressed && !bDownPressed && !bLeftPressed && !bRightPressed) 
+			if(!CApoilInput.MoveUp && !CApoilInput.MoveDown && !CApoilInput.MoveLeft && !CApoilInput.MoveRight) 
 			{
 				m_spriteSheet.SetAnimation(m_AnimRepos);
 				m_spriteSheet.AnimationStop();
@@ -303,11 +276,11 @@ public class CPlayer : CCharacter {
 			velocity.Normalize();
 			m_DirectionDeplacement = velocity;
 			
-			if(bRunPressed)
+			if(CApoilInput.WalkFast)
 			{
 				m_eMoveModState = EMoveModState.e_MoveModState_cours;
 			}	
-			if(bSlowPressed)
+			if(CApoilInput.WalkSlow)
 			{
 				m_eMoveModState = EMoveModState.e_MoveModState_discret;	
 			}
@@ -331,26 +304,18 @@ public class CPlayer : CCharacter {
 		
 		if(game.IsPadXBoxMod())
 		{
-			float fPadX = Input.GetAxis("lightHorizontal");
-			float fPadY = Input.GetAxis("lightVertical");
+			float fPadY = CApoilInput.PadLightHorizontal;
+			float fPadX = CApoilInput.PadLightVertical;
 			float fTolerance = 0.05f;
 			if(Mathf.Abs(fPadX) > fTolerance || Mathf.Abs(fPadY) > fTolerance)
-				m_DirectionRegard = (new Vector2(fPadY, fPadX)).normalized;
+				m_DirectionRegard = (new Vector2(fPadX, -fPadY)).normalized;
 			
-			m_fAngleCone = CMathAPOIL.ConvertCartesianToPolar(new Vector2(fPadX, fPadY)).y;
+			m_fAngleCone = CApoilMath.ConvertCartesianToPolar(new Vector2(fPadY, fPadX)).y;
 		}
 		else
 		{
-			Vector3 posMouseTmp = Vector3.zero;
-			RaycastHit vHit = new RaycastHit();
-			Ray vRay = m_CameraCone.ScreenPointToRay(Input.mousePosition);
-			if(Physics.Raycast(vRay, out vHit, 100)) 
-			{
-				posMouseTmp = vHit.point;
-			}
-			
 			Vector3 posPlayerTmp = m_GameObject.transform.position;
-			Vector2 posMouse = new Vector2(posMouseTmp.x, posMouseTmp.y);
+			Vector2 posMouse = CApoilInput.MousePosition;
 			Vector2 posPlayer = new Vector2(posPlayerTmp.x, posPlayerTmp.y);
 			m_DirectionRegard = (posMouse - posPlayer).normalized;
 			m_fAngleCone = Mathf.Acos(Vector2.Dot(m_DirectionRegard, new Vector2(1,0)));

@@ -21,8 +21,7 @@ public class CScriptTakeElement : MonoBehaviour {
 	
 	void OnTriggerStay(Collider other)
 	{	
-		bool bInputTakeElement = m_Game.IsPadXBoxMod() ? Input.GetKey(KeyCode.JoystickButton0) : Input.GetMouseButton(0);
-		if(other.gameObject == m_Game.getLevel().getPlayer().getGameObject() && bInputTakeElement)	
+		if(other.gameObject == m_Game.getLevel().getPlayer().getGameObject() && CApoilInput.PickUpObject)	
 		{
 			m_Game.getLevel().getPlayer().PickUpObject(m_TakeElement);
 		}

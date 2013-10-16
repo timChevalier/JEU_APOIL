@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CMathAPOIL
+public class CApoilMath
 {
 	const float m_fPi = 3.14159f;
 	

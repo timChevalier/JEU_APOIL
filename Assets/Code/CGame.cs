@@ -88,10 +88,10 @@ public class CGame : MonoBehaviour
 	{	
 		if(m_bInGame)
 		{
+			CApoilInput.Process(fDeltatime);
 			m_Level.Process(fDeltatime);
 			m_Camera.Process(fDeltatime);
 			//ProcessRoomState();
-			
 			//Quit on Escape
 			if(Input.GetKey(KeyCode.Escape))
 				Application.Quit();
