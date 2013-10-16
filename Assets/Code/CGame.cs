@@ -17,6 +17,7 @@ public class CGame : MonoBehaviour
 	public Material m_materialDEBUGscreen;
 	
 	// variables de LD
+	public bool m_bPadXBox = false;
 	public bool m_bDebug = false;
 	public bool m_bDebugRendu = false;
 	public bool m_bNotUseMasterGame = false;
@@ -140,6 +141,14 @@ public class CGame : MonoBehaviour
 		m_bInGame = true;	
 	}
 
+	
+	//-------------------------------------------------------------------------------
+	/// 
+	//-------------------------------------------------------------------------------
+	public bool IsPadXBoxMod()
+	{
+		return m_bPadXBox;	
+	}
 	
 	//-------------------------------------------------------------------------------
 	/// 
