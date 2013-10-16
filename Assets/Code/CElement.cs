@@ -16,16 +16,16 @@ public class CElement
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
-	public void Init()
+	public virtual void Init()
 	{	
 		
 	}
 	
-	public void Init(GameObject go){}
+	
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
-	public void Reset()
+	public virtual void Reset()
 	{
 		
 	}
@@ -33,12 +33,12 @@ public class CElement
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
-	public void Process(float fDeltatime)
+	public virtual void Process(float fDeltatime)
 	{
 		
 	}
 	
-	public void Add(GameObject go){}
+	public virtual void Add(GameObject go){}
 	
 	//-------------------------------------------------------------------------------
 	///
@@ -48,6 +48,9 @@ public class CElement
 		return m_GameObject;	
 	}
 	
+	public void setGameObject(GameObject gameObject){
+		m_GameObject = gameObject;
+	}
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------

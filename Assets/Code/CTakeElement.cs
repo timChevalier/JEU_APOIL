@@ -13,18 +13,18 @@ public class CTakeElement : CElement {
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------	
-	public new void Init(GameObject obj)
+	public override void Init()
 	{	
 		base.Init();
-		m_GameObject = obj;
+		/*m_GameObject = obj;*/
 		m_GameObject.GetComponent<CScriptTakeElement>().SetTakeElement(this);
-
+		
 	}
 
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
-	public new void Reset()
+	public override void Reset()
 	{
 		base.Reset();
 	}
@@ -32,7 +32,7 @@ public class CTakeElement : CElement {
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------	
-	public new void Process(float fDeltatime)
+	public override void Process(float fDeltatime)
 	{
 		base.Process(fDeltatime);
 	}

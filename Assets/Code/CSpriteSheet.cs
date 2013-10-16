@@ -132,7 +132,7 @@ public class CSpriteSheet // : MonoBehaviour
 	//-------------------------------------------------------------------------------
 	public void AnimationStop()
 	{
-		m_bIsPlaying = false;
+		m_bIsPlaying = false;	
 	}
 	
 	public void SetDirection(bool forward){
