@@ -76,6 +76,7 @@ public class CPlayer : CCharacter {
 		
 		m_eMoveModState = EMoveModState.e_MoveModState_marche;
 		m_bMainCharacter = bIsMainCharacter;
+		m_YounesSuceDesBites = null;
 		m_bHaveObject = false;
 		
 		m_Torche = m_GameObject.transform.FindChild("Torche").gameObject;
@@ -113,8 +114,8 @@ public class CPlayer : CCharacter {
 	public new void Process(float fDeltatime)
 	{
 		base.Process(fDeltatime);
-		EventClavier(fDeltatime);
-		EventSouris(fDeltatime);
+		MovePlayer(fDeltatime);
+		GestionTorche(fDeltatime);
 		
 		if(game.IsDebug())
 		{
@@ -203,6 +204,15 @@ public class CPlayer : CCharacter {
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
+	public void DropElement()
+	{
+		m_YounesSuceDesBites = null;
+		m_bHaveObject = false;
+	}
+	
+	//-------------------------------------------------------------------------------
+	///
+	//-------------------------------------------------------------------------------
 	void flipRight ()
 	{
 		if (m_GameObject.transform.localScale.x < 0)
@@ -229,7 +239,7 @@ public class CPlayer : CCharacter {
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
-	void EventClavier(float fDeltatime)
+	void MovePlayer(float fDeltatime)
 	{
 		if (m_GameObject.rigidbody != null)
 		{			
@@ -298,7 +308,7 @@ public class CPlayer : CCharacter {
 	//-------------------------------------------------------------------------------
 	///
 	//-------------------------------------------------------------------------------
-	void EventSouris(float fDeltatime)
+	void GestionTorche(float fDeltatime)
 	{
 		float fAngleOld = m_fAngleCone;
 		

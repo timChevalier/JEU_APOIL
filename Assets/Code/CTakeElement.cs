@@ -16,7 +16,6 @@ public class CTakeElement : CElement {
 	public override void Init()
 	{	
 		base.Init();
-		/*m_GameObject = obj;*/
 		m_GameObject.GetComponent<CScriptTakeElement>().SetTakeElement(this);
 		
 	}

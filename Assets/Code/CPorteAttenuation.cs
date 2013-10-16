@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class CPorteAttenuation : MonoBehaviour {
-
+public class CPorteAttenuation : MonoBehaviour 
+{
 	GameObject m_piece_exit;
 	GameObject m_piece_enter;
 	CGame game;
