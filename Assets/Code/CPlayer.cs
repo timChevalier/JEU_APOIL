@@ -115,7 +115,6 @@ public class CPlayer : CCharacter {
 		base.Process(fDeltatime);
 		EventClavier(fDeltatime);
 		EventSouris(fDeltatime);
-		EventXBox();
 		
 		if(game.IsDebug())
 		{
@@ -137,7 +136,7 @@ public class CPlayer : CCharacter {
 			m_Torche.SetActiveRecursively(false);
 		}
 		
-		//gestion si on tiens 
+		//gestion si on tiens un objet
 		if(m_bHaveObject)
 		{
 			m_YounesSuceDesBites.SetPosition2D(m_GameObject.transform.position);
@@ -261,9 +260,7 @@ public class CPlayer : CCharacter {
 				bSlowPressed = Input.GetKey(KeyCode.LeftControl);
 			}
 			
-			
-			
-			
+				
 			Vector3 velocity = Vector3.zero;
 			if (bUpPressed) 
 			{ 
@@ -318,9 +315,6 @@ public class CPlayer : CCharacter {
 			CalculateSpeed();
 			
 			m_GameObject.transform.position += m_fSpeed * velocity * fDeltatime;
-			/*
-			Vector3 velocityH = new Vector3(100,0,0);
-			m_GameObject.transform.position += m_fSpeed * Input.GetAxis("moveHorizontal") * velocityH * fDeltatime;*/
 		}
 		else
 		{
@@ -337,10 +331,10 @@ public class CPlayer : CCharacter {
 		
 		if(game.IsPadXBoxMod())
 		{
-			float fPadX = (Input.GetAxis("moveHorizontal"));
-			float fPadY = (Input.GetAxis("moveVertical"));
+			float fPadX = (Input.GetAxis("lightHorizontal"));
+			float fPadY = (Input.GetAxis("lightVertical"));
 			
-			//m_fAngleCone = Mathf.Asin(fPadY/fPadX);
+			m_fAngleCone = CMathAPOIL.ConvertCartesianToPolar(new Vector2(fPadX, fPadY)).y;
 		}
 		else
 		{
@@ -362,26 +356,15 @@ public class CPlayer : CCharacter {
 			{
 				m_fAngleCone *=-1;
 			}
-			float fAngleVise = -m_fAngleCone*180/3.14159f - 90 - 75/2;
-			m_ConeVision.setAngleVise(fAngleVise);  
 			
-			m_fAngleCone += 90 + 75/2;
+			//float fAngleVise = -m_fAngleCone*180/3.14159f - 90 - 75/2;
+			//m_ConeVision.setAngleVise(fAngleVise);  
+			
+			m_fAngleCone +=90 + 75/2;
+			
 		}
+		
 		m_Torche.transform.RotateAround(new Vector3(0,0,1),  m_fAngleCone - fAngleOld);
-	}
-	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
-	void EventXBox()
-	{
-		float translation = Input.GetAxis("moveHorizontal") * 10;
-	
-        //float rotation = Input.GetAxis("moveHorizontal") * 10;
-        translation *= Time.deltaTime;
-       // rotation *= Time.deltaTime;
-       // m_GameObject.transform.position += 100 * new Vector3(translation, 0 ,0);
-       // m_GameObject.transform.Rotate(0, rotation, 0);
 	}
 	
 	//-------------------------------------------------------------------------------
