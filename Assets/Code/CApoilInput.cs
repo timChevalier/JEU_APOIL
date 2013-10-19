@@ -20,7 +20,7 @@ public class CApoilInput
 		
 	public static void Process(float fDeltatime) 
 	{
-		// if we use gamepad ?
+		// if we use gamepad !
 		if(m_Game.IsPadXBoxMod())
 		{	
 			float fTolerance = 0.05f; // ???
