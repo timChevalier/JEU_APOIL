@@ -1,28 +1,33 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Instance of the game
+/// This class contains elements of the motor : the camera, the sound engine, the screen resolution
+/// It also contains the game objects : the characters of the games (players, monsters...), the Level
+/// </summary>
 public class CGame : MonoBehaviour
 {
 	// Objets
 	public GameObject prefabPlayer;
 	public GameObject prefabMonster;
 	public Camera m_CameraCone;
-	public GameObject m_debugDraw;
-	public GameObject m_renderScreen;	
+	public GameObject m_debugDraw; // ???
+	public GameObject m_renderScreen;
 	
-	// materials
+	// player materials
 	public Material m_materialPlayerRepos;
 	public Material m_materialPlayerHorizontal;
 	public Material m_materialPlayerVertical;
 	public Material m_materialDEBUGscreen;
 	
-	// variables de LD
+	// variables de LD ??????
 	public bool m_bPadXBox = false;
 	public bool m_bDebug = false;
 	public bool m_bDebugRendu = false;
 	public bool m_bNotUseMasterGame = false;
 	public float m_fSpeedPlayer = 1.0f;
-	public float m_fSpeedMonster = 1.0f;
+	public float m_fSpeedMonster = 1.0f; // what is that ? Monster speed is already defined in the class monster.
 	
 	public float m_fCoeffReverseWalk = 1.0f;
 	public float m_fCoeffSlowWalk = 1.0f;
@@ -47,7 +52,7 @@ public class CGame : MonoBehaviour
 	
 	
 	// variables
-	bool m_bInGame;
+	bool m_bInGame; // pause boolean
 	bool m_bGameStarted;
 	int m_nScreenWidth;
 	int m_nScreenHeight;
@@ -55,9 +60,9 @@ public class CGame : MonoBehaviour
 	CCamera m_Camera;
 	CSoundEngine m_SoundEngine;
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Init CSoundEngine, CLevel, the screen size and CCamera
+	/// </summary>
 	public void Init()
 	{		
 		m_SoundEngine = new CSoundEngine();
@@ -66,24 +71,27 @@ public class CGame : MonoBehaviour
 		
 		m_Level = new CLevel();
 		m_Level.Init();
-		m_nScreenWidth = 1280;
-		m_nScreenHeight = 800;
+		m_nScreenWidth = 1024;
+		m_nScreenHeight = 768;
 		m_Camera = new CCamera();
 		m_Camera.Init();
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Reset CLevel and CCamera
+	/// </summary>
 	void Reset()
 	{
 		m_Level.Reset();
 		m_Camera.Reset();
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Run the game at the specified fDeltatime.
+	/// </summary>
+	/// <param name='fDeltatime'>
+	/// F deltatime.
+	/// </param>
 	void Process(float fDeltatime)
 	{	
 		if(m_bInGame)
@@ -99,10 +107,9 @@ public class CGame : MonoBehaviour
 		
 	}
 
-	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Displaies debug messages.
+	/// </summary>
 	void DisplayDebug()
 	{
 		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(Time.deltaTime));
@@ -111,25 +118,31 @@ public class CGame : MonoBehaviour
 		GUI.Label(new Rect(10, 70, 150, 20), System.Convert.ToString(getLevel().getMonster().getState()));
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// 
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Gets the level.
+	/// </summary>
+	/// <returns>
+	/// Current level.
+	/// </returns>
 	public CLevel getLevel()
 	{
 		return m_Level;
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// 
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Gets the size screen.
+	/// </summary>
+	/// <returns>
+	/// The size screen.
+	/// </returns>
 	public Vector2 GetSizeScreen()
 	{
 		return new Vector2(m_nScreenWidth, m_nScreenHeight);
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// 
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Starts the game if not already started
+	/// </summary>
 	public void StartGame()
 	{
 		if(!m_bGameStarted)
@@ -142,49 +155,61 @@ public class CGame : MonoBehaviour
 	}
 
 	
-	//-------------------------------------------------------------------------------
-	/// 
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Determines whether this instance is pad X box mod.
+	/// </summary>
+	/// <returns>
+	/// <c>true</c> if this instance is pad X box mod; otherwise, <c>false</c>.
+	/// </returns>
 	public bool IsPadXBoxMod()
 	{
 		return m_bPadXBox;	
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// 
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Determines whether this instance is debug.
+	/// </summary>
+	/// <returns>
+	/// <c>true</c> if this instance is debug; otherwise, <c>false</c>.
+	/// </returns>
 	public bool IsDebug()
 	{
 		return m_bDebug;	
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// 
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Determines whether this instance is debug rendu.
+	/// </summary>
+	/// <returns>
+	/// <c>true</c> if this instance is debug rendu; otherwise, <c>false</c>.
+	/// </returns>
 	public bool IsDebugRendu()
 	{
 		return m_bDebugRendu;	
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// 
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Determines whether this instance is not use master game.
+	/// </summary>
+	/// <returns>
+	/// <c>true</c> if this instance is not use master game; otherwise, <c>false</c>.
+	/// </returns>
 	public bool IsNotUseMasterGame()
 	{
 		return m_bNotUseMasterGame;	
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// 
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Pauses the game.
+	/// </summary>
 	public void PauseGame()
 	{
 		m_bInGame = false;	
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// Unity
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Raises the GU event. Display debug if in debug mode.
+	/// </summary>
 	void OnGUI() 
 	{
         if (m_bDebug)
@@ -195,9 +220,10 @@ public class CGame : MonoBehaviour
     }
 
 	
-	//-------------------------------------------------------------------------------
-	/// Unity
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Start this instance. ???
+	/// Need more comments...
+	/// </summary>
 	void Start()
 	{
 		m_bInGame = false;
@@ -213,9 +239,9 @@ public class CGame : MonoBehaviour
 		}
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// Unity
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Update the game.
+	/// </summary>
 	void Update()
 	{
 		if(m_bInGame)
@@ -224,9 +250,12 @@ public class CGame : MonoBehaviour
 		}
 	}
 	
-	//-------------------------------------------------------------------------------
-	/// 
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Gets the camera object.
+	/// </summary>
+	/// <returns>
+	/// The camera object.
+	/// </returns>
 	public CCamera getCamera()
 	{
 		return m_Camera;	

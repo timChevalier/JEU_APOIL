@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// ???
+/// </summary>
 public class CCollision2D : MonoBehaviour {
 	/*
 	public bool m_bCollision_fixe = false;

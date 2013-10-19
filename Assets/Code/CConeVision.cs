@@ -4,7 +4,7 @@ using System.Collections;
 public class CConeVision : MonoBehaviour 
 {   
 	CGame game;
-	float m_fAngleVise;
+	float m_fAngleVise; // ???
 	
 	public Material m_Material; 	// Mat appliqué au mesh de vue
 	public bool debug = false; 		// Dessine les rayons dans la scene view
@@ -26,9 +26,12 @@ public class CConeVision : MonoBehaviour
 	Vector3[] points;
 	int[] indices;
    
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	/// Sets the angle
+	/// </summary>
+	/// <param name='fAngle'>
+	/// F angle.
+	/// </param>
 	public void setAngleVise(float fAngle)
 	{
 		m_fAngleVise = fAngle;
@@ -42,7 +45,7 @@ public class CConeVision : MonoBehaviour
 		// Préparation des rayons
 		precision = precision > 1 ? precision : 2;
 		directions = new Vector3[precision];
-		float angle_start = m_fAngleVise;
+		float angle_start = m_fAngleVise; // ???
 		//float angle_start = -angle*0.5F;
 		float angle_step = angle / (precision-1);
 		for( int i = 0; i < precision; i++ )
@@ -70,7 +73,7 @@ public class CConeVision : MonoBehaviour
 		m_gameObject.tag = "cone";
 		m_Transform = game.getLevel().getPlayer().getGameObject().transform; //transform; // histoire de limiter les getcomponent dans la boucle
 		
-		// Préparation des rayons
+		// prepare beams
 		setDirection();
 		
 		// préparations des outils de manipulation du mesh
@@ -114,7 +117,8 @@ public class CConeVision : MonoBehaviour
 	///
 	//-------------------------------------------------------------------------------
 	private void UpdateSightMesh()
-	{         
+	{
+		// prepare beams
 		setDirection();	
 		
 		// Lance les rayons pour placer les vertices le plus loin possible
@@ -149,7 +153,5 @@ public class CConeVision : MonoBehaviour
 		//translate le centre a la position du player!!! J'AI PASSE 3 PUTAINS DE JOUR POUR TROUVER QU'IL FALLAIT FAIRE LE CONE EN (0,0) ET LE TRANSLATER ENSUITE!!!
 		m_gameObject.transform.position = m_Transform.position;
 	}
-	
-	
 	
 }

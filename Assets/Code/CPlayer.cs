@@ -8,7 +8,7 @@ public class CPlayer : CCharacter {
 	int m_nRadiusDiscrectionCircle = 10;
 	CGame game;
 	
-	//CGame m_game = GameObject.Find("_Game").GetComponent<CGame>();
+	// CGame m_game = GameObject.Find("_Game").GetComponent<CGame>();
 	float m_fSpeed;
 	float m_fAngleCone;
 	CSpriteSheet m_spriteSheet;
@@ -66,7 +66,7 @@ public class CPlayer : CCharacter {
 		m_CameraCone = game.m_CameraCone;
 		
 		m_fSpeed = game.m_fSpeedPlayer;
-		m_spriteSheet = new CSpriteSheet(m_GameObject); //m_GameObject.GetComponent<CSpriteSheet>();	
+		m_spriteSheet = new CSpriteSheet(m_GameObject); // m_GameObject.GetComponent<CSpriteSheet>();	
 		
 		m_AnimRepos = new CAnimation(game.m_materialPlayerRepos, 1, 1, 1.0f);
 		

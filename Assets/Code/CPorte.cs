@@ -102,8 +102,6 @@ public class CPorte : MonoBehaviour
 		}
 	}
 	
-	
-	
 	static Vector3 getRelativePosition(Transform origin, Vector3 position) {
 	    Vector3 distance = position - origin.position;
 	    Vector3 relativePosition = Vector3.zero;

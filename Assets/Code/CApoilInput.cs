@@ -20,23 +20,24 @@ public class CApoilInput
 		
 	public static void Process(float fDeltatime) 
 	{
+		// if we use gamepad ?
 		if(m_Game.IsPadXBoxMod())
 		{	
-			float fTolerance = 0.05f;
-			MoveUp = (Input.GetAxis("moveVertical")) < -fTolerance;
+			float fTolerance = 0.05f; // ???
+			MoveUp = (Input.GetAxis("moveVertical")) < -fTolerance; // ???
 			MoveDown = (Input.GetAxis("moveVertical")) > fTolerance;
 			MoveLeft = (Input.GetAxis("moveHorizontal")) < -fTolerance;
 			MoveRight = (Input.GetAxis("moveHorizontal")) > fTolerance;
-			WalkFast = Input.GetKey(KeyCode.JoystickButton5); //RB
-			WalkSlow = Input.GetKey(KeyCode.JoystickButton4); //LB
+			WalkFast = Input.GetKey(KeyCode.JoystickButton5); //Right Mouse Button ?
+			WalkSlow = Input.GetKey(KeyCode.JoystickButton4); //L. M. Button ?
 			
-			PickUpObject = Input.GetKey(KeyCode.JoystickButton0); //A
+			PickUpObject = Input.GetKey(KeyCode.JoystickButton0); //Letter A
 			DropObject = Input.GetKey(KeyCode.JoystickButton2); //X
-			ActivateMachine = Input.GetKey(KeyCode.JoystickButton0); //A
+			ActivateMachine = Input.GetKey(KeyCode.JoystickButton0); //A 
 				
 			MousePosition = new Vector2(0.0f, 0.0f);
 			
-			PadLightHorizontal = Input.GetAxis("lightHorizontal");
+			PadLightHorizontal = Input.GetAxis("lightHorizontal"); // ??
 			PadLightVertical = Input.GetAxis("lightVertical");
 		}
 		else
@@ -59,6 +60,12 @@ public class CApoilInput
 		}
 	}
 	
+	/// <summary>
+	/// ????????? Why !!!
+	/// </summary>
+	/// <returns>
+	/// ???
+	/// </returns>
 	public static Vector2 CalculateMousePosition()
 	{
 		Vector3 posMouseTmp = Vector3.zero;

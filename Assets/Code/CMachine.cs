@@ -14,9 +14,6 @@ public class CMachine : CElement
 	{
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
 	public override void Init()
 	{	
 		base.Init();
@@ -32,23 +29,32 @@ public class CMachine : CElement
 		m_SpriteSheet.SetAnimation(m_ScriptMachine.GetAnimation());
 		
 	}
-
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
-	public override  void Reset()
+	
+	/// <summary>
+	/// Reset the coordonates ???(only)
+	/// </summary>
+	public override void Reset()
 	{
 		base.Reset();
 	}
 
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// Process coordinates(only ? Furthermore, CElement.Process is empty)
+	/// </summary>
+	/// <param name='fDeltatime'>
+	/// F deltatime : time between 2 updates
+	/// </param>
 	public override void Process(float fDeltatime)
 	{
 		base.Process(fDeltatime);
 	}
 	
+	/// <summary>
+	/// ???
+	/// </summary>
+	/// <param name='player'>
+	/// Player. A game player. Why not CCharacter ?
+	/// </param>
 	public void Activate(CPlayer player){
 		CMachineAction[] actions = m_GameObject.GetComponents<CMachineAction>();
 		foreach(CMachineAction action in actions){

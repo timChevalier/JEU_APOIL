@@ -3,7 +3,9 @@ using System.Collections;
 
 public class CMonster : CCharacter 
 {
-	
+	/// <summary>
+	/// Monster states (errance, attaque...)
+	/// </summary>
 	public enum EMonsterState
 	{
 		e_MonsterState_errance,
@@ -17,19 +19,24 @@ public class CMonster : CCharacter
 	
 	EMonsterState m_eMonsterState;
 	
-	float m_fSpeed;
-	float m_fRadiusAlerte;
-	bool m_bDetectionAudio;
-	bool m_bDetectionVisuelle;
-	bool m_bPlayerIsDetected;
-	float m_fTimerErrance;
-	Vector2 m_PosDetection; // derniere position connu du player
-	CPlayer m_Player; 
+	// Publique ? Private ?
+	float m_fSpeed; // speed of the monster
+	float m_fRadiusAlerte; // If a player is closer that this distance, the monster will be alerted
+	bool m_bDetectionAudio; // false : the monster is dumb, else he sees
+	bool m_bDetectionVisuelle; // false : monster is blind, else he sees
+	bool m_bPlayerIsDetected; // If the monster know the player is here
+	float m_fTimerErrance; // ??? time during which the monster is searching for the player before he forgots it ???
+	Vector2 m_PosDetection; // Last position the player were see
+	CPlayer m_Player; // The detected player (only one reference changing from one player to an other or must we have 1 variable per player ?)
 	CGame m_Game;
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// Initializes a new instance of the <see cref="CMonster"/> class.
+	/// Default : errance, default radius alert(in G<see cref="CGame"/>), use prefab monster(?). 
+	/// </summary>
+	/// <param name='posInit'>
+	/// Position init. The initial position of the monster (no initial rooms ?)
+	/// </param>
 	public CMonster(Vector2 posInit)
 	{
 		m_eMonsterState =  EMonsterState.e_MonsterState_errance;
@@ -42,9 +49,10 @@ public class CMonster : CCharacter
 		m_fRadiusAlerte = m_Game.m_fMonsterRadiusAlerte;
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// Init errance timer, player1 become the researched player
+	/// init position(base=CCharacter=CElement=position, non ?)
+	/// </summary>
 	public new void Init()
 	{		
 		base.Init();
@@ -53,17 +61,20 @@ public class CMonster : CCharacter
 		m_Player = m_Game.getLevel().getPlayer();
 	}
 
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------
+	/// <summary>
+	///  Reset... what ? Position ?
+	/// </summary>
 	public new void Reset()
 	{
 		base.Reset();
 	}
 
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	///  Process 
+	/// </summary>
+	/// <param name='fDeltatime'>
+	///  F deltatime. Time between 2 updates. 
+	/// </param>
 	public new void Process(float fDeltatime)
 	{
 		base.Process(fDeltatime);
@@ -73,6 +84,7 @@ public class CMonster : CCharacter
 		{
 			if(Input.GetKeyDown(KeyCode.E))
 			{
+				// goto next state
 				m_eMonsterState = (m_eMonsterState + 1);
 				if (m_eMonsterState >= EMonsterState.e_MonsterState_nbState)
 					m_eMonsterState = EMonsterState.e_MonsterState_errance;
@@ -122,12 +134,15 @@ public class CMonster : CCharacter
 	}
 	
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// Errance behavior (questions ???)
+	/// </summary>
+	/// <param name='fDeltatime'>
+	/// F deltatime.
+	/// </param>
 	void ProcessErrance(float fDeltatime)
 	{
-		if(m_fTimerErrance <= 0.0f)
+		if(m_fTimerErrance <= 0.0f) // why this condition ?
 		{
 			Vector3 move = Vector3.zero;
 			Vector2 rand = Random.insideUnitCircle;
@@ -135,15 +150,18 @@ public class CMonster : CCharacter
 			m_GameObject.rigidbody.velocity = Vector3.zero	; //+= move; //Imobility, as requested by game design documents...
 			m_fTimerErrance = m_Game.m_fMonsterTimeErrance;
 		}
-		else 
+		else
 		{
-			m_fTimerErrance -= fDeltatime;
+			m_fTimerErrance -= fDeltatime;// why ?
 		}
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// Affut behavior
+	/// </summary>
+	/// <param name='fDeltatime'>
+	/// F deltatime.
+	/// </param>
 	void ProcessAffut(float fDeltatime)
 	{
 		Vector3 move = Vector3.zero;
@@ -152,9 +170,12 @@ public class CMonster : CCharacter
 		m_GameObject.rigidbody.velocity += move;
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// Alerte behabior
+	/// </summary>
+	/// <param name='fDeltatime'>
+	/// F deltatime.
+	/// </param>
 	void ProcessAlerte(float fDeltatime)
 	{
 		Vector3 move = Vector3.zero;
@@ -169,9 +190,12 @@ public class CMonster : CCharacter
 		}
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// Attaque. Behavior
+	/// </summary>
+	/// <param name='fDeltatime'>
+	/// F deltatime.
+	/// </param>
 	void ProcessAttaque(float fDeltatime)
 	{
 		Vector3 move = Vector3.zero;
@@ -180,25 +204,34 @@ public class CMonster : CCharacter
 		m_GameObject.rigidbody.velocity += move;
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// Mange behavior
+	/// </summary>
+	/// <param name='fDeltatime'>
+	/// F deltatime.
+	/// </param>
 	void ProcessMange(float fDeltatime)
 	{
 		
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// Debug ?
+	/// </summary>
+	/// <param name='fDeltatime'>
+	/// F deltatime.
+	/// </param>
 	void ProcessDebug(float fDeltatime)
 	{
 
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// set the state parameters
+	/// </summary>
+	/// <param name='eState'>
+	/// eState : current state
+	/// </param>
 	void SetState(EMonsterState eState)
 	{
 		m_eMonsterState = eState;
@@ -249,14 +282,10 @@ public class CMonster : CCharacter
 			return;
 		
 		switch(m_eMonsterState){
-			
 			case EMonsterState.e_MonsterState_errance:
 				SetState(EMonsterState.e_MonsterState_affut);
 				break;
-			
 		}
-			
-			
 	}
 	
 	//-------------------------------------------------------------------------------
@@ -268,9 +297,12 @@ public class CMonster : CCharacter
 		
 	}
 	
-	//-------------------------------------------------------------------------------
-	///
-	//-------------------------------------------------------------------------------	
+	/// <summary>
+	/// Gets current state.
+	/// </summary>
+	/// <returns>
+	/// Current state.
+	/// </returns>
 	public EMonsterState getState()
 	{
 		return m_eMonsterState;	

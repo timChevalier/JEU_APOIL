@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
+//-------------------------------------------------------------------------------
+/// Define an animation (all images, fps...).
+/// This animation must be run by CSpriteSheet
+//-------------------------------------------------------------------------------
 public class CAnimation {
 	
 	public Material m_Material;
@@ -10,7 +14,7 @@ public class CAnimation {
 	public string[] m_sounds;
 	
 	//-------------------------------------------------------------------------------
-	///
+	/// Create an Animation
 	//-------------------------------------------------------------------------------
 	public CAnimation(Material material, int columns, int rows, float fFPS, string[] sounds = null)
 	{
